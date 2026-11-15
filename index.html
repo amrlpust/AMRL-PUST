@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="description" content="Advanced Materials Research Laboratory (AMRL), Department of Physics, Pabna University of Science and Technology: DFT, computational materials science, lead-free perovskites, high-entropy alloys."><title>AMRL — Advanced Materials Research Laboratory, PUST</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:wght@400;600;700&display=swap" rel="stylesheet"><style id="css">
+:root{--bg:#fbfaf7;--sf:#fff;--ink:#1b2430;--mu:#5b6675;--ln:#e4e1d8;--ac:#0f5c5c;--ac2:#b5651d;--tint:#eef4f2;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1418;--sf:#151d23;--ink:#e8ecef;--mu:#9aa7b3;--ln:#26313a;--ac:#5fc4bd;--ac2:#e3a066;--tint:#121d22;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e1418;--sf:#151d23;--ink:#e8ecef;--mu:#9aa7b3;--ln:#26313a;--ac:#5fc4bd;--ac2:#e3a066;--tint:#121d22;color-scheme:dark}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+h1,h2,h3{font-family:"Source Serif 4",Georgia,"Times New Roman",serif;line-height:1.2;margin:0 0 .5em}
+a{color:var(--ac)}
+.w{max-width:1080px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--ln)}
+header .w{display:flex;align-items:center;gap:16px;min-height:56px;flex-wrap:wrap}
+.brand{font:700 1.25rem "Source Serif 4",Georgia,serif;color:var(--ink);text-decoration:none;letter-spacing:.02em}
+.brand small{font:500 .7rem Inter,sans-serif;color:var(--mu);margin-left:8px;letter-spacing:.08em}
+nav{display:flex;gap:4px;overflow-x:auto;flex:1;scrollbar-width:none}
+nav a{white-space:nowrap;padding:6px 10px;border-radius:6px;font-size:.88rem;color:var(--mu);text-decoration:none}
+nav a:hover{background:var(--tint);color:var(--ink)}
+#th{border:1px solid var(--ln);background:var(--sf);color:var(--ink);border-radius:6px;padding:5px 10px;cursor:pointer;font:inherit;font-size:.85rem}
+section{padding:72px 0;border-bottom:1px solid var(--ln)}
+section.alt{background:var(--tint)}
+.eye{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ac2);font-weight:600;margin-bottom:8px}
+h2{font-size:clamp(1.6rem,3.5vw,2.2rem)}
+.lead{color:var(--mu);max-width:680px}
+.hero{padding:80px 0 72px}
+.hero .w{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+h1{font-size:clamp(2.1rem,5.2vw,3.5rem);letter-spacing:-.01em}
+.btn{display:inline-block;padding:10px 18px;border-radius:8px;background:var(--ac);color:var(--bg);text-decoration:none;font-weight:600;margin:8px 10px 0 0}
+.btn.o{background:none;border:1px solid var(--ac);color:var(--ac)}
+svg.lat{width:100%;max-width:340px;justify-self:center}
+.lat .e{stroke:var(--ac);stroke-width:1.5;fill:none;opacity:.5}
+.lat .a{fill:var(--ac)}.lat .b{fill:var(--ac2)}.lat .o{fill:var(--mu);opacity:.7}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:24px}
+.c{background:var(--sf);border:1px solid var(--ln);border-radius:10px;padding:20px}
+.c h3{font-size:1.1rem;margin-bottom:.3em}.c p{margin:0;color:var(--mu);font-size:.93rem}
+.num{font:600 .8rem Inter,sans-serif;color:var(--ac2);letter-spacing:.1em}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:20px}
+.tl{border-left:2px solid var(--ln);padding-left:18px;margin:0;list-style:none}
+.tl li{margin-bottom:14px;position:relative}
+.tl li::before{content:"";position:absolute;left:-24px;top:8px;width:10px;height:10px;border-radius:50%;background:var(--ac)}
+.pi{display:grid;grid-template-columns:200px 1fr;gap:32px;margin-top:24px}
+.av{width:56px;height:56px;border-radius:50%;background:var(--tint);color:var(--ac);display:grid;place-items:center;font:700 1.1rem "Source Serif 4",Georgia,serif;flex:none;border:1px solid var(--ln)}
+.pi .av{width:100%;height:auto;aspect-ratio:1;border-radius:12px;font-size:3rem}
+.person{display:flex;gap:14px;align-items:center}
+.mu,.person span{color:var(--mu);font-size:.88rem}
+.pub{padding:16px 0;border-bottom:1px solid var(--ln);display:grid;grid-template-columns:56px 1fr;gap:12px}
+.pub .y{font:700 1.05rem "Source Serif 4",Georgia,serif;color:var(--ac2)}
+.pub b{display:block}.pub small{color:var(--mu)}
+select{font:inherit;padding:6px 10px;border:1px solid var(--ln);border-radius:6px;background:var(--sf);color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.chips span{border:1px solid var(--ln);background:var(--sf);border-radius:99px;padding:4px 12px;font-size:.85rem}
+.news{display:grid;grid-template-columns:110px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid var(--ln)}
+.news time{color:var(--ac2);font-weight:600;font-size:.88rem}
+ul.k{margin:.5em 0 0;padding-left:1.1em;color:var(--mu);font-size:.93rem}
+footer{padding:32px 0;color:var(--mu);font-size:.85rem;text-align:center}
+@media (max-width:760px){.hero .w,.cols,.pi{grid-template-columns:1fr}.pi .av{max-width:140px;font-size:2rem}section{padding:52px 0}.news{grid-template-columns:1fr;gap:2px}nav{order:3;flex-basis:100%}}
+.rel{position:relative}
+.x,.add,.eo,.rl{display:none}
+.x{position:absolute;top:6px;right:6px;border:1px solid var(--ln);background:var(--sf);color:var(--mu);border-radius:50%;width:24px;height:24px;cursor:pointer;line-height:1;padding:0;font-size:1rem}
+.ed .x{display:block}
+.ed .add{display:inline-block;margin:14px 10px 0 0;border:1px dashed var(--ac);background:none;color:var(--ac);border-radius:8px;padding:6px 12px;cursor:pointer;font:inherit;font-size:.88rem}
+.ed .eo,.ed .rl{display:block;font-size:.78rem;color:var(--ac2)}
+.ed .lk{display:none}
+.ed li.rel{padding-right:30px}
+.ed [contenteditable]{outline:1px dashed var(--ac);outline-offset:2px;border-radius:3px;min-width:1.5em}
+.ed [contenteditable]:focus{background:var(--tint);outline-style:solid}
+.chips .x{position:static;margin-left:6px;width:18px;height:18px;font-size:.7rem}
+.ed .chips .x{display:inline-block}
+.chips span span{border:0;padding:0;background:none;border-radius:0}
+.person b span{color:var(--ink);font-size:1rem}
+.pl,.pl [data-p]{white-space:pre-line}
+.fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:40;display:flex;gap:8px;align-items:center;background:var(--sf);border:1px solid var(--ln);border-radius:99px;padding:6px 8px;box-shadow:0 4px 18px rgba(0,0,0,.18);font-size:.85rem;color:var(--ink)}
+.fab span{padding:0 6px}
+.fab button{border:0;border-radius:99px;padding:8px 14px;background:var(--ac);color:var(--bg);font:600 .85rem Inter,sans-serif;cursor:pointer}
+.fab button.o{background:none;color:var(--ink);border:1px solid var(--ln)}
+.av{position:relative;overflow:hidden}
+.av img{width:100%;height:100%;object-fit:cover;display:block}
+.ph{display:none;position:absolute;left:0;right:0;bottom:0;background:rgba(0,0,0,.6);color:#fff;font:600 .68rem Inter,sans-serif;text-align:center;padding:3px 0;cursor:pointer}
+.ed .ph{display:block}
+.ph input{display:none}
+.pi .ph{font-size:.85rem;padding:6px 0}
+.xp{top:3px;right:3px;width:18px;height:18px;font-size:.7rem}
+</style></head><body>
+<template id="sh">
+<header><div class="w"><a class="brand" href="#home">AMRL<small>PUST</small></a>
+<nav><a href="#home">Home</a><a href="#about">About</a><a href="#pi">Principal Investigator</a><a href="#research">Research</a><a href="#people">People</a><a href="#publications">Publications</a><a href="#facilities">Facilities</a><a href="#news">News</a><a href="#opportunities">Opportunities</a><a href="#contact">Contact</a></nav>
+<button id="th" type="button" aria-label="Toggle light or dark theme">◐ Theme</button></div></header>
+<main id="app"></main>
+<footer>© <span id="yy"></span> AMRL, Pabna University of Science and Technology</footer>
+</template>
+<script id="d" type="application/json">{"hero":{"eb":"Pabna University of Science and Technology","t":"Advanced Materials Research Laboratory","l":"We use first-principles calculations, molecular dynamics and device simulation to understand and design alloys and lead-free optoelectronic materials for energy applications."},"hl":[{"t":"Multi-scale modeling","d":"From DFT to molecular dynamics: linking atomic structure to mechanical and optoelectronic properties."},{"t":"Lead-free energy materials","d":"Non-toxic perovskites, thermoelectrics and alloys for a sustainable future."},{"t":"Open collaboration","d":"Working with experimental and theoretical groups worldwide."}],"ab":{"v":"To be a recognised centre for computational materials research in Bangladesh, producing science that informs the design of next-generation functional materials.","m":"To train curious young researchers, publish rigorous and reproducible work, and share computational knowledge with the wider community.","h":["[Year] — Laboratory established at PUST.","[Year] — First research group formed and first papers published.","[Year] — Computing facilities expanded.","Today — Growing team with national and international collaborators."]},"pi":{"n":"Dr. Md. Lokman Ali","b":"Associate Professor, Department of Physics, Pabna University of Science and Technology, and Director of the Research and Technology Transfer Cell. Research interests: computational materials science, multi-scale modeling, multi-principal element alloys, optoelectronic and lead-free materials.","e":["Ph.D., Mechanical Science and Bio-engineering, Osaka University, Japan, 2021","M.S., Physics, University of Chittagong, 2013 (3.93/4.00, 1st position)","B.Sc., Physics, University of Chittagong, 2011 (3.72/4.00, 1st position)"],"x":["Director, Research and Technology Transfer Cell, PUST, since May 2025","Associate Professor, Department of Physics, PUST, since August 2022","Assistant Professor, PUST, November 2016 – August 2022","Lecturer, PUST, November 2014 – November 2016","Treasurer, Physics Association, PUST"],"a":["MEXT (Japanese Government) Scholarship for Ph.D. at Osaka University, 2018","Distinction Award for outstanding M.S. results, 2013","Distinction Award for excellent B.Sc. (Hons) results, 2011"],"m":"53 papers · 770 citations · h-index 14 · i10-index 22 (Google Scholar, September 2025)","s":"Currently supervising 1 M.Phil., 4 MS and 5 undergraduate thesis students.","ph":"560c403188c84f3ad7a5b90e44824c9b"},"rs":[{"t":"Computational materials science","d":"Multi-scale modeling with DFT (CASTEP, VASP) and molecular dynamics (LAMMPS)."},{"t":"Multi-principal element alloys","d":"Grain boundaries, dislocations, lattice distortion and chemical short-range order in high- and medium-entropy alloys."},{"t":"Lead-free halide perovskites","d":"Pressure-tuned band gaps and optoelectronic properties of non-toxic perovskites, with SCAPS-1D solar cell modeling."},{"t":"Pressure and temperature effects","d":"Structural, mechanical, electronic and optical properties of solids under pressure."},{"t":"Superconductors and topological semimetals","d":"First-principles studies of pressure-induced superconductivity and topological semimetals."},{"t":"Thermoelectric and optoelectronic materials","d":"Energy harvesting and conversion materials, from halide chalcogenides to perovskite oxides."}],"pp":[{"n":"[Name]","r":"M.Phil. Students","t":"Research topic"},{"n":"Md. Emon Hassan","r":"MS Students","t":"Research area: Condense Material Science, Computational Material Science","ph":"7d42374f9957550f2f2762f654cd8fbe"},{"n":"[Name]","r":"MS Students","t":"Research topic"},{"n":"[Name]","r":"Undergraduate Thesis Students","t":"Research topic"}],"pb":[{"y":"2025","a":"Z. Hossain, M. R. Khan, S. N. Mim, M. E. Hassan, M. A. Rashid, Md. Lokman Ali","t":"First-principles investigation of CuBiSeCl2: a quaternary halide chalcogenide material for advanced optoelectronic and thermoelectric energy harvesting and conversion technologies","j":"Materials Advances","d":"","q":"Q1"},{"y":"2025","a":"S. N. Mim, Z. Hossain, Md. Lokman Ali","t":"Atomistic investigation of grain boundary strengthening and composition-dependent mechanical properties in CuNi binary alloys","j":"RSC Advances, 15","d":"10.1039/D5RA07327H","q":"Q1"},{"y":"2025","a":"M. R. Khan, Z. Hossain, M. E. Hossain, M. S. Alam, M. A. R. Sarkar, Md. Lokman Ali*","t":"Doping effect of antimony on BaFeO3 perovskite oxide: optical, electronic, magnetic and thermoelectric properties","j":"RSC Advances, 15","d":"10.1039/D5RA06101F","q":"Q1"},{"y":"2025","a":"Z. Hossain, R. Khan, S. N. Mim, M. A. Amin, M. Hossain, M. H. Rahman, Md. Lokman Ali*","t":"Strategic engineering of charge transport layers for designing lead-free halide perovskite CsGeIBr2-based solar cells: insights from DFT and SCAPS-1D modeling","j":"Energy Reports, 14, 2479","d":"","q":"Q1"},{"y":"2025","a":"Md. Lokman Ali*, Z. Hossain, S. N. Mim, S. K. Saha","t":"Pressure effects on physical properties of binary rare earth monopnictide YBi for optoelectronic applications","j":"Advanced Theory and Simulations, 2401066","d":"10.1002/adts.202401066","q":"Q1"},{"y":"2024","a":"M. M. Hasan, M. Afsuddin, Md. Lokman Ali*","t":"Pressure-driven perfection: advancing lead-free halide perovskites Rb2AgBiX6 (X = Br, Cl) for optoelectronic applications","j":"Heliyon, 20, e39285","d":"10.1016/j.heliyon.2024.e39285","q":"Q1"},{"y":"2024","a":"N. M. Nobin, Md. Lokman Ali*, M. K. Alam","t":"Edge dislocations, alloy composition, and grain boundaries effects on the mechanical properties in NiCo binary alloy","j":"Scientific Reports, 14, 27790","d":"10.1038/s41598-024-65437-y","q":"Q1"},{"y":"2024","a":"Md. Lokman Ali*, M. Khan","t":"Edge dislocation and grain boundaries effects on the mechanical properties in NiCoAl medium entropy alloy","j":"Advanced Engineering Materials, 26, 2400614","d":"10.1002/adem.202400614","q":"Q1"},{"y":"2024","a":"N. M. Nobin, Z. Hasan, M. Z. Rahaman, Md. Lokman Ali*","t":"Advanced mechanical properties obtained via transition metals doped in CrFeNi medium entropy alloy","j":"Journal of Materials Research and Technology, 30, 5334","d":"10.1016/j.jmrt.2024.04.247","q":"Q1"},{"y":"2023","a":"Md. Lokman Ali, M. Khan, M. A. Al Asad, M. Z. Rahaman","t":"Highly efficient and stable lead-free cesium copper halide perovskites for optoelectronic applications: a DFT based study","j":"Heliyon, 9, e18816","d":"10.1016/j.heliyon.2023.e18816","q":"Q1"},{"y":"2021","a":"Md. Lokman Ali, E. Haque, M. Z. Rahaman","t":"Pressure- and temperature-dependent physical metallurgy in a face-centered cubic NiCoFeCrMn high entropy alloy and its subsystems","j":"Journal of Alloys and Compounds, 873, 159843","d":"10.1016/j.jallcom.2021.159843","q":"Q1"},{"y":"2020","a":"Md. Lokman Ali, S. Shinzato, V. Wang, Z. Shen, J. Du, S. Ogata","t":"An atomistic modeling study of the relationship between critical resolved shear stress and atomic structure distortion in FCC high entropy alloys","j":"Materials Transactions, 61, 605","d":"10.2320/matertrans.MT-MK2019007","q":"Q2"},{"y":"2026","t":"[Paper title]","a":"[Authors]","j":"[Journal]","d":"","q":""}],"fc":["[Describe your computing resources, e.g. workstations or cluster]","Characterisation techniques: SEM, XRD, FTIR, UV-Visible spectrophotometry, impedance analysis, four-probe method"],"sw":["LAMMPS","CASTEP","VASP","SCAPS-1D"],"nw":[{"d":"Jan 2025","t":"Presentations at the Bangladesh Crystallography Association conference","s":"Oral and poster presentations on lead-free halide perovskites for photovoltaics and optoelectronics, University of Dhaka, 10–11 January 2025."},{"d":"Dec 2024","t":"Oral presentation at IIT Patna","s":"Grain boundary segregation and chemical short-range order in multi-principal element alloys, 8–11 December 2024."},{"d":"May 2024","t":"International Conference on Physics 2024","s":"One oral talk and three poster presentations on medium-entropy alloys, organised by the Bangladesh Physical Society, 9–11 May 2024."}],"op":[{"t":"Prospective PhD and MS students","d":"Motivated by computational physics or materials science? Send your CV, transcripts and a short statement of interest."},{"t":"Research collaborators","d":"We welcome joint projects combining theory with experiment."},{"t":"Undergraduate thesis students","d":"Hands-on training in DFT, scientific computing and technical writing."}],"ct":{"a":"Advanced Materials Research Laboratory (AMRL)\nDepartment of Physics\nPabna University of Science and Technology\nPabna 6600, Bangladesh","e":"lokman.ali@pust.ac.bd","s":"https://scholar.google.com/citations?user=agk7avEAAAAJ&hl=en","r":"https://www.researchgate.net/profile/Md-Lokman-Ali","o":"https://orcid.org/0000-0001-5750-9412"}}</script>
+<script id="js">
+const HEAD='<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>AMRL — Advanced Materials Research Laboratory, PUST</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:wght@400;600;700&display=swap" rel="stylesheet">';
+const D=JSON.parse(document.getElementById("d").textContent);
+document.body.prepend(document.getElementById("sh").content.cloneNode(true));
+const $=s=>document.querySelector(s);
+const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const get=p=>p.split(".").reduce((o,k)=>o&&o[k],D);
+const put=(p,v)=>{const k=p.split("."),l=k.pop();get(k.join("."))[l]=v};
+const T=(p,c)=>`<span data-p="${p}"${c?` class="${c}"`:""}>${esc(get(p))}</span>`;
+const X=p=>`<button class="x" type="button" data-del="${p}" title="Remove">×</button>`;
+const AD=(p,l)=>`<button class="add" type="button" data-add="${p}">+ Add ${l}</button>`;
+const L=(p,f)=>get(p).map((x,i)=>f(x,i,p+"."+i)).join("");
+const LI=p=>L(p,(x,i,q)=>`<li class="rel">${T(q)}${X(q)}</li>`);
+const N=i=>String(i+1).padStart(2,"0");
+const ini=n=>n.replace(/[\[\]]/g,"").split(" ").map(w=>w[0]||"").join("").slice(0,2);
+const NEW={hl:{t:"New highlight",d:"Short description"},rs:{t:"New research area",d:"Short description"},pp:{n:"[Name]",r:"MS Students",t:"Research topic"},pb:{y:"2026",t:"[Paper title]",a:"[Authors]",j:"[Journal]",d:"",q:""},nw:{d:"[Month Year]",t:"Headline",s:"Details"},op:{t:"New opportunity",d:"Details"},"ab.h":"[Year] — New milestone","pi.e":"Degree, University, Year","pi.a":"Award or scholarship, year","pi.x":"Position, Institution, Years",fc:"New resource",sw:"Software"};
+const SVG=`<svg class="lat" viewBox="0 0 320 320" aria-hidden="true"><g class="e"><rect x="50" y="130" width="140" height="140"/><rect x="110" y="70" width="140" height="140"/><path d="M50 130L110 70M190 130L250 70M50 270L110 210M190 270L250 210"/></g><g class="a"><circle cx="50" cy="130" r="9"/><circle cx="190" cy="130" r="9"/><circle cx="50" cy="270" r="9"/><circle cx="190" cy="270" r="9"/><circle cx="110" cy="70" r="9"/><circle cx="250" cy="70" r="9"/><circle cx="110" cy="210" r="9"/><circle cx="250" cy="210" r="9"/></g><circle class="b" cx="150" cy="170" r="14"/><g class="o"><circle cx="120" cy="200" r="5"/><circle cx="180" cy="140" r="5"/><circle cx="120" cy="130" r="5"/><circle cx="190" cy="200" r="5"/><circle cx="150" cy="270" r="5"/></g></svg>`;
+let ED=false,Y="",BK="",AS=null;
+const say=m=>{const s=$("#st");if(s)s.textContent=m};
+const AV=(p,fb)=>{const id=get(p+".ph");return `<div class="av">${id?`<img src="photos/${esc(id)}.jpg" alt="">`:esc(fb)}<label class="ph">📷 Photo<input type="file" accept="image/*" data-ph="${p}"></label>${id?`<button class="x xp" type="button" data-phdel="${p}" title="Remove photo">×</button>`:""}</div>`};
+const PC=i=>{const p="pp."+i;return `<div class="c person rel">${AV(p,ini(D.pp[i].n))}<div><b>${T(p+".n")}</b><br><span>${T(p+".t")}</span><div class="rl">Group: ${T(p+".r")}</div></div>${X(p)}</div>`};
+const PB=i=>{const p="pb."+i,b=D.pb[i];return `<div class="pub rel"><div class="y">${T(p+".y")}</div><div><b>${T(p+".t")}</b><small>${T(p+".a")} · <i>${T(p+".j")}</i>${b.d||ED?` · DOI: ${T(p+".d")}${/xxxx/.test(b.d)||!b.d?"":` <a class="lk" href="https://doi.org/${esc(b.d)}" rel="noopener">↗</a>`}`:""}${b.q||ED?` · ${T(p+".q")}`:""}</small></div>${X(p)}</div>`};
+function view(){
+const y0=scrollY,ys=[...new Set(D.pb.map(p=>p.y))].sort().reverse(),gr=[...new Set(D.pp.map(p=>p.r))];
+$("#app").innerHTML=`
+<section id="home" class="hero"><div class="w"><div><div class="eye">${T("hero.eb")}</div><h1>${T("hero.t")}</h1><p class="lead">${T("hero.l")}</p><a class="btn" href="#research">Explore research</a><a class="btn o" href="#opportunities">Join the lab</a></div>${SVG}</div>
+<div class="w"><div class="g" style="margin-top:48px">${L("hl",(h,i,p)=>`<div class="c rel"><div class="num">${N(i)}</div><h3>${T(p+".t")}</h3><p>${T(p+".d")}</p>${X(p)}</div>`)}</div>${AD("hl","highlight")}</div></section>
+<section id="about" class="alt"><div class="w"><div class="eye">About us</div><h2>Vision, mission and history</h2><div class="cols"><div><h3>Vision</h3><p class="mu">${T("ab.v")}</p><h3 style="margin-top:20px">Mission</h3><p class="mu">${T("ab.m")}</p></div><div><h3>History</h3><ul class="tl">${LI("ab.h")}</ul>${AD("ab.h","milestone")}</div></div></div></section>
+<section id="pi"><div class="w"><div class="eye">Principal investigator</div><h2>Leading the laboratory</h2><div class="pi">${AV("pi","PI")}<div><h3>${T("pi.n")}</h3><p class="mu">${T("pi.b")}</p><div class="cols" style="margin-top:12px"><div><b>Education</b><ul class="k">${LI("pi.e")}</ul>${AD("pi.e","degree")}</div><div><b>Research experience</b><ul class="k">${LI("pi.x")}</ul>${AD("pi.x","position")}</div></div><div style="margin-top:16px"><b>Awards and scholarships</b><ul class="k">${LI("pi.a")}</ul>${AD("pi.a","award")}</div><p class="mu" style="margin-top:14px">${T("pi.m")}<br>${T("pi.s")}</p><p style="margin-top:12px"><a href="${esc(D.ct.s)}" rel="noopener">Google Scholar</a> · <a href="${esc(D.ct.r)}" rel="noopener">ResearchGate</a> · <a href="${esc(D.ct.o)}" rel="noopener">ORCID</a> · <a href="#contact">Contact</a></p></div></div></div></section>
+<section id="research" class="alt"><div class="w"><div class="eye">Research areas</div><h2>What we study</h2><p class="lead">Our work connects atomic-scale simulation with the properties that matter for real devices.</p><div class="g">${L("rs",(r,i,p)=>`<div class="c rel"><div class="num">${N(i)}</div><h3>${T(p+".t")}</h3><p>${T(p+".d")}</p>${X(p)}</div>`)}</div>${AD("rs","research area")}</div></section>
+<section id="people"><div class="w"><div class="eye">People</div><h2>Our team</h2>${gr.map(g=>`<h3 style="margin-top:28px">${esc(g)}</h3><div class="g">${D.pp.map((p,i)=>p.r===g?PC(i):"").join("")}</div>`).join("")}${AD("pp","person")}</div></section>
+<section id="publications" class="alt"><div class="w"><div class="eye">Publications</div><h2>Selected publications</h2><label class="mu">Year: <select id="yr"><option value="">All</option>${ys.map(y=>`<option${y==Y?" selected":""}>${esc(y)}</option>`).join("")}</select></label><div style="margin-top:12px">${D.pb.map((b,i)=>(!Y||ED||b.y==Y)?PB(i):"").join("")}</div>${AD("pb","publication")}<p class="mu" style="margin-top:16px">Full list on <a href="${esc(D.ct.s)}" rel="noopener">Google Scholar</a>.</p></div></section>
+<section id="facilities"><div class="w"><div class="eye">Research facilities</div><h2>Computational resources and software</h2><div class="cols"><div><h3>Computing</h3><ul class="k">${LI("fc")}</ul>${AD("fc","resource")}</div><div><h3>Software</h3><div class="chips">${L("sw",(s,i,p)=>`<span class="rel">${T(p)}${X(p)}</span>`)}</div>${AD("sw","software")}</div></div></div></section>
+<section id="news" class="alt"><div class="w"><div class="eye">News and updates</div><h2>Latest from the lab</h2>${L("nw",(n,i,p)=>`<div class="news rel"><time>${T(p+".d")}</time><div><b>${T(p+".t")}</b><br><span class="mu">${T(p+".s")}</span></div>${X(p)}</div>`)}${AD("nw","news item")}</div></section>
+<section id="opportunities"><div class="w"><div class="eye">Opportunities</div><h2>Join us</h2><div class="g">${L("op",(o,i,p)=>`<div class="c rel"><h3>${T(p+".t")}</h3><p>${T(p+".d")}</p>${X(p)}</div>`)}</div>${AD("op","opportunity")}<div><a class="btn" href="mailto:${esc(D.ct.e)}">Email the lab</a></div></div></section>
+<section id="contact" class="alt" style="border-bottom:0"><div class="w"><div class="eye">Contact</div><h2>Get in touch</h2><div class="cols"><div><p class="pl">${T("ct.a")}</p></div><div><p>Email: <a href="mailto:${esc(D.ct.e)}">${T("ct.e")}</a><br>Google Scholar: <a href="${esc(D.ct.s)}" rel="noopener">profile link</a><span class="eo">Scholar URL: ${T("ct.s")}</span><br>ResearchGate: <a href="${esc(D.ct.r)}" rel="noopener">profile link</a><span class="eo">ResearchGate URL: ${T("ct.r")}</span><br>ORCID: <a href="${esc(D.ct.o)}" rel="noopener">profile link</a><span class="eo">ORCID URL: ${T("ct.o")}</span></p></div></div></div></section>`;
+if(ED)document.querySelectorAll("#app [data-p]").forEach(e=>e.contentEditable="true");
+scrollTo(0,y0);
+}
+view();
+$("#yy").textContent=new Date().getFullYear();
+$("#th").onclick=()=>{const r=document.documentElement;const dk=r.dataset.theme?r.dataset.theme==="dark":matchMedia("(prefers-color-scheme: dark)").matches;r.dataset.theme=dk?"light":"dark"};
+if(location.hash){const t=document.getElementById(location.hash.slice(1));t&&t.scrollIntoView()}
+const app=$("#app");
+app.addEventListener("input",e=>{const t=e.target.closest("[data-p]");if(t&&ED)put(t.dataset.p,t.innerText.trim())});
+app.addEventListener("click",e=>{
+if(ED&&e.target.closest("a:not(.btn)"))e.preventDefault();
+const d=e.target.closest("[data-del]"),a=e.target.closest("[data-add]");
+if(d){const k=d.dataset.del.split("."),i=+k.pop();get(k.join(".")).splice(i,1);view()}
+if(a){const p=a.dataset.add,n=NEW[p];get(p).push(typeof n==="object"?{...n}:n);view()}
+const pd=e.target.closest("[data-phdel]");if(pd){delete get(pd.dataset.phdel).ph;view()}
+});
+app.addEventListener("change",async e=>{
+const t=e.target;
+if(t.id==="yr"){Y=t.value;view()}
+if(t.dataset.ph&&t.files[0]){
+if(!AS){say("Photo upload is only for the site owner or editors");return}
+try{say("Uploading photo…");
+const bm=await createImageBitmap(t.files[0]),k=Math.min(1,720/Math.max(bm.width,bm.height)),c=document.createElement("canvas");
+c.width=Math.round(bm.width*k);c.height=Math.round(bm.height*k);c.getContext("2d").drawImage(bm,0,0,c.width,c.height);
+const bl=await new Promise(r=>c.toBlob(r,"image/jpeg",.86));
+const up=await AS.upload(bl);put(t.dataset.ph+".ph",up.id);view();say("Photo added. Press Publish to save.")
+}catch(x){say("Photo upload failed ("+(x.code||x.message||"error")+")")}
+}});
+app.addEventListener("paste",e=>{if(ED){e.preventDefault();document.execCommand("insertText",false,e.clipboardData.getData("text/plain"))}});
+app.addEventListener("keydown",e=>{if(ED&&e.key==="Enter"&&!e.target.closest(".pl"))e.preventDefault()});
+function build(){
+const j=JSON.stringify(D).replace(/</g,"\\u003c");
+return `<!DOCTYPE html>\n<html lang="en"><head>${HEAD}<style id="css">${$("#css").textContent}</style></head><body>\n${$("#sh").outerHTML}\n<script id="d" type="application/json">${j}<\/script>\n<script id="js">${$("#js").textContent}<\/script>\n</body></html>`;
+}
+(async()=>{try{
+const u=await claude.use("user"),A=await claude.use("artifact");
+if(!u||!A||!((await u.isOwner())||(await u.canEdit())))return;
+AS=await claude.use("assets");
+const f=document.createElement("div");f.className="fab";document.body.appendChild(f);
+const show=()=>{f.innerHTML=ED?`<span id="st">Editing: click any text to change it</span><button class="o" id="cn" type="button">Cancel</button><button id="sv" type="button">Publish</button>`:`<button id="ed" type="button">✎ Edit site</button>`};
+show();
+f.onclick=async e=>{
+const id=e.target.id;
+if(id==="ed"){BK=JSON.stringify(D);ED=true;document.body.classList.add("ed");view();show()}
+if(id==="cn"){const B=JSON.parse(BK);Object.keys(B).forEach(k=>D[k]=B[k]);ED=false;document.body.classList.remove("ed");view();show()}
+if(id==="sv"){const s=$("#st");s.textContent="Publishing…";try{await A.publish(build())}catch(x){s.textContent=x.code==="conflict"?"A newer version exists, reloading…":x.code==="rate_limited"?"Too fast, wait a moment":"Could not publish ("+(x.code||"error")+")"}}
+};
+}catch(e){}})();
+</script>
+</body></html>
