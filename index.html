@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -6,56 +7,443 @@
 <meta name="description" content="Advanced Materials Research Laboratory (AMRL), Department of Physics, Pabna University of Science and Technology, Bangladesh.">
 <meta name="theme-color" content="#102b3f">
 <title>AMRL — Advanced Materials Research Laboratory, PUST</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
 <style>
-:root{--bg:#f7f8f6;--paper:#fff;--ink:#172b3a;--muted:#60717c;--line:#dfe6e5;--teal:#12645f;--gold:#b77a35;--soft:#eaf2f0;--shadow:0 12px 34px rgba(20,45,55,.08);font-synthesis:none}
-*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:86px}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.7 "DM Sans",Arial,sans-serif}a{color:var(--teal)}img{max-width:100%}.wrap{width:min(1120px,calc(100% - 40px));margin:auto}
-header{position:sticky;top:0;z-index:20;background:rgba(247,248,246,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}.nav{min-height:72px;display:flex;align-items:center;gap:24px}.brand{font:700 23px "Playfair Display",serif;color:var(--ink);text-decoration:none;white-space:nowrap}.brand small{font:600 11px "DM Sans";letter-spacing:2px;color:var(--teal);margin-left:8px}.navlinks{display:flex;align-items:center;gap:4px;overflow:auto;flex:1}.navlinks a{white-space:nowrap;padding:8px 10px;text-decoration:none;color:var(--muted);font-size:13px;border-radius:7px}.navlinks a:hover{background:var(--soft);color:var(--teal)}.theme{border:1px solid var(--line);background:var(--paper);border-radius:8px;padding:8px 10px;cursor:pointer;color:var(--ink)}
-.hero{padding:76px 0 62px;background:linear-gradient(115deg,#edf4f1 0%,#f7f8f6 58%,#f4eee5 100%);border-bottom:1px solid var(--line)}.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;align-items:center;gap:54px}.eyebrow{text-transform:uppercase;letter-spacing:2.5px;font-size:11px;font-weight:700;color:var(--gold);margin:0 0 13px}.hero h1{font:600 clamp(38px,5vw,62px)/1.12 "Playfair Display",Georgia,serif;max-width:760px;margin:0 0 18px;letter-spacing:-1px}.hero p{color:var(--muted);max-width:670px;font-size:17px}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:25px}.btn{display:inline-block;padding:11px 17px;border-radius:8px;background:var(--teal);color:#fff;text-decoration:none;font-weight:700;font-size:13px;border:1px solid var(--teal)}.btn.outline{background:transparent;color:var(--teal)}.hero-art{width:100%;max-width:360px;justify-self:center}.hero-art .bond{stroke:#12645f;stroke-width:2;opacity:.45}.hero-art .atom{fill:#12645f}.hero-art .accent{fill:#b77a35}
-section{padding:66px 0;border-bottom:1px solid var(--line)}section.alt{background:#eef3f1}.section-head{margin-bottom:26px}.section-head .eyebrow{margin-bottom:6px}h2{font:600 clamp(28px,3.5vw,38px)/1.2 "Playfair Display",Georgia,serif;margin:0 0 10px}.intro{max-width:720px;color:var(--muted);margin:0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:16px}.card{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:21px;box-shadow:0 3px 12px rgba(20,45,55,.025)}.card h3{font:600 19px "Playfair Display",serif;margin:8px 0}.card p{margin:0;color:var(--muted);font-size:14px}.number{color:var(--gold);font-weight:700;font-size:12px;letter-spacing:1px}.columns{display:grid;grid-template-columns:1fr 1fr;gap:38px}.timeline{padding-left:20px;border-left:2px solid var(--line);margin:0}.timeline li{padding:0 0 13px 4px;color:var(--muted)}.pi-grid{display:grid;grid-template-columns:230px 1fr;gap:32px;align-items:start}.portrait{width:100%;aspect-ratio:1;object-fit:cover;border-radius:14px;border:1px solid var(--line);background:var(--soft)}.portrait-fallback{width:100%;aspect-ratio:1;border-radius:14px;background:var(--soft);display:grid;place-items:center;color:var(--teal);font:700 54px "Playfair Display"}.pi-name{font:600 28px "Playfair Display",serif;margin:0 0 6px}.muted{color:var(--muted)}.clean-list{padding-left:19px;color:var(--muted);margin:8px 0}.profile-links{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px}.profile-links a{display:inline-block;border:1px solid var(--line);background:var(--paper);border-radius:30px;padding:6px 12px;text-decoration:none;font-size:12px;font-weight:700}.profile-links a:hover{border-color:var(--teal);background:var(--soft)}.person{display:flex;gap:15px;align-items:flex-start}.person-photo{width:88px;height:88px;flex:0 0 88px;object-fit:cover;border-radius:11px;background:var(--soft);border:1px solid var(--line)}.person-initials{width:88px;height:88px;flex:0 0 88px;display:grid;place-items:center;border-radius:11px;background:var(--soft);color:var(--teal);font:700 25px "Playfair Display"}.person h3{margin:0 0 2px;font:600 19px "Playfair Display"}.person .role{font-size:12px;color:var(--gold);font-weight:700}.person p{font-size:13px;color:var(--muted);margin:6px 0}.person .profile-links{margin-top:8px;gap:6px}.person .profile-links a{font-size:11px;padding:4px 9px}.pub{display:grid;grid-template-columns:55px 1fr;gap:14px;padding:17px 0;border-bottom:1px solid var(--line)}.pub-year{font:700 20px "Playfair Display";color:var(--gold)}.pub-title{font-weight:700}.pub-meta{font-size:12px;color:var(--muted)}.chips{display:flex;flex-wrap:wrap;gap:8px}.chip{background:var(--paper);border:1px solid var(--line);border-radius:30px;padding:6px 12px;font-size:13px}.news-item{display:grid;grid-template-columns:110px 1fr;gap:15px;padding:15px 0;border-bottom:1px solid var(--line)}.news-date{font-size:12px;color:var(--gold);font-weight:700}.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}.small{font-size:13px;color:var(--muted)}footer{padding:28px 0;text-align:center;color:var(--muted);font-size:12px}
-body.dark{--bg:#101a20;--paper:#17252d;--ink:#e8eeee;--muted:#aab8bd;--line:#2c3b42;--teal:#71c7bd;--gold:#e2ae70;--soft:#1c3035;background:var(--bg)}body.dark header{background:rgba(16,26,32,.96)}body.dark .hero{background:linear-gradient(115deg,#182b30,#101a20 60%,#2a241d)}body.dark section.alt{background:#14232a}
-#edit-launch{position:fixed;right:18px;bottom:18px;z-index:50;background:#102b3f;color:white;border:0;border-radius:40px;padding:13px 18px;font-weight:700;box-shadow:var(--shadow);cursor:pointer}#editor{display:none;position:fixed;inset:0;z-index:100;background:rgba(7,18,25,.72);padding:20px;overflow:auto}#editor.open{display:block}.editor-panel{max-width:1050px;margin:20px auto;background:#fff;color:#172b3a;border-radius:14px;box-shadow:0 25px 80px rgba(0,0,0,.3);overflow:hidden}.editor-top{display:flex;justify-content:space-between;align-items:center;padding:17px 22px;background:#102b3f;color:white;gap:12px}.editor-top h2{font:700 20px "DM Sans";margin:0}.editor-top button{border:1px solid #607b89;background:transparent;color:white;border-radius:7px;padding:8px 12px;cursor:pointer}.editor-content{padding:20px 22px}.editor-help{background:#edf4f1;border-left:4px solid #12645f;padding:12px 14px;font-size:13px;margin-bottom:16px}.editor-actions{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}.editor-actions button,.editor-actions label{border:0;border-radius:7px;padding:10px 14px;background:#12645f;color:white;font-weight:700;cursor:pointer;font-size:13px}.editor-actions .secondary{background:#e8eeee;color:#172b3a}.editor-actions .danger{background:#9d3b32}.editor-status{font-size:12px;color:#12645f;min-height:20px}.editor-search{width:100%;padding:11px;border:1px solid #cbd6d5;border-radius:7px;margin:10px 0 16px;font:14px "DM Sans"}.edit-section{border:1px solid #dfe6e5;border-radius:9px;margin:10px 0;overflow:hidden}.edit-section summary{padding:13px 15px;background:#f1f5f3;font-weight:700;cursor:pointer}.edit-fields{padding:14px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.field{display:flex;flex-direction:column;gap:5px}.field.full{grid-column:1/-1}.field label{font-size:12px;font-weight:700;color:#465b63}.field input,.field textarea{width:100%;border:1px solid #cbd6d5;border-radius:6px;padding:9px;font:13px/1.5 "DM Sans";color:#172b3a;background:white}.field textarea{min-height:75px;resize:vertical}.field .hint{font-size:11px;color:#66777d}.array-item{grid-column:1/-1;border:1px solid #dfe6e5;border-radius:7px;padding:12px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;position:relative}.array-item strong{grid-column:1/-1;font-size:12px;color:#12645f}.array-item button{grid-column:1/-1;justify-self:start;background:#f7e9e7;color:#9d3b32;border:0;border-radius:5px;padding:6px 9px;cursor:pointer}.array-add{grid-column:1/-1;background:#edf4f1;border:1px dashed #12645f;color:#12645f;border-radius:6px;padding:8px;cursor:pointer;font-weight:700}.editor-foot{font-size:12px;color:#61737a;margin-top:12px}.file-label{display:inline-flex;align-items:center;gap:8px}
-@media(max-width:800px){.nav{flex-wrap:wrap;gap:8px;padding:10px 0}.navlinks{order:3;flex-basis:100%}.hero-grid,.columns,.pi-grid,.contact-grid{grid-template-columns:1fr}.hero-art{max-width:230px}.pi-grid{gap:18px}.pi-grid .portrait,.pi-grid .portrait-fallback{max-width:170px}.edit-fields{grid-template-columns:1fr}.array-item{grid-template-columns:1fr}.news-item{grid-template-columns:1fr;gap:2px}.wrap{width:min(100% - 28px,1120px)}section{padding:48px 0}.editor-content{padding:15px}.editor-top{padding:14px}}
+:root{
+  --bg:#f7f8f6;
+  --paper:#fff;
+  --ink:#172b3a;
+  --muted:#60717c;
+  --line:#dfe6e5;
+  --teal:#12645f;
+  --gold:#b77a35;
+  --soft:#eaf2f0;
+  --shadow:0 12px 34px rgba(20,45,55,.08);
+  font-synthesis:none;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:86px}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.7 "DM Sans",Arial,sans-serif}
+a{color:var(--teal)}
+img{max-width:100%}
+.wrap{width:min(1120px,calc(100% - 40px));margin:auto}
+
+header{
+  position:sticky;top:0;z-index:20;
+  background:rgba(247,248,246,.96);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line)
+}
+.nav{min-height:72px;display:flex;align-items:center;gap:24px}
+.brand{
+  font:700 23px "Playfair Display",serif;
+  color:var(--ink);text-decoration:none;white-space:nowrap
+}
+.brand small{
+  font:600 11px "DM Sans";
+  letter-spacing:2px;color:var(--teal);margin-left:8px
+}
+.navlinks{display:flex;align-items:center;gap:4px;overflow:auto;flex:1}
+.navlinks a{
+  white-space:nowrap;padding:8px 10px;text-decoration:none;
+  color:var(--muted);font-size:13px;border-radius:7px
+}
+.navlinks a:hover{background:var(--soft);color:var(--teal)}
+.theme{
+  border:1px solid var(--line);background:var(--paper);
+  border-radius:8px;padding:8px 10px;cursor:pointer;color:var(--ink)
+}
+
+.hero{
+  padding:76px 0 62px;
+  background:linear-gradient(115deg,#edf4f1 0%,#f7f8f6 58%,#f4eee5 100%);
+  border-bottom:1px solid var(--line)
+}
+.hero-grid{
+  display:grid;grid-template-columns:1.25fr .75fr;
+  align-items:center;gap:54px
+}
+.eyebrow{
+  text-transform:uppercase;letter-spacing:2.5px;
+  font-size:11px;font-weight:700;color:var(--gold);margin:0 0 13px
+}
+.hero h1{
+  font:600 clamp(38px,5vw,62px)/1.12 "Playfair Display",Georgia,serif;
+  max-width:760px;margin:0 0 18px;letter-spacing:-1px
+}
+.hero p{color:var(--muted);max-width:670px;font-size:17px}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:25px}
+.btn{
+  display:inline-block;padding:11px 17px;border-radius:8px;
+  background:var(--teal);color:#fff;text-decoration:none;
+  font-weight:700;font-size:13px;border:1px solid var(--teal)
+}
+.btn.outline{background:transparent;color:var(--teal)}
+.hero-art{width:100%;max-width:360px;justify-self:center}
+.hero-art .bond{stroke:#12645f;stroke-width:2;opacity:.45}
+.hero-art .atom{fill:#12645f}
+.hero-art .accent{fill:#b77a35}
+
+section{padding:66px 0;border-bottom:1px solid var(--line)}
+section.alt{background:#eef3f1}
+.section-head{margin-bottom:26px}
+.section-head .eyebrow{margin-bottom:6px}
+h2{
+  font:600 clamp(28px,3.5vw,38px)/1.2 "Playfair Display",Georgia,serif;
+  margin:0 0 10px
+}
+.intro{max-width:720px;color:var(--muted);margin:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:16px}
+.card{
+  background:var(--paper);border:1px solid var(--line);
+  border-radius:12px;padding:21px;
+  box-shadow:0 3px 12px rgba(20,45,55,.025)
+}
+.card h3{font:600 19px "Playfair Display",serif;margin:8px 0}
+.card p{margin:0;color:var(--muted);font-size:14px}
+.number{color:var(--gold);font-weight:700;font-size:12px;letter-spacing:1px}
+.columns{display:grid;grid-template-columns:1fr 1fr;gap:38px}
+.timeline{padding-left:20px;border-left:2px solid var(--line);margin:0}
+.timeline li{padding:0 0 13px 4px;color:var(--muted)}
+.pi-grid{display:grid;grid-template-columns:230px 1fr;gap:32px;align-items:start}
+.portrait{
+  width:100%;aspect-ratio:1;object-fit:cover;
+  border-radius:14px;border:1px solid var(--line);background:var(--soft)
+}
+.portrait-fallback{
+  width:100%;aspect-ratio:1;border-radius:14px;background:var(--soft);
+  display:grid;place-items:center;color:var(--teal);
+  font:700 54px "Playfair Display"
+}
+.pi-name{font:600 28px "Playfair Display",serif;margin:0 0 6px}
+.muted{color:var(--muted)}
+.clean-list{padding-left:19px;color:var(--muted);margin:8px 0}
+.profile-links{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px}
+.profile-links a{
+  display:inline-block;border:1px solid var(--line);background:var(--paper);
+  border-radius:30px;padding:6px 12px;text-decoration:none;
+  font-size:12px;font-weight:700
+}
+.profile-links a:hover{border-color:var(--teal);background:var(--soft)}
+.person{display:flex;gap:15px;align-items:flex-start}
+.person-photo{
+  width:88px;height:88px;flex:0 0 88px;object-fit:cover;
+  border-radius:11px;background:var(--soft);border:1px solid var(--line)
+}
+.person-initials{
+  width:88px;height:88px;flex:0 0 88px;display:grid;
+  place-items:center;border-radius:11px;background:var(--soft);
+  color:var(--teal);font:700 25px "Playfair Display"
+}
+.person h3{margin:0 0 2px;font:600 19px "Playfair Display"}
+.person .role{font-size:12px;color:var(--gold);font-weight:700}
+.person p{font-size:13px;color:var(--muted);margin:6px 0}
+.person .profile-links{margin-top:8px;gap:6px}
+.person .profile-links a{font-size:11px;padding:4px 9px}
+.pub{
+  display:grid;grid-template-columns:55px 1fr;gap:14px;
+  padding:17px 0;border-bottom:1px solid var(--line)
+}
+.pub-year{font:700 20px "Playfair Display";color:var(--gold)}
+.pub-title{font-weight:700}
+.pub-meta{font-size:12px;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{
+  background:var(--paper);border:1px solid var(--line);
+  border-radius:30px;padding:6px 12px;font-size:13px
+}
+.news-item{
+  display:grid;grid-template-columns:110px 1fr;gap:15px;
+  padding:15px 0;border-bottom:1px solid var(--line)
+}
+.news-date{font-size:12px;color:var(--gold);font-weight:700}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.small{font-size:13px;color:var(--muted)}
+footer{padding:28px 0;text-align:center;color:var(--muted);font-size:12px}
+
+/* Dark theme */
+body.dark{
+  --bg:#101a20;--paper:#17252d;--ink:#e8eeee;
+  --muted:#aab8bd;--line:#2c3b42;--teal:#71c7bd;
+  --gold:#e2ae70;--soft:#1c3035;background:var(--bg)
+}
+body.dark header{background:rgba(16,26,32,.96)}
+body.dark .hero{background:linear-gradient(115deg,#182b30,#101a20 60%,#2a241d)}
+body.dark section.alt{background:#14232a}
+
+/* ===== Computational Research Facilities ===== */
+.facility-intro{
+  display:grid;grid-template-columns:1.15fr .85fr;
+  gap:24px;margin-bottom:30px
+}
+.facility-overview{
+  padding:28px;border-radius:16px;color:#fff;
+  background:linear-gradient(135deg,#102b3f,#12645f);
+  position:relative;overflow:hidden
+}
+.facility-overview:after{
+  content:"";position:absolute;width:220px;height:220px;
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:50%;right:-65px;bottom:-105px;
+  box-shadow:0 0 0 25px rgba(255,255,255,.04),
+             0 0 0 50px rgba(255,255,255,.03)
+}
+.facility-overview h3{
+  font:600 25px "Playfair Display",serif;margin:0 0 12px
+}
+.facility-overview p{color:rgba(255,255,255,.82);margin:0;max-width:600px}
+.facility-stat{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.facility-stat article{
+  background:var(--paper);border:1px solid var(--line);
+  border-radius:14px;padding:20px
+}
+.facility-stat strong{
+  display:block;color:var(--teal);
+  font:700 25px "Playfair Display",serif
+}
+.facility-stat span{color:var(--muted);font-size:12px}
+.facility-subtitle{
+  font:600 23px "Playfair Display",serif;margin:36px 0 16px
+}
+.capability-list{display:flex;flex-wrap:wrap;gap:9px}
+.capability-list span{
+  background:var(--soft);color:var(--teal);
+  border:1px solid var(--line);padding:8px 13px;
+  border-radius:30px;font-size:12px;font-weight:700
+}
+.facility-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:16px
+}
+.facility-card{
+  background:var(--paper);border:1px solid var(--line);
+  border-radius:15px;padding:21px;
+  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease
+}
+.facility-card:hover{
+  transform:translateY(-5px);border-color:var(--teal);
+  box-shadow:var(--shadow)
+}
+.facility-icon{
+  width:49px;height:49px;display:grid;place-items:center;
+  border-radius:13px;background:var(--soft);color:var(--teal);
+  font-weight:800;font-size:15px;letter-spacing:-.5px;margin-bottom:14px
+}
+.facility-card h4{font:600 18px "Playfair Display",serif;margin:0 0 7px}
+.facility-card p{color:var(--muted);font-size:13px;margin:0}
+.facility-note{
+  margin-top:22px;padding:17px 20px;
+  border-left:4px solid var(--gold);background:var(--soft);
+  border-radius:8px;color:var(--muted);font-size:13px
+}
+
+/* Website editor */
+#editor{
+  display:none;position:fixed;inset:0;z-index:100;
+  background:rgba(7,18,25,.72);padding:20px;overflow:auto
+}
+#editor.open{display:block}
+.editor-panel{
+  max-width:1050px;margin:20px auto;background:#fff;color:#172b3a;
+  border-radius:14px;box-shadow:0 25px 80px rgba(0,0,0,.3);overflow:hidden
+}
+.editor-top{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:17px 22px;background:#102b3f;color:white;gap:12px
+}
+.editor-top h2{font:700 20px "DM Sans";margin:0}
+.editor-top button{
+  border:1px solid #607b89;background:transparent;color:white;
+  border-radius:7px;padding:8px 12px;cursor:pointer
+}
+.editor-content{padding:20px 22px}
+.editor-help{
+  background:#edf4f1;border-left:4px solid #12645f;
+  padding:12px 14px;font-size:13px;margin-bottom:16px
+}
+.editor-actions{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.editor-actions button,.editor-actions label{
+  border:0;border-radius:7px;padding:10px 14px;background:#12645f;
+  color:white;font-weight:700;cursor:pointer;font-size:13px
+}
+.editor-actions .secondary{background:#e8eeee;color:#172b3a}
+.editor-actions .danger{background:#9d3b32}
+.editor-status{font-size:12px;color:#12645f;min-height:20px}
+.editor-search{
+  width:100%;padding:11px;border:1px solid #cbd6d5;
+  border-radius:7px;margin:10px 0 16px;font:14px "DM Sans"
+}
+.edit-section{border:1px solid #dfe6e5;border-radius:9px;margin:10px 0;overflow:hidden}
+.edit-section summary{padding:13px 15px;background:#f1f5f3;font-weight:700;cursor:pointer}
+.edit-fields{
+  padding:14px;display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));gap:12px
+}
+.field{display:flex;flex-direction:column;gap:5px}
+.field.full{grid-column:1/-1}
+.field label{font-size:12px;font-weight:700;color:#465b63}
+.field input,.field textarea{
+  width:100%;border:1px solid #cbd6d5;border-radius:6px;
+  padding:9px;font:13px/1.5 "DM Sans";color:#172b3a;background:white
+}
+.field textarea{min-height:75px;resize:vertical}
+.field .hint{font-size:11px;color:#66777d}
+.array-item{
+  grid-column:1/-1;border:1px solid #dfe6e5;border-radius:7px;
+  padding:12px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;position:relative
+}
+.array-item strong{grid-column:1/-1;font-size:12px;color:#12645f}
+.array-item button{
+  grid-column:1/-1;justify-self:start;background:#f7e9e7;
+  color:#9d3b32;border:0;border-radius:5px;padding:6px 9px;cursor:pointer
+}
+.array-add{
+  grid-column:1/-1;background:#edf4f1;border:1px dashed #12645f;
+  color:#12645f;border-radius:6px;padding:8px;cursor:pointer;font-weight:700
+}
+.editor-foot{font-size:12px;color:#61737a;margin-top:12px}
+.file-label{display:inline-flex;align-items:center;gap:8px}
+
+@media(max-width:800px){
+  .nav{flex-wrap:wrap;gap:8px;padding:10px 0}
+  .navlinks{order:3;flex-basis:100%}
+  .hero-grid,.columns,.pi-grid,.contact-grid{grid-template-columns:1fr}
+  .hero-art{max-width:230px}
+  .pi-grid{gap:18px}
+  .pi-grid .portrait,.pi-grid .portrait-fallback{max-width:170px}
+  .edit-fields{grid-template-columns:1fr}
+  .array-item{grid-template-columns:1fr}
+  .news-item{grid-template-columns:1fr;gap:2px}
+  .wrap{width:min(100% - 28px,1120px)}
+  section{padding:48px 0}
+  .editor-content{padding:15px}
+  .editor-top{padding:14px}
+  .facility-intro{grid-template-columns:1fr}
+}
+@media(max-width:420px){
+  .facility-stat{grid-template-columns:1fr 1fr}
+  .facility-overview{padding:21px}
+}
 </style>
 </head>
+
 <body>
-<header><div class="wrap nav">
+<header>
+<div class="wrap nav">
 <a class="brand" href="#home">AMRL <small>PUST</small></a>
 <nav class="navlinks" aria-label="Main navigation">
-<a href="#about">About</a><a href="#pi">Principal Investigator</a><a href="#research">Research</a><a href="#people">People</a><a href="#publications">Publications</a><a href="#facilities">Facilities</a><a href="#news">News</a><a href="#opportunities">Opportunities</a><a href="#contact">Contact</a>
-</nav><button class="theme" id="themeBtn">◐ Theme</button>
-</div></header>
+<a href="#about">About</a>
+<a href="#pi">Principal Investigator</a>
+<a href="#research">Research</a>
+<a href="#people">People</a>
+<a href="#publications">Publications</a>
+<a href="#facilities">Facilities</a>
+<a href="#news">News</a>
+<a href="#opportunities">Opportunities</a>
+<a href="#contact">Contact</a>
+</nav>
+<button class="theme" id="themeBtn" type="button">◐ Theme</button>
+</div>
+</header>
+
 <main id="site"></main>
-<footer><div class="wrap">© <span id="year"></span> Advanced Materials Research Laboratory · Pabna University of Science and Technology</div></footer>
+
+<footer>
+<div class="wrap">© <span id="year"></span> Advanced Materials Research Laboratory · Pabna University of Science and Technology</div>
+</footer>
+
 <div id="editor" role="dialog" aria-modal="true" aria-label="Website editor">
 <div class="editor-panel">
-<div class="editor-top"><h2>AMRL Website Editor</h2><button id="closeEditor" type="button">Close ✕</button></div>
+<div class="editor-top">
+<h2>AMRL Website Editor</h2>
+<button id="closeEditor" type="button">Close ✕</button>
+</div>
 <div class="editor-content">
-<div class="editor-help"><b>How this editor works:</b> Change the fields below and click <b>Preview changes</b>. To make changes public on GitHub Pages, click <b>Download updated index.html</b>, then replace the old <code>index.html</code> in your GitHub repository and commit it. This static website cannot publish directly to GitHub without a secure GitHub sign-in/token.</div>
+<div class="editor-help">
+<b>How this editor works:</b>
+Change the fields below and click <b>Preview changes</b>.
+To make changes public on GitHub Pages, click
+<b>Download updated index.html</b>, then replace the old
+<code>index.html</code> in your GitHub repository and commit it.
+This static website cannot publish directly to GitHub without a secure GitHub sign-in/token.
+</div>
 <div class="editor-actions">
 <button id="previewBtn" type="button">Preview changes</button>
 <button id="downloadBtn" type="button">Download updated index.html</button>
 <button id="jsonBtn" class="secondary" type="button">Export data JSON</button>
-<label class="secondary file-label">Import data JSON<input id="importJson" type="file" accept=".json,application/json" hidden></label>
+<label class="secondary file-label">
+Import data JSON
+<input id="importJson" type="file" accept=".json,application/json" hidden>
+</label>
 <button id="resetBtn" class="danger" type="button">Reset original content</button>
 </div>
 <div class="editor-status" id="editorStatus" aria-live="polite"></div>
 <input class="editor-search" id="editorSearch" type="search" placeholder="Search fields, e.g. Emon, Scholar, research, DOI, email...">
 <div id="editForms"></div>
-<div class="editor-foot">Tip: Photo fields accept an image URL or a relative path such as <code>photos/your-photo.jpg</code>. Upload the image file to the same GitHub repository. Use the exact filename and capitalization.</div>
-</div></div></div>
+<div class="editor-foot">
+Tip: Photo fields accept an image URL or a relative path such as
+<code>photos/your-photo.jpg</code>. Upload the image file to the same GitHub repository.
+Use the exact filename and capitalization.
+</div>
+</div>
+</div>
+</div>
+
 <script id="amrl-data" type="application/json">
 {
-  "hero":{"institution":"Pabna University of Science and Technology","title":"Advanced Materials Research Laboratory","description":"We use first-principles calculations, molecular dynamics and device simulation to understand and design alloys and lead-free optoelectronic materials for energy applications."},
+  "hero":{
+    "institution":"Pabna University of Science and Technology",
+    "title":"Advanced Materials Research Laboratory",
+    "description":"We use first-principles calculations, molecular dynamics and device simulation to understand and design alloys and lead-free optoelectronic materials for energy applications."
+  },
   "highlights":[
     {"title":"Multi-scale modeling","description":"From DFT to molecular dynamics: linking atomic structure to mechanical and optoelectronic properties."},
     {"title":"Lead-free energy materials","description":"Non-toxic perovskites, thermoelectrics and alloys for a sustainable future."},
     {"title":"Open collaboration","description":"Working with experimental and theoretical groups worldwide."}
   ],
-  "about":{"vision":"To be a recognised centre for computational materials research in Bangladesh, producing science that informs the design of next-generation functional materials.","mission":"To train curious young researchers, publish rigorous and reproducible work, and share computational knowledge with the wider community.","history":["[Year] — Laboratory established at PUST.","[Year] — First research group formed and first papers published.","[Year] — Computing facilities expanded.","Today — Growing team with national and international collaborators."]},
-  "pi":{"name":"Dr. Md. Lokman Ali","position":"Associate Professor, Department of Physics, Pabna University of Science and Technology, and Director of the Research and Technology Transfer Cell. Research interests: computational materials science, multi-scale modeling, multi-principal element alloys, optoelectronic and lead-free materials.","photo":"photos/560c403188c84f3ad7a5b90e44824c9b.jpg","education":["Ph.D., Mechanical Science and Bio-engineering, Osaka University, Japan, 2021","M.S., Physics, University of Chittagong, 2013 (3.93/4.00, 1st position)","B.Sc., Physics, University of Chittagong, 2011 (3.72/4.00, 1st position)"],"experience":["Director, Research and Technology Transfer Cell, PUST, since May 2025","Associate Professor, Department of Physics, PUST, since August 2022","Assistant Professor, PUST, November 2016 – August 2022","Lecturer, PUST, November 2014 – November 2016","Treasurer, Physics Association, PUST"],"awards":["MEXT (Japanese Government) Scholarship for Ph.D. at Osaka University, 2018","Distinction Award for outstanding M.S. results, 2013","Distinction Award for excellent B.Sc. (Hons) results, 2011"],"metrics":"53 papers · 770 citations · h-index 14 · i10-index 22 (Google Scholar, September 2025)","supervision":"Currently supervising 1 M.Phil., 4 MS and 5 undergraduate thesis students.","scholar":"https://scholar.google.com/citations?user=agk7avEAAAAJ&hl=en","researchgate":"https://www.researchgate.net/profile/Md-Lokman-Ali","orcid":"https://orcid.org/0000-0001-5750-9412","linkedin":""},
+  "about":{
+    "vision":"To be a recognised centre for computational materials research in Bangladesh, producing science that informs the design of next-generation functional materials.",
+    "mission":"To train curious young researchers, publish rigorous and reproducible work, and share computational knowledge with the wider community.",
+    "history":[
+      "[Year] — Laboratory established at PUST.",
+      "[Year] — First research group formed and first papers published.",
+      "[Year] — Computing facilities expanded.",
+      "Today — Growing team with national and international collaborators."
+    ]
+  },
+  "pi":{
+    "name":"Dr. Md. Lokman Ali",
+    "position":"Associate Professor, Department of Physics, Pabna University of Science and Technology, and Director of the Research and Technology Transfer Cell. Research interests: computational materials science, multi-scale modeling, multi-principal element alloys, optoelectronic and lead-free materials.",
+    "photo":"photos/560c403188c84f3ad7a5b90e44824c9b.jpg",
+    "education":[
+      "Ph.D., Mechanical Science and Bio-engineering, Osaka University, Japan, 2021",
+      "M.S., Physics, University of Chittagong, 2013 (3.93/4.00, 1st position)",
+      "B.Sc., Physics, University of Chittagong, 2011 (3.72/4.00, 1st position)"
+    ],
+    "experience":[
+      "Director, Research and Technology Transfer Cell, PUST, since May 2025",
+      "Associate Professor, Department of Physics, PUST, since August 2022",
+      "Assistant Professor, PUST, November 2016 – August 2022",
+      "Lecturer, PUST, November 2014 – November 2016",
+      "Treasurer, Physics Association, PUST"
+    ],
+    "awards":[
+      "MEXT (Japanese Government) Scholarship for Ph.D. at Osaka University, 2018",
+      "Distinction Award for outstanding M.S. results, 2013",
+      "Distinction Award for excellent B.Sc. (Hons) results, 2011"
+    ],
+    "metrics":"53 papers · 770 citations · h-index 14 · i10-index 22 (Google Scholar, September 2025)",
+    "supervision":"Currently supervising 1 M.Phil., 4 MS and 5 undergraduate thesis students.",
+    "scholar":"https://scholar.google.com/citations?user=agk7avEAAAAJ&hl=en",
+    "researchgate":"https://www.researchgate.net/profile/Md-Lokman-Ali",
+    "orcid":"https://orcid.org/0000-0001-5750-9412",
+    "linkedin":""
+  },
   "research":[
     {"title":"Computational materials science","description":"Multi-scale modeling with DFT (CASTEP, VASP) and molecular dynamics (LAMMPS)."},
     {"title":"Multi-principal element alloys","description":"Grain boundaries, dislocations, lattice distortion and chemical short-range order in high- and medium-entropy alloys."},
@@ -67,65 +455,83 @@ body.dark{--bg:#101a20;--paper:#17252d;--ink:#e8eeee;--muted:#aab8bd;--line:#2c3
   "people":[
     {"name":"[Name]","role":"M.Phil. Students","interest":"Research topic","photo":"","scholar":"","orcid":"","researchgate":"","linkedin":""},
     {
-    "name": "Md. Riad Khan",
-    "role": "MS Students",
-    "interest": "Research interests: Condensed Matter Physics, Computational Materials Science, Density Functional Theory (DFT), Perovskite Solar Cells, Photovoltaic Device Simulation, Magnetic Materials, Optoelectronic Materials, and Thermoelectric Materials",
-    "photo": "photos/riad.jpeg",
-    "scholar": "https://scholar.google.com/citations?user=doNYLOoAAAAJ&hl=en",
-    "orcid": "https://orcid.org/0009-0003-2679-0629",
-    "researchgate": "https://www.researchgate.net/profile/Md-Riad-Khan-2",
-    "linkedin": "https://www.linkedin.com/in/md-riad-khan/"
-  },
-    {"name":"Md. Emon Hassan","role":"MS Students","interest":"Research interests: Condensed Matter Physics, Computational Materials Science, DFT, Hydrogen Storage, Thermoelectric Materials","photo":"photos/emon.jpg","scholar":"https://scholar.google.com/citations?user=D8O3IMoAAAAJ","orcid":"https://orcid.org/0009-0009-6252-3038","researchgate":"https://www.researchgate.net/profile/Emon-Hassan-2","linkedin":"https://www.linkedin.com/in/md-emon-hassan-076572438/"},
-    {"name":"Md. Redwan Alam Hridoy","role":"MS Students","interest":"Research interests: Photovoltaics and Renewable Energy, Perovskite Solar Cells, Lead-Free Perovskite Materials, Thin-Film Solar Cells, Semiconductor Device Modeling and Simulation, Density Functional Theory and First-Principles Calculations, Electronic Structure and Materials Design, Materials Synthesis and Structural Characterization, Interface and Defect Engineering","photo":"photos/hidoy13.jpeg","scholar":"https://scholar.google.com/citations?user=zpnj3dkAAAAJ&hl=en&oi=ao","orcid":"https://orcid.org/0009-0005-2981-5072","researchgate":"https://www.researchgate.net/profile/Redwan-Hridoy","linkedin":"https://www.linkedin.com/in/redwan-ridoy-b4a161396"},
+      "name":"Md. Riad Khan",
+      "role":"MS Students",
+      "interest":"Research interests: Condensed Matter Physics, Computational Materials Science, Density Functional Theory (DFT), Perovskite Solar Cells, Photovoltaic Device Simulation, Magnetic Materials, Optoelectronic Materials, and Thermoelectric Materials",
+      "photo":"photos/riad.jpeg",
+      "scholar":"https://scholar.google.com/citations?user=doNYLOoAAAAJ&hl=en",
+      "orcid":"https://orcid.org/0009-0003-2679-0629",
+      "researchgate":"https://www.researchgate.net/profile/Md-Riad-Khan-2",
+      "linkedin":"https://www.linkedin.com/in/md-riad-khan/"
+    },
+    {
+      "name":"Md. Emon Hassan",
+      "role":"MS Students",
+      "interest":"Research interests: Condensed Matter Physics, Computational Materials Science, DFT, Hydrogen Storage, Thermoelectric Materials",
+      "photo":"photos/emon.jpg",
+      "scholar":"https://scholar.google.com/citations?user=D8O3IMoAAAAJ",
+      "orcid":"https://orcid.org/0009-0009-6252-3038",
+      "researchgate":"https://www.researchgate.net/profile/Emon-Hassan-2",
+      "linkedin":"https://www.linkedin.com/in/md-emon-hassan-076572438/"
+    },
+    {
+      "name":"Md. Redwan Alam Hridoy",
+      "role":"MS Students",
+      "interest":"Research interests: Photovoltaics and Renewable Energy, Perovskite Solar Cells, Lead-Free Perovskite Materials, Thin-Film Solar Cells, Semiconductor Device Modeling and Simulation, Density Functional Theory and First-Principles Calculations, Electronic Structure and Materials Design, Materials Synthesis and Structural Characterization, Interface and Defect Engineering",
+      "photo":"photos/hidoy13.jpeg",
+      "scholar":"https://scholar.google.com/citations?user=zpnj3dkAAAAJ&hl=en&oi=ao",
+      "orcid":"https://orcid.org/0009-0005-2981-5072",
+      "researchgate":"https://www.researchgate.net/profile/Redwan-Hridoy",
+      "linkedin":"https://www.linkedin.com/in/redwan-ridoy-b4a161396"
+    },
     {"name":"[Name]","role":"Undergraduate Thesis Students","interest":"Research topic","photo":"","scholar":"","orcid":"","researchgate":"","linkedin":""}
   ],
   "publications":[
-   {
-    "title": "Tuning the structural and physical properties of Hf5Si3 intermetallic compound under pressure: Insights for next-generation high-temperature technology",
-    "authors": "Md. Emon Hassan, Md. Riad Khan, Zihad Hossain, Md. Khairul Alam, Mohammad Abdur Rashid, and Md. Lokman Ali",
-    "journal": "Scientific Reports",
-    "year": "2026",
-    "volume": "16",
-    "pages": "24463",
-    "impactFactor": "4.9 (2025)",
-    "doi": "10.1038/s41598-026-52144-z",
-    "link": "https://doi.org/10.1038/s41598-026-52144-z"
-  },
-  {
-    "title": "First-principles investigation of CuBiSeCl2: A quaternary halide chalcogenide material for advanced optoelectronic and thermoelectric energy harvesting and conversion technologies",
-    "authors": "Zihad Hossain, Md. Riad Khan, Sanzida Naznin Mim, Md. Emon Hassan, Mohammad Abdur Rashid, and Md. Lokman Ali",
-    "journal": "Materials Advances",
-    "year": "2026",
-    "volume": "7",
-    "issue": "3",
-    "pages": "1704–1720",
-    "impactFactor": "5.8 (2025)",
-    "doi": "10.1039/D5MA01386K",
-    "link": "https://doi.org/10.1039/D5MA01386K"
-  },
-  {
-    "title": "Device-level engineering and optimization of high-efficiency lead-free NaSiCl3 perovskite solar cells using SCAPS-1D and COMSOL",
-    "authors": "Md. Redwan Alam Hridoy, Zihad Hossain, Md. Riad Khan, Prarthona Shaha, Md. Emon Hassan, Most. Meftaul Zannati Kemi, and Md. Lokman Ali",
-    "journal": "Materials Advances",
-    "year": "2026",
-    "volume": "",
-    "pages": "",
-    "impactFactor": "5.8 (2025)",
-    "doi": "10.1039/D6MA01128D",
-    "link": "https://doi.org/10.1039/D6MA01128D"
-  },
-  {
-    "title": "Doping effect of antimony on BaFeO3 perovskite oxide: Optical, electronic, magnetic and thermoelectric properties",
-    "authors": "Md. Riad Khan, Sanzida Naznin Mim, Zihad Hossain, Md. Emon Hassan, Md. Saiful Alam, Mohammad Abdur Rashid, and Md. Lokman Ali",
-    "journal": "RSC Advances",
-    "year": "2025",
-    "volume": "15",
-    "pages": "38158–38175",
-    "impactFactor": "Not specified",
-    "doi": "10.1039/D5RA06101F",
-    "link": "https://doi.org/10.1039/D5RA06101F"
-  },
+    {
+      "title":"Tuning the structural and physical properties of Hf5Si3 intermetallic compound under pressure: Insights for next-generation high-temperature technology",
+      "authors":"Md. Emon Hassan, Md. Riad Khan, Zihad Hossain, Md. Khairul Alam, Mohammad Abdur Rashid, and Md. Lokman Ali",
+      "journal":"Scientific Reports",
+      "year":"2026",
+      "volume":"16",
+      "pages":"24463",
+      "impactFactor":"4.9 (2025)",
+      "doi":"10.1038/s41598-026-52144-z",
+      "link":"https://doi.org/10.1038/s41598-026-52144-z"
+    },
+    {
+      "title":"First-principles investigation of CuBiSeCl2: A quaternary halide chalcogenide material for advanced optoelectronic and thermoelectric energy harvesting and conversion technologies",
+      "authors":"Zihad Hossain, Md. Riad Khan, Sanzida Naznin Mim, Md. Emon Hassan, Mohammad Abdur Rashid, and Md. Lokman Ali",
+      "journal":"Materials Advances",
+      "year":"2026",
+      "volume":"7",
+      "issue":"3",
+      "pages":"1704–1720",
+      "impactFactor":"5.8 (2025)",
+      "doi":"10.1039/D5MA01386K",
+      "link":"https://doi.org/10.1039/D5MA01386K"
+    },
+    {
+      "title":"Device-level engineering and optimization of high-efficiency lead-free NaSiCl3 perovskite solar cells using SCAPS-1D and COMSOL",
+      "authors":"Md. Redwan Alam Hridoy, Zihad Hossain, Md. Riad Khan, Prarthona Shaha, Md. Emon Hassan, Most. Meftaul Zannati Kemi, and Md. Lokman Ali",
+      "journal":"Materials Advances",
+      "year":"2026",
+      "volume":"",
+      "pages":"",
+      "impactFactor":"5.8 (2025)",
+      "doi":"10.1039/D6MA01128D",
+      "link":"https://doi.org/10.1039/D6MA01128D"
+    },
+    {
+      "title":"Doping effect of antimony on BaFeO3 perovskite oxide: Optical, electronic, magnetic and thermoelectric properties",
+      "authors":"Md. Riad Khan, Sanzida Naznin Mim, Zihad Hossain, Md. Emon Hassan, Md. Saiful Alam, Mohammad Abdur Rashid, and Md. Lokman Ali",
+      "journal":"RSC Advances",
+      "year":"2025",
+      "volume":"15",
+      "pages":"38158–38175",
+      "impactFactor":"Not specified",
+      "doi":"10.1039/D5RA06101F",
+      "link":"https://doi.org/10.1039/D5RA06101F"
+    },
     {"year":"2025","authors":"Z. Hossain, M. R. Khan, S. N. Mim, M. E. Hassan, M. A. Rashid, Md. Lokman Ali","title":"First-principles investigation of CuBiSeCl2: a quaternary halide chalcogenide material for advanced optoelectronic and thermoelectric energy harvesting and conversion technologies","journal":"Materials Advances","doi":"","quartile":"Q1"},
     {"year":"2025","authors":"S. N. Mim, Z. Hossain, Md. Lokman Ali","title":"Atomistic investigation of grain boundary strengthening and composition-dependent mechanical properties in CuNi binary alloys","journal":"RSC Advances, 15","doi":"10.1039/D5RA07327H","quartile":"Q1"},
     {"year":"2025","authors":"M. R. Khan, Z. Hossain, M. E. Hossain, M. S. Alam, M. A. R. Sarkar, Md. Lokman Ali*","title":"Doping effect of antimony on BaFeO3 perovskite oxide: optical, electronic, magnetic and thermoelectric properties","journal":"RSC Advances, 15","doi":"10.1039/D5RA06101F","quartile":"Q1"},
@@ -139,8 +545,26 @@ body.dark{--bg:#101a20;--paper:#17252d;--ink:#e8eeee;--muted:#aab8bd;--line:#2c3
     {"year":"2021","authors":"Md. Lokman Ali, E. Haque, M. Z. Rahaman","title":"Pressure- and temperature-dependent physical metallurgy in a face-centered cubic NiCoFeCrMn high entropy alloy and its subsystems","journal":"Journal of Alloys and Compounds, 873, 159843","doi":"10.1016/j.jallcom.2021.159843","quartile":"Q1"},
     {"year":"2020","authors":"Md. Lokman Ali, S. Shinzato, V. Wang, Z. Shen, J. Du, S. Ogata","title":"An atomistic modeling study of the relationship between critical resolved shear stress and atomic structure distortion in FCC high entropy alloys","journal":"Materials Transactions, 61, 605","doi":"10.2320/matertrans.MT-MK2019007","quartile":"Q2"}
   ],
-  "facilities":["[Describe your computing resources, e.g. workstations or cluster]","Characterisation techniques: SEM, XRD, FTIR, UV-Visible spectrophotometry, impedance analysis, four-probe method"],
-  "software":["LAMMPS","CASTEP","VASP","SCAPS-1D"],
+  "facilities":[
+    "Density Functional Theory (DFT) and first-principles calculations",
+    "Ab initio Molecular Dynamics (AIMD)",
+    "Structural optimization and phase stability analysis",
+    "Electronic band structure and density of states calculations",
+    "Phonon dispersion and lattice dynamics",
+    "Thermoelectric transport and lattice thermal conductivity",
+    "Hydrogen storage and desorption analysis",
+    "Optical, magnetic and mechanical property calculations",
+    "Photovoltaic device simulation"
+  ],
+  "software":[
+    "WIEN2k",
+    "Quantum ESPRESSO",
+    "VASP",
+    "CASTEP",
+    "SCAPS-1D",
+    "COMSOL Multiphysics",
+    "LAMMPS"
+  ],
   "news":[
     {"date":"Jan 2025","title":"Presentations at the Bangladesh Crystallography Association conference","details":"Oral and poster presentations on lead-free halide perovskites for photovoltaics and optoelectronics, University of Dhaka, 10–11 January 2025."},
     {"date":"Dec 2024","title":"Oral presentation at IIT Patna","details":"Grain boundary segregation and chemical short-range order in multi-principal element alloys, 8–11 December 2024."},
@@ -151,89 +575,615 @@ body.dark{--bg:#101a20;--paper:#17252d;--ink:#e8eeee;--muted:#aab8bd;--line:#2c3
     {"title":"Research collaborators","description":"We welcome joint projects combining theory with experiment."},
     {"title":"Undergraduate thesis students","description":"Hands-on training in DFT, scientific computing and technical writing."}
   ],
-  "contact":{"address":"Advanced Materials Research Laboratory (AMRL)\nDepartment of Physics\nPabna University of Science and Technology\nPabna 6600, Bangladesh","email":"lokman.ali@pust.ac.bd","scholar":"https://scholar.google.com/citations?user=agk7avEAAAAJ&hl=en","researchgate":"https://www.researchgate.net/profile/Md-Lokman-Ali","orcid":"https://orcid.org/0000-0001-5750-9412","linkedin":""}
+  "contact":{
+    "address":"Advanced Materials Research Laboratory (AMRL)\nDepartment of Physics\nPabna University of Science and Technology\nPabna 6600, Bangladesh",
+    "email":"lokman.ali@pust.ac.bd",
+    "scholar":"https://scholar.google.com/citations?user=agk7avEAAAAJ&hl=en",
+    "researchgate":"https://www.researchgate.net/profile/Md-Lokman-Ali",
+    "orcid":"https://orcid.org/0000-0001-5750-9412",
+    "linkedin":""
+  }
 }
 </script>
+
 <script>
-/* ============================================================
-   AMRL WEBSITE — SINGLE-FILE EDITION
-   1) All editable content is in the JSON data block above.
-   2) Use the "Edit website" button for the visual editor.
-   3) Download updated index.html and upload it to GitHub.
-   ============================================================ */
 const DATA_SCRIPT=document.getElementById('amrl-data');
 const ORIGINAL_DATA=JSON.parse(DATA_SCRIPT.textContent);
 let DATA=structuredCloneSafe(ORIGINAL_DATA);
 let YEAR_FILTER='';
+
 function structuredCloneSafe(x){return JSON.parse(JSON.stringify(x))}
 const $=s=>document.querySelector(s);
-const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({
+  '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+}[c]));
 const initials=s=>String(s||'AM').split(/\s+/).filter(Boolean).map(x=>x[0]).join('').slice(0,2).toUpperCase();
-const link=(label,url)=>url?`<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${label}</a>`:'';
-function profileLinks(x){return `<div class="profile-links">${link('Google Scholar',x.scholar)}${link('ORCID',x.orcid)}${link('ResearchGate',x.researchgate)}${link('LinkedIn',x.linkedin)}</div>`}
-function imageOrInitials(src,name,cls){return src?`<img class="${cls}" src="${esc(src)}" alt="${esc(name)}" onerror="this.outerHTML='<div class=&quot;${cls==='portrait'?'portrait-fallback':'person-initials'}&quot;>${esc(initials(name))}</div>'">`:`<div class="${cls==='portrait'?'portrait-fallback':'person-initials'}">${esc(initials(name))}</div>`}
-function list(items){return `<ul class="clean-list">${(items||[]).map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`}
+
+const link=(label,url)=>url
+  ?`<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${label}</a>`
+  :'';
+
+function profileLinks(x){
+  return `<div class="profile-links">
+    ${link('Google Scholar',x.scholar)}
+    ${link('ORCID',x.orcid)}
+    ${link('ResearchGate',x.researchgate)}
+    ${link('LinkedIn',x.linkedin)}
+  </div>`;
+}
+
+function imageOrInitials(src,name,cls){
+  if(!src){
+    return `<div class="${cls==='portrait'?'portrait-fallback':'person-initials'}">${esc(initials(name))}</div>`;
+  }
+  const fallbackClass=cls==='portrait'?'portrait-fallback':'person-initials';
+  return `<img class="${cls}" src="${esc(src)}" alt="${esc(name)}"
+    onerror="this.outerHTML='<div class=&quot;${fallbackClass}&quot;>${esc(initials(name))}</div>'">`;
+}
+
+function list(items){
+  return `<ul class="clean-list">${(items||[]).map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`;
+}
+
 function render(){
- const d=DATA;
- $('#site').innerHTML=`
- <section class="hero" id="home"><div class="wrap hero-grid"><div><p class="eyebrow">${esc(d.hero.institution)}</p><h1>${esc(d.hero.title)}</h1><p>${esc(d.hero.description)}</p><div class="actions"><a class="btn" href="#research">Explore research</a><a class="btn outline" href="#opportunities">Join the lab</a></div></div>
- <svg class="hero-art" viewBox="0 0 320 320" role="img" aria-label="Abstract crystal lattice illustration"><g class="bond" fill="none"><path d="M50 130L110 70L250 70L190 130L50 130L50 270L190 270L250 210L250 70M110 70L110 210L250 210M190 130L190 270M50 130L110 210"/></g><g class="atom"><circle cx="50" cy="130" r="9"/><circle cx="190" cy="130" r="9"/><circle cx="50" cy="270" r="9"/><circle cx="190" cy="270" r="9"/><circle cx="110" cy="70" r="9"/><circle cx="250" cy="70" r="9"/><circle cx="110" cy="210" r="9"/><circle cx="250" cy="210" r="9"/></g><circle class="accent" cx="150" cy="170" r="14"/></svg></div>
- <div class="wrap grid" style="margin-top:45px">${d.highlights.map((x,i)=>`<article class="card"><div class="number">${String(i+1).padStart(2,'0')}</div><h3>${esc(x.title)}</h3><p>${esc(x.description)}</p></article>`).join('')}</div></section>
- <section id="about" class="alt"><div class="wrap"><div class="section-head"><p class="eyebrow">About us</p><h2>Vision, mission and history</h2></div><div class="columns"><div><h3>Vision</h3><p class="muted">${esc(d.about.vision)}</p><h3>Mission</h3><p class="muted">${esc(d.about.mission)}</p></div><div><h3>History</h3><ul class="timeline">${d.about.history.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div></div></div></section>
- <section id="pi"><div class="wrap"><div class="section-head"><p class="eyebrow">Principal Investigator</p><h2>Leading the laboratory</h2></div><div class="pi-grid">${imageOrInitials(d.pi.photo,d.pi.name,'portrait')}<div><h3 class="pi-name">${esc(d.pi.name)}</h3><p class="muted">${esc(d.pi.position)}</p><div class="columns"><div><b>Education</b>${list(d.pi.education)}</div><div><b>Research experience</b>${list(d.pi.experience)}</div></div><b>Awards and scholarships</b>${list(d.pi.awards)}<p class="small">${esc(d.pi.metrics)}<br>${esc(d.pi.supervision)}</p>${profileLinks(d.pi)}</div></div></div></section>
- <section id="research" class="alt"><div class="wrap"><div class="section-head"><p class="eyebrow">Research areas</p><h2>What we study</h2><p class="intro">Our work connects atomic-scale simulation with the properties that matter for real devices.</p></div><div class="grid">${d.research.map((x,i)=>`<article class="card"><div class="number">${String(i+1).padStart(2,'0')}</div><h3>${esc(x.title)}</h3><p>${esc(x.description)}</p></article>`).join('')}</div></div></section>
- <section id="people"><div class="wrap"><div class="section-head"><p class="eyebrow">People</p><h2>Our team</h2></div>${[...new Set(d.people.map(x=>x.role))].map(role=>`<h3 style="font:600 21px 'Playfair Display';margin:28px 0 14px">${esc(role)}</h3><div class="grid">${d.people.filter(x=>x.role===role).map(x=>`<article class="card person">${imageOrInitials(x.photo,x.name,'person-photo')}<div><h3>${esc(x.name)}</h3><div class="role">${esc(x.role)}</div><p>${esc(x.interest)}</p>${profileLinks(x)}</div></article>`).join('')}</div>`).join('')}</div></section>
- <section id="publications" class="alt"><div class="wrap"><div class="section-head"><p class="eyebrow">Publications</p><h2>Selected publications</h2></div><label class="small">Filter by year: <select id="yearFilter"><option value="">All years</option>${[...new Set(d.publications.map(x=>x.year))].sort().reverse().map(y=>`<option value="${esc(y)}" ${YEAR_FILTER===y?'selected':''}>${esc(y)}</option>`).join('')}</select></label><div style="margin-top:12px">${d.publications.filter(x=>!YEAR_FILTER||x.year===YEAR_FILTER).map(x=>`<article class="pub"><div class="pub-year">${esc(x.year)}</div><div><div class="pub-title">${esc(x.title)}</div><div class="pub-meta">${esc(x.authors)} · <i>${esc(x.journal)}</i>${x.doi?` · <a href="https://doi.org/${esc(x.doi)}" target="_blank" rel="noopener">DOI</a>`:''}${x.quartile?` · ${esc(x.quartile)}`:''}</div></div></article>`).join('')}</div><p class="small" style="margin-top:16px">Full publication list: ${link('Google Scholar',d.pi.scholar)}</p></div></section>
- <section id="facilities"><div class="wrap"><div class="section-head"><p class="eyebrow">Research facilities</p><h2>Computational resources and software</h2></div><div class="columns"><div><h3>Computing & characterisation</h3>${list(d.facilities)}</div><div><h3>Software</h3><div class="chips">${d.software.map(x=>`<span class="chip">${esc(x)}</span>`).join('')}</div></div></div></div></section>
- <section id="news" class="alt"><div class="wrap"><div class="section-head"><p class="eyebrow">News and updates</p><h2>Latest from the lab</h2></div>${d.news.map(x=>`<article class="news-item"><div class="news-date">${esc(x.date)}</div><div><b>${esc(x.title)}</b><div class="small">${esc(x.details)}</div></div></article>`).join('')}</div></section>
- <section id="opportunities"><div class="wrap"><div class="section-head"><p class="eyebrow">Opportunities</p><h2>Join us</h2></div><div class="grid">${d.opportunities.map(x=>`<article class="card"><h3>${esc(x.title)}</h3><p>${esc(x.description)}</p></article>`).join('')}</div><p style="margin-top:22px"><a class="btn" href="mailto:${esc(d.contact.email)}">Email the lab</a></p></div></section>
- <section id="contact" class="alt"><div class="wrap"><div class="section-head"><p class="eyebrow">Contact</p><h2>Get in touch</h2></div><div class="contact-grid"><p class="muted" style="white-space:pre-line">${esc(d.contact.address)}</p><div><p>Email: <a href="mailto:${esc(d.contact.email)}">${esc(d.contact.email)}</a></p>${profileLinks(d.contact)}</div></div></div></section>`;
- $('#year').textContent=new Date().getFullYear();
- const yf=$('#yearFilter');if(yf)yf.addEventListener('change',e=>{YEAR_FILTER=e.target.value;render();document.getElementById('publications').scrollIntoView()});
+  const d=DATA;
+
+  $('#site').innerHTML=`
+  <section class="hero" id="home">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">${esc(d.hero.institution)}</p>
+        <h1>${esc(d.hero.title)}</h1>
+        <p>${esc(d.hero.description)}</p>
+        <div class="actions">
+          <a class="btn" href="#research">Explore research</a>
+          <a class="btn outline" href="#opportunities">Join the lab</a>
+        </div>
+      </div>
+      <svg class="hero-art" viewBox="0 0 320 320" role="img" aria-label="Abstract crystal lattice illustration">
+        <g class="bond" fill="none">
+          <path d="M50 130L110 70L250 70L190 130L50 130L50 270L190 270L250 210L250 70M110 70L110 210L250 210M190 130L190 270M50 130L110 210"/>
+        </g>
+        <g class="atom">
+          <circle cx="50" cy="130" r="9"/>
+          <circle cx="190" cy="130" r="9"/>
+          <circle cx="50" cy="270" r="9"/>
+          <circle cx="190" cy="270" r="9"/>
+          <circle cx="110" cy="70" r="9"/>
+          <circle cx="250" cy="70" r="9"/>
+          <circle cx="110" cy="210" r="9"/>
+          <circle cx="250" cy="210" r="9"/>
+        </g>
+        <circle class="accent" cx="150" cy="170" r="14"/>
+      </svg>
+    </div>
+    <div class="wrap grid" style="margin-top:45px">
+      ${d.highlights.map((x,i)=>`
+        <article class="card">
+          <div class="number">${String(i+1).padStart(2,'0')}</div>
+          <h3>${esc(x.title)}</h3>
+          <p>${esc(x.description)}</p>
+        </article>`).join('')}
+    </div>
+  </section>
+
+  <section id="about" class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">About us</p>
+        <h2>Vision, mission and history</h2>
+      </div>
+      <div class="columns">
+        <div>
+          <h3>Vision</h3>
+          <p class="muted">${esc(d.about.vision)}</p>
+          <h3>Mission</h3>
+          <p class="muted">${esc(d.about.mission)}</p>
+        </div>
+        <div>
+          <h3>History</h3>
+          <ul class="timeline">${d.about.history.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pi">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Principal Investigator</p>
+        <h2>Leading the laboratory</h2>
+      </div>
+      <div class="pi-grid">
+        ${imageOrInitials(d.pi.photo,d.pi.name,'portrait')}
+        <div>
+          <h3 class="pi-name">${esc(d.pi.name)}</h3>
+          <p class="muted">${esc(d.pi.position)}</p>
+          <div class="columns">
+            <div><b>Education</b>${list(d.pi.education)}</div>
+            <div><b>Research experience</b>${list(d.pi.experience)}</div>
+          </div>
+          <b>Awards and scholarships</b>
+          ${list(d.pi.awards)}
+          <p class="small">${esc(d.pi.metrics)}<br>${esc(d.pi.supervision)}</p>
+          ${profileLinks(d.pi)}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="research" class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Research areas</p>
+        <h2>What we study</h2>
+        <p class="intro">Our work connects atomic-scale simulation with the properties that matter for real devices.</p>
+      </div>
+      <div class="grid">
+        ${d.research.map((x,i)=>`
+          <article class="card">
+            <div class="number">${String(i+1).padStart(2,'0')}</div>
+            <h3>${esc(x.title)}</h3>
+            <p>${esc(x.description)}</p>
+          </article>`).join('')}
+      </div>
+    </div>
+  </section>
+
+  <section id="people">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">People</p>
+        <h2>Our team</h2>
+      </div>
+      ${[...new Set(d.people.map(x=>x.role))].map(role=>`
+        <h3 style="font:600 21px 'Playfair Display';margin:28px 0 14px">${esc(role)}</h3>
+        <div class="grid">
+          ${d.people.filter(x=>x.role===role).map(x=>`
+            <article class="card person">
+              ${imageOrInitials(x.photo,x.name,'person-photo')}
+              <div>
+                <h3>${esc(x.name)}</h3>
+                <div class="role">${esc(x.role)}</div>
+                <p>${esc(x.interest)}</p>
+                ${profileLinks(x)}
+              </div>
+            </article>`).join('')}
+        </div>`).join('')}
+    </div>
+  </section>
+
+  <section id="publications" class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Publications</p>
+        <h2>Selected publications</h2>
+      </div>
+      <label class="small">
+        Filter by year:
+        <select id="yearFilter">
+          <option value="">All years</option>
+          ${[...new Set(d.publications.map(x=>x.year))].sort().reverse().map(y=>
+            `<option value="${esc(y)}" ${YEAR_FILTER===y?'selected':''}>${esc(y)}</option>`
+          ).join('')}
+        </select>
+      </label>
+      <div style="margin-top:12px">
+        ${d.publications.filter(x=>!YEAR_FILTER||x.year===YEAR_FILTER).map(x=>`
+          <article class="pub">
+            <div class="pub-year">${esc(x.year)}</div>
+            <div>
+              <div class="pub-title">${esc(x.title)}</div>
+              <div class="pub-meta">
+                ${esc(x.authors)} · <i>${esc(x.journal)}</i>
+                ${x.doi?` · <a href="https://doi.org/${esc(x.doi)}" target="_blank" rel="noopener">DOI</a>`:''}
+                ${x.quartile?` · ${esc(x.quartile)}`:''}
+              </div>
+            </div>
+          </article>`).join('')}
+      </div>
+      <p class="small" style="margin-top:16px">Full publication list: ${link('Google Scholar',d.pi.scholar)}</p>
+    </div>
+  </section>
+
+  <!-- NEW COMPUTATIONAL FACILITIES SECTION -->
+  <section id="facilities">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Research infrastructure</p>
+        <h2>Computational Research Facilities</h2>
+        <p class="intro">
+          Advanced computational tools and first-principles methods
+          for understanding, predicting and designing next-generation
+          functional materials for sustainable energy applications.
+        </p>
+      </div>
+
+      <div class="facility-intro">
+        <div class="facility-overview">
+          <p class="eyebrow" style="color:#e2ae70">AMRL · COMPUTATIONAL MATERIALS SCIENCE</p>
+          <h3>From atomic-scale simulations to advanced materials design</h3>
+          <p>
+            Our research combines density functional theory, molecular
+            dynamics, lattice dynamics and device-level simulations to
+            investigate the structural, electronic, optical, magnetic,
+            mechanical and energy-related properties of materials.
+          </p>
+        </div>
+
+        <div class="facility-stat">
+          <article><strong>07</strong><span>Scientific software packages</span></article>
+          <article><strong>DFT</strong><span>First-principles calculations</span></article>
+          <article><strong>AIMD</strong><span>Finite-temperature simulations</span></article>
+          <article><strong>Multi-scale</strong><span>Computational approaches</span></article>
+        </div>
+      </div>
+
+      <h3 class="facility-subtitle">Computational Research Capabilities</h3>
+      <div class="capability-list">
+        ${d.facilities.map(x=>`<span>${esc(x)}</span>`).join('')}
+      </div>
+
+      <h3 class="facility-subtitle">Scientific Software and Simulation Tools</h3>
+      <div class="facility-grid">
+        <article class="facility-card">
+          <div class="facility-icon">W2K</div>
+          <h4>WIEN2k</h4>
+          <p>All-electron full-potential calculations for electronic structure and physical properties of materials.</p>
+        </article>
+        <article class="facility-card">
+          <div class="facility-icon">QE</div>
+          <h4>Quantum ESPRESSO</h4>
+          <p>Plane-wave DFT calculations, structural optimization, phonons and first-principles simulations.</p>
+        </article>
+        <article class="facility-card">
+          <div class="facility-icon">VASP</div>
+          <h4>VASP</h4>
+          <p>First-principles simulations of structural, electronic, magnetic and thermodynamic properties.</p>
+        </article>
+        <article class="facility-card">
+          <div class="facility-icon">CASTEP</div>
+          <h4>CASTEP</h4>
+          <p>Plane-wave pseudopotential calculations for materials modelling and property prediction.</p>
+        </article>
+        <article class="facility-card">
+          <div class="facility-icon">SCAPS</div>
+          <h4>SCAPS-1D</h4>
+          <p>Numerical modelling and performance optimization of thin-film and perovskite solar cells.</p>
+        </article>
+        <article class="facility-card">
+          <div class="facility-icon">COMSOL</div>
+          <h4>COMSOL Multiphysics</h4>
+          <p>Multiphysics modelling and numerical simulation of photovoltaic and energy-device systems.</p>
+        </article>
+        <article class="facility-card">
+          <div class="facility-icon">LAMMPS</div>
+          <h4>LAMMPS</h4>
+          <p>Classical molecular dynamics simulations for atomistic materials modelling and thermodynamic behaviour.</p>
+        </article>
+      </div>
+
+      <div class="facility-note">
+        <strong>Research approach:</strong>
+        We integrate DFT, AIMD, phonon calculations, molecular dynamics
+        and device simulations to explore advanced materials for hydrogen
+        storage, thermoelectric energy conversion, photovoltaics and
+        other sustainable energy technologies.
+      </div>
+    </div>
+  </section>
+
+  <section id="news" class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">News and updates</p>
+        <h2>Latest from the lab</h2>
+      </div>
+      ${d.news.map(x=>`
+        <article class="news-item">
+          <div class="news-date">${esc(x.date)}</div>
+          <div>
+            <b>${esc(x.title)}</b>
+            <div class="small">${esc(x.details)}</div>
+          </div>
+        </article>`).join('')}
+    </div>
+  </section>
+
+  <section id="opportunities">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Opportunities</p>
+        <h2>Join us</h2>
+      </div>
+      <div class="grid">
+        ${d.opportunities.map(x=>`
+          <article class="card">
+            <h3>${esc(x.title)}</h3>
+            <p>${esc(x.description)}</p>
+          </article>`).join('')}
+      </div>
+      <p style="margin-top:22px">
+        <a class="btn" href="mailto:${esc(d.contact.email)}">Email the lab</a>
+      </p>
+    </div>
+  </section>
+
+  <section id="contact" class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Contact</p>
+        <h2>Get in touch</h2>
+      </div>
+      <div class="contact-grid">
+        <p class="muted" style="white-space:pre-line">${esc(d.contact.address)}</p>
+        <div>
+          <p>Email: <a href="mailto:${esc(d.contact.email)}">${esc(d.contact.email)}</a></p>
+          ${profileLinks(d.contact)}
+        </div>
+      </div>
+    </div>
+  </section>
+  `;
+
+  $('#year').textContent=new Date().getFullYear();
+
+  const yf=$('#yearFilter');
+  if(yf){
+    yf.addEventListener('change',e=>{
+      YEAR_FILTER=e.target.value;
+      render();
+      document.getElementById('publications').scrollIntoView();
+    });
+  }
 }
+
 render();
-$('#themeBtn').addEventListener('click',()=>document.body.classList.toggle('dark'));
-/* Generic content editor: every data field is searchable and editable. */
-const labels={hero:'Homepage',highlights:'Homepage highlights',about:'About the laboratory',pi:'Principal Investigator',research:'Research areas',people:'Students and team members',publications:'Publications',facilities:'Facilities',software:'Software',news:'News and updates',opportunities:'Opportunities',contact:'Contact information'};
-const friendly=k=>({institution:'Institution',title:'Title / name',description:'Description',vision:'Vision',mission:'Mission',history:'History / milestones',name:'Full name',position:'Position and biography',photo:'Photo path or image URL',education:'Education',experience:'Research experience',awards:'Awards and scholarships',metrics:'Research metrics',supervision:'Supervision information',scholar:'Google Scholar URL',orcid:'ORCID URL',researchgate:'ResearchGate URL',linkedin:'LinkedIn URL',role:'Student category / role',interest:'Research interests / topic',year:'Publication year',authors:'Authors',journal:'Journal',doi:'DOI (without https://doi.org/)',quartile:'Quartile / ranking',date:'Date',details:'Details',address:'Postal address',email:'Official email'}[k]||k.replace(/([A-Z])/g,' $1').replace(/^./,s=>s.toUpperCase()));
-const textareaKeys=new Set(['description','position','vision','mission','history','education','experience','awards','metrics','supervision','interest','title','authors','journal','details','address']);
+
+$('#themeBtn').addEventListener('click',()=>{
+  document.body.classList.toggle('dark');
+});
+
+/* Generic content editor */
+const labels={
+  hero:'Homepage',
+  highlights:'Homepage highlights',
+  about:'About the laboratory',
+  pi:'Principal Investigator',
+  research:'Research areas',
+  people:'Students and team members',
+  publications:'Publications',
+  facilities:'Facilities',
+  software:'Software',
+  news:'News and updates',
+  opportunities:'Opportunities',
+  contact:'Contact information'
+};
+
+const friendly=k=>({
+  institution:'Institution',
+  title:'Title / name',
+  description:'Description',
+  vision:'Vision',
+  mission:'Mission',
+  history:'History / milestones',
+  name:'Full name',
+  position:'Position and biography',
+  photo:'Photo path or image URL',
+  education:'Education',
+  experience:'Research experience',
+  awards:'Awards and scholarships',
+  metrics:'Research metrics',
+  supervision:'Supervision information',
+  scholar:'Google Scholar URL',
+  orcid:'ORCID URL',
+  researchgate:'ResearchGate URL',
+  linkedin:'LinkedIn URL',
+  role:'Student category / role',
+  interest:'Research interests / topic',
+  year:'Publication year',
+  authors:'Authors',
+  journal:'Journal',
+  doi:'DOI (without https://doi.org/)',
+  quartile:'Quartile / ranking',
+  date:'Date',
+  details:'Details',
+  address:'Postal address',
+  email:'Official email'
+}[k]||k.replace(/([A-Z])/g,' $1').replace(/^./s,s=>s.toUpperCase()));
+
+const textareaKeys=new Set([
+  'description','position','vision','mission','history',
+  'education','experience','awards','metrics','supervision',
+  'interest','title','authors','journal','details','address'
+]);
+
 function makeField(path,key,value,full=false){
- const id='f_'+path.replace(/[^a-z0-9]/gi,'_'),type=Array.isArray(value)?'array':typeof value;
- if(type==='array')return makeArray(path,key,value);
- const input=textareaKeys.has(key)||String(value).length>100;
- return `<div class="field ${full||input?'full':''}"><label for="${id}">${esc(friendly(key))}</label>${input?`<textarea id="${id}" data-path="${esc(path)}">${esc(value)}</textarea>`:`<input id="${id}" data-path="${esc(path)}" value="${esc(value)}" ${/^(photo|scholar|orcid|researchgate|linkedin|doi)$/.test(key)?'type="text"':''}>`}${key==='photo'?'<span class="hint">Example: photos/emon.jpg or a complete image URL. Upload local image files to GitHub separately.</span>':''}</div>`;
+  const id='f_'+path.replace(/[^a-z0-9]/gi,'_');
+  const type=Array.isArray(value)?'array':typeof value;
+
+  if(type==='array')return makeArray(path,key,value);
+
+  const input=textareaKeys.has(key)||String(value).length>100;
+
+  return `<div class="field ${full||input?'full':''}">
+    <label for="${id}">${esc(friendly(key))}</label>
+    ${input
+      ?`<textarea id="${id}" data-path="${esc(path)}">${esc(value)}</textarea>`
+      :`<input id="${id}" data-path="${esc(path)}" value="${esc(value)}">`}
+    ${key==='photo'
+      ?'<span class="hint">Example: photos/emon.jpg or a complete image URL. Upload local image files to GitHub separately.</span>'
+      :''}
+  </div>`;
 }
+
 function makeArray(path,key,arr){
- const sample=arr[0],isObj=sample&&typeof sample==='object';
- return `<div class="field full"><label>${esc(friendly(key))}</label><div class="edit-fields" style="padding:0">${arr.map((v,i)=>isObj?`<div class="array-item"><strong>${esc(friendly(key))} #${i+1}</strong>${Object.entries(v).map(([k,val])=>makeField(`${path}.${i}.${k}`,k,val)).join('')}<button type="button" data-remove="${esc(path)}" data-index="${i}">Remove this item</button></div>`:`<div class="array-item"><strong>${esc(friendly(key))} #${i+1}</strong><div class="field full"><textarea data-path="${esc(path)}.${i}">${esc(v)}</textarea></div><button type="button" data-remove="${esc(path)}" data-index="${i}">Remove this item</button></div>`).join('')}<button class="array-add" type="button" data-add="${esc(path)}">+ Add ${esc(friendly(key))}</button></div></div>`;
+  const sample=arr[0];
+  const isObj=sample&&typeof sample==='object';
+
+  return `<div class="field full">
+    <label>${esc(friendly(key))}</label>
+    <div class="edit-fields" style="padding:0">
+      ${arr.map((v,i)=>isObj
+        ?`<div class="array-item">
+            <strong>${esc(friendly(key))} #${i+1}</strong>
+            ${Object.entries(v).map(([k,val])=>makeField(`${path}.${i}.${k}`,k,val)).join('')}
+            <button type="button" data-remove="${esc(path)}" data-index="${i}">Remove this item</button>
+          </div>`
+        :`<div class="array-item">
+            <strong>${esc(friendly(key))} #${i+1}</strong>
+            <div class="field full">
+              <textarea data-path="${esc(path)}.${i}">${esc(v)}</textarea>
+            </div>
+            <button type="button" data-remove="${esc(path)}" data-index="${i}">Remove this item</button>
+          </div>`
+      ).join('')}
+      <button class="array-add" type="button" data-add="${esc(path)}">+ Add ${esc(friendly(key))}</button>
+    </div>
+  </div>`;
 }
-function getAt(obj,path){return path.split('.').reduce((o,k)=>o[k],obj)}
-function setAt(obj,path,value){const p=path.split('.'),last=p.pop(),target=p.reduce((o,k)=>o[k],obj);target[last]=value}
-function defaultFor(path){const v=getAt(DATA,path);if(Array.isArray(v))return v.length&&typeof v[0]==='object'?Object.fromEntries(Object.keys(v[0]).map(k=>[k,''])):'';return ''}
+
+function getAt(obj,path){
+  return path.split('.').reduce((o,k)=>o[k],obj);
+}
+
+function setAt(obj,path,value){
+  const p=path.split('.');
+  const last=p.pop();
+  const target=p.reduce((o,k)=>o[k],obj);
+  target[last]=value;
+}
+
 function buildEditor(){
- const holder=$('#editForms');
- holder.innerHTML=Object.entries(DATA).map(([key,val])=>`<details class="edit-section" open><summary>${esc(labels[key]||friendly(key))}</summary><div class="edit-fields">${Object.entries(val).map(([k,v])=>makeField(`${key}.${k}`,k,v,Array.isArray(v))).join('')}</div></details>`).join('');
+  const holder=$('#editForms');
+
+  holder.innerHTML=Object.entries(DATA).map(([key,val])=>`
+    <details class="edit-section">
+      <summary>${esc(labels[key]||friendly(key))}</summary>
+      <div class="edit-fields">
+        ${Object.entries(val).map(([k,v])=>makeField(`${key}.${k}`,k,v,Array.isArray(v))).join('')}
+      </div>
+    </details>`).join('');
 }
+
 buildEditor();
-$('#edit-launch').addEventListener('click',()=>{$('#editor').classList.add('open');document.body.style.overflow='hidden'});
-$('#closeEditor').addEventListener('click',()=>{$('#editor').classList.remove('open');document.body.style.overflow=''});
-$('#editor').addEventListener('click',e=>{if(e.target.id==='editor'){$('#editor').classList.remove('open');document.body.style.overflow=''}});
-$('#editForms').addEventListener('input',e=>{const p=e.target.dataset.path;if(!p)return;setAt(DATA,p,e.target.value)});
+
+/* Editor controls */
+const editLaunch=$('#edit-launch');
+if(editLaunch){
+  editLaunch.addEventListener('click',()=>{
+    $('#editor').classList.add('open');
+    document.body.style.overflow='hidden';
+  });
+}
+
+$('#closeEditor').addEventListener('click',()=>{
+  $('#editor').classList.remove('open');
+  document.body.style.overflow='';
+});
+
+$('#editor').addEventListener('click',e=>{
+  if(e.target.id==='editor'){
+    $('#editor').classList.remove('open');
+    document.body.style.overflow='';
+  }
+});
+
+$('#editForms').addEventListener('input',e=>{
+  const p=e.target.dataset.path;
+  if(!p)return;
+  setAt(DATA,p,e.target.value);
+});
+
 $('#editForms').addEventListener('click',e=>{
- const rm=e.target.closest('[data-remove]'),add=e.target.closest('[data-add]');
- if(rm){const arr=getAt(DATA,rm.dataset.remove);arr.splice(Number(rm.dataset.index),1);buildEditor()}
- if(add){const arr=getAt(DATA,add.dataset.add);const sample=arr[0];arr.push(sample&&typeof sample==='object'?Object.fromEntries(Object.keys(sample).map(k=>[k,''])):'');buildEditor()}
+  const rm=e.target.closest('[data-remove]');
+  const add=e.target.closest('[data-add]');
+
+  if(rm){
+    const arr=getAt(DATA,rm.dataset.remove);
+    arr.splice(Number(rm.dataset.index),1);
+    buildEditor();
+  }
+
+  if(add){
+    const arr=getAt(DATA,add.dataset.add);
+    const sample=arr[0];
+    arr.push(sample&&typeof sample==='object'
+      ?Object.fromEntries(Object.keys(sample).map(k=>[k,'']))
+      :'');
+    buildEditor();
+  }
 });
+
 $('#editorSearch').addEventListener('input',e=>{
- const q=e.target.value.toLowerCase();
- document.querySelectorAll('.edit-section').forEach(sec=>{const hit=!q||sec.textContent.toLowerCase().includes(q);sec.style.display=hit?'':'none';if(q&&hit)sec.open=true});
+  const q=e.target.value.toLowerCase();
+
+  document.querySelectorAll('.edit-section').forEach(sec=>{
+    const hit=!q||sec.textContent.toLowerCase().includes(q);
+    sec.style.display=hit?'':'none';
+    if(q&&hit)sec.open=true;
+  });
 });
-function syncData(){DATA_SCRIPT.textContent=JSON.stringify(DATA,null,2)}
-$('#previewBtn').addEventListener('click',()=>{syncData();render();$('#editorStatus').textContent='Preview updated. The public website is not changed until you download and upload this file to GitHub.'});
-function download(name,content,type){const blob=new Blob([content],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1500)}
-$('#downloadBtn').addEventListener('click',()=>{syncData();const html='<!doctype html>\n'+document.documentElement.outerHTML;download('index.html',html,'text/html;charset=utf-8');$('#editorStatus').textContent='Updated index.html downloaded. Upload it to the root of your GitHub repository and commit changes.'});
-$('#jsonBtn').addEventListener('click',()=>download('amrl-content-backup.json',JSON.stringify(DATA,null,2),'application/json'));
-$('#importJson').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;try{const imported=JSON.parse(await f.text());DATA=imported;buildEditor();$('#editorStatus').textContent='Content imported. Click Preview changes to review it.'}catch(err){$('#editorStatus').textContent='Could not read JSON file. Please select a valid AMRL content backup.'}e.target.value=''});
-$('#resetBtn').addEventListener('click',()=>{if(!confirm('Reset all editor content to the original version included in this file?'))return;DATA=structuredCloneSafe(ORIGINAL_DATA);buildEditor();$('#editorStatus').textContent='Original content restored in the editor. Click Preview changes to apply the preview.'});
+
+function syncData(){
+  DATA_SCRIPT.textContent=JSON.stringify(DATA,null,2);
+}
+
+function download(name,content,type){
+  const blob=new Blob([content],{type});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;
+  a.download=name;
+  a.click();
+  setTimeout(()=>URL.revokeObjectURL(url),1500);
+}
+
+$('#previewBtn').addEventListener('click',()=>{
+  syncData();
+  render();
+  $('#editorStatus').textContent=
+    'Preview updated. The public website is not changed until you download and upload this file to GitHub.';
+});
+
+$('#downloadBtn').addEventListener('click',()=>{
+  syncData();
+  const html='<!doctype html>\n'+document.documentElement.outerHTML;
+  download('index.html',html,'text/html;charset=utf-8');
+  $('#editorStatus').textContent=
+    'Updated index.html downloaded. Upload it to the root of your GitHub repository and commit changes.';
+});
+
+$('#jsonBtn').addEventListener('click',()=>{
+  download('amrl-content-backup.json',JSON.stringify(DATA,null,2),'application/json');
+});
+
+$('#importJson').addEventListener('change',async e=>{
+  const f=e.target.files[0];
+  if(!f)return;
+
+  try{
+    const imported=JSON.parse(await f.text());
+    DATA=imported;
+    buildEditor();
+    $('#editorStatus').textContent=
+      'Content imported. Click Preview changes to review it.';
+  }catch(err){
+    $('#editorStatus').textContent=
+      'Could not read JSON file. Please select a valid AMRL content backup.';
+  }
+
+  e.target.value='';
+});
+
+$('#resetBtn').addEventListener('click',()=>{
+  if(!confirm('Reset all editor content to the original version included in this file?'))return;
+
+  DATA=structuredCloneSafe(ORIGINAL_DATA);
+  buildEditor();
+  $('#editorStatus').textContent=
+    'Original content restored in the editor. Click Preview changes to apply the preview.';
+});
 </script>
-</body></html>
+</body>
+</html>
