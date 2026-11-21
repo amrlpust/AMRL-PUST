@@ -29,17 +29,25 @@ export const SITE = {
   },
 
   navigation: [
-    { label: "About", href: "#about" },
-    { label: "PI", href: "#pi" },
-    { label: "Research", href: "#research" },
-    { label: "People", href: "#people" },
-    { label: "Alumni", href: "#alumni" },
-    { label: "Publications", href: "#publications" },
-    { label: "Facilities", href: "#facilities" },
-    { label: "News", href: "#news" },
-    { label: "Opportunities", href: "#opportunities" },
-    { label: "Contact", href: "#contact" }
+    { label: "About", href: "about.html", page: "about" },
+    { label: "PI", href: "pi.html", page: "pi" },
+    { label: "Research", href: "research.html", page: "research" },
+    { label: "People", href: "people.html", page: "people" },
+    { label: "Alumni", href: "alumni.html", page: "alumni" },
+    { label: "Papers", href: "publications.html", page: "publications" },
+    { label: "Computational Tools", href: "computational-tools.html", page: "computational-tools" },
+    { label: "News", href: "news.html", page: "news" },
+    { label: "Opportunities", href: "opportunities.html", page: "opportunities" },
+    { label: "Contact", href: "contact.html", page: "contact" }
   ],
+
+  /* 01B. PRIVATE ADMIN CONFIGURATION ------------------------------------ */
+  /* Set these after creating the Supabase project. Never add a service-role key here. */
+  backend: {
+    supabaseUrl: "https://YOUR-PROJECT-REF.supabase.co",
+    supabasePublishableKey: "YOUR_SUPABASE_PUBLISHABLE_OR_ANON_KEY",
+    piAdminEmail: "lokman.ali@pust.ac.bd"
+  },
 
   /* 02. HOME PAGE -------------------------------------------------------- */
   hero: {
@@ -47,9 +55,9 @@ export const SITE = {
     title: "Designing the materials that will shape tomorrow.",
     description: "We combine first-principles calculations, atomistic modelling and device-level simulation to understand, predict and design advanced materials for energy, electronics and future technologies.",
     primaryLabel: "Explore our research",
-    primaryHref: "#research",
+    primaryHref: "research.html",
     secondaryLabel: "Work with AMRL",
-    secondaryHref: "#opportunities",
+    secondaryHref: "opportunities.html",
     visualLabel: "Interactive atomic lattice",
     ticker: [
       "First-principles materials discovery",
@@ -387,15 +395,15 @@ export const SITE = {
     "Photovoltaic device simulation"
   ],
   software: [
-    { name: "WIEN2k", abbr: "W2K", description: "All-electron full-potential calculations for electronic structures and physical properties." },
-    { name: "Quantum ESPRESSO", abbr: "QE", description: "Plane-wave DFT, structural optimisation, phonons and first-principles simulations." },
-    { name: "VASP", abbr: "VASP", description: "First-principles simulations of structural, electronic, magnetic and thermodynamic properties." },
-    { name: "CASTEP", abbr: "CASTEP", description: "Plane-wave pseudopotential calculations for materials modelling and property prediction." },
-    { name: "SCAPS-1D", abbr: "SCAPS", description: "Numerical modelling and performance optimisation of thin-film and perovskite solar cells." },
-    { name: "COMSOL Multiphysics", abbr: "COMSOL", description: "Multiphysics modelling and numerical simulation of photovoltaic and energy-device systems." },
-    { name: "LAMMPS", abbr: "LAMMPS", description: "Classical molecular dynamics simulations for atomistic materials modelling." },
-    { name: "BoltzTraP2", abbr: "BT2", description: "Semi-classical electronic transport and thermoelectric property calculations." },
-    { name: "Phonopy", abbr: "PH", description: "Phonon calculations, vibrational properties and lattice-dynamics analysis." }
+    { name: "WIEN2k", abbr: "W2K", category: "Electronic structure / DFT", description: "All-electron full-potential LAPW calculations for accurate electronic structures and physical properties of crystalline materials.", useCases: ["Band structures and total / partial density of states", "Optimised structures and equation-of-state analysis", "Elastic constants, optical response and magnetic properties"], outputs: "Electronic bands, DOS, charge density, optical spectra and elastic tensors", website: "https://www.wien2k.at/" },
+    { name: "Quantum ESPRESSO", abbr: "QE", category: "Electronic structure / DFT", description: "Plane-wave pseudopotential DFT suite for structural optimisation, electronic structures, response properties and first-principles simulations.", useCases: ["SCF / NSCF and variable-cell relaxation", "DFPT phonons and electron–phonon workflows", "Projected DOS, charge density and optical response workflows"], outputs: "Relaxed structures, bands, DOS, phonons and response functions", website: "https://www.quantum-espresso.org/" },
+    { name: "VASP", abbr: "VASP", category: "Electronic structure / DFT", description: "Plane-wave DFT package for structural, electronic, magnetic and thermodynamic modelling of materials.", useCases: ["Geometry optimisation and energy comparisons", "Band gaps, magnetic ordering and defect energetics", "Ab initio molecular dynamics and finite-temperature sampling"], outputs: "Total energies, forces, stress, bands, DOS and AIMD trajectories", website: "https://www.vasp.at/" },
+    { name: "CASTEP", abbr: "CASTEP", category: "Electronic structure / DFT", description: "Plane-wave pseudopotential code for first-principles materials modelling and property prediction.", useCases: ["Geometry optimisation and elastic properties", "Electronic structure and optical properties", "Phonons and lattice-dynamical properties"], outputs: "Optimised cells, bands, DOS, optical spectra and phonon data", website: "https://www.castep.org/" },
+    { name: "Phonopy", abbr: "PH", category: "Phonons / lattice dynamics", description: "Phonon calculation and analysis toolkit using finite-displacement force constants from first-principles calculations.", useCases: ["Phonon dispersion and phonon density of states", "Dynamical stability checks across high-symmetry paths", "Vibrational free energy and thermodynamic functions"], outputs: "Phonon bands, phonon DOS, thermal properties and force-constant data", website: "https://phonopy.github.io/phonopy/" },
+    { name: "BoltzTraP2", abbr: "BT2", category: "Transport / thermoelectrics", description: "Semi-classical Boltzmann transport analysis from electronic band structures for thermoelectric and charge-transport properties.", useCases: ["Seebeck coefficient and electrical conductivity trends", "Electronic thermal conductivity and power factor", "Carrier concentration, temperature and chemical-potential scans"], outputs: "Seebeck coefficient, conductivity, power factor and electronic thermal conductivity", website: "https://github.com/DOE-COMMS/BoltzTraP2" },
+    { name: "LAMMPS", abbr: "LAMMPS", category: "Atomistic simulation / MD", description: "Classical molecular dynamics engine for atomistic materials modelling, mechanical response and thermodynamic behaviour.", useCases: ["Molecular dynamics and thermal equilibration", "Defects, grain boundaries and deformation mechanisms", "Diffusion, alloy disorder and temperature-dependent behaviour"], outputs: "Atomic trajectories, energies, stresses, diffusion and structural statistics", website: "https://www.lammps.org/" },
+    { name: "SCAPS-1D", abbr: "SCAPS", category: "Device / solar-cell modelling", description: "One-dimensional numerical simulation of thin-film and perovskite solar-cell device structures.", useCases: ["Layer thickness and defect-density optimisation", "Band alignment and interface recombination analysis", "J–V, EQE and temperature-dependent device studies"], outputs: "J–V curves, EQE, band diagrams and device-performance parameters", website: "https://scaps.elis.ugent.be/" },
+    { name: "COMSOL Multiphysics", abbr: "COMSOL", category: "Device / multiphysics modelling", description: "Multiphysics finite-element modelling for coupled physical processes and energy-device systems.", useCases: ["Coupled heat-transfer and electrical models", "Optical / thermal / electrical device coupling", "Geometry-based parameter sweeps and sensitivity analysis"], outputs: "Spatial field maps, coupled transport and device-level response", website: "https://www.comsol.com/" }
   ],
 
   /* 10. NEWS AND EVENTS -------------------------------------------------- */

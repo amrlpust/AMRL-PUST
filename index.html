@@ -43,7 +43,7 @@
   }
   </script>
 </head>
-<body>
+<body data-page="home">
   <a class="skip-link" href="#main">Skip to main content</a>
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
@@ -52,14 +52,10 @@
     <input type="hidden" name="form-name" value="contact">
     <input name="name"><input name="email"><input name="topic"><textarea name="message"></textarea><input name="bot-field">
   </form>
-  <form name="alumni-profile" data-netlify="true" netlify-honeypot="bot-field" hidden>
-    <input type="hidden" name="form-name" value="alumni-profile">
-    <input name="name"><input name="email"><input name="degree"><input name="graduationYear"><input name="currentRole"><input name="organisation"><input name="profileUrl"><textarea name="research"></textarea><input name="consent"><input name="bot-field">
-  </form>
 
   <header class="site-header" id="top">
     <div class="header-inner">
-      <a class="brand" href="#home" aria-label="AMRL home">
+      <a class="brand" href="index.html" aria-label="AMRL home">
         <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
         <span class="brand-text">AMRL<small>PUST · MATERIALS FUTURES</small></span>
       </a>
@@ -80,16 +76,16 @@
   <footer class="site-footer">
     <div class="container footer-main">
       <div>
-        <a class="brand footer-brand" href="#home">
+        <a class="brand footer-brand" href="index.html">
           <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
           <span class="brand-text">AMRL<small>PUST · MATERIALS FUTURES</small></span>
         </a>
         <p>Advanced Materials Research Laboratory<br>Department of Physics · Pabna University of Science and Technology</p>
       </div>
       <div class="footer-links">
-        <a href="#research">Research</a><a href="#people">People</a><a href="#alumni">Alumni</a><a href="#publications">Publications</a><a href="#contact">Contact</a>
+        <a href="research.html">Research</a><a href="people.html">People</a><a href="alumni.html">Alumni</a><a href="publications.html">Publications</a><a href="computational-tools.html">Computational Tools</a><a href="contact.html">Contact</a><a href="pi-dashboard.html">PI Dashboard ↗</a>
       </div>
-      <div class="footer-meta"><span>Built for discovery.</span><span>© <b id="currentYear"></b> AMRL · PUST</span><a href="#top">Back to top ↑</a></div>
+      <div class="footer-meta"><span>Built for discovery.</span><span>© <b id="currentYear"></b> AMRL · PUST</span><a href="index.html">Home ↑</a></div>
     </div>
   </footer>
 

@@ -45,15 +45,23 @@ function imageMarkup(src, name, className = "person-photo") {
 }
 
 function renderHeader() {
+  const page = document.body.dataset.page || "home";
   $("#navLinks").innerHTML = SITE.navigation.map(item =>
-    `<a href="${esc(item.href)}">${esc(item.label)}</a>`
+    `<a href="${esc(item.href)}"${item.page === page ? ' class="active" aria-current="page"' : ""}>${esc(item.label)}</a>`
   ).join("");
   const portal = $("#portalLink");
   if (safeUrl(SITE.meta.memberPortal)) portal.href = SITE.meta.memberPortal;
   else portal.hidden = true;
   $("#currentYear").textContent = new Date().getFullYear();
-  document.title = `${SITE.meta.shortName} — ${SITE.meta.name}, PUST`;
+  const labels = {
+    home: "Home", about: "About", pi: "Principal Investigator", research: "Research",
+    people: "People", alumni: "Alumni", "alumni-submit": "Alumni Profile Submission",
+    publications: "Publications", "computational-tools": "Computational Tools", news: "News",
+    opportunities: "Opportunities", contact: "Contact", "pi-dashboard": "PI Dashboard"
+  };
+  document.title = `${labels[page] || "AMRL"} | ${SITE.meta.shortName} — ${SITE.meta.name}, PUST`;
 }
+
 
 function renderHero() {
   return `
@@ -104,6 +112,26 @@ function renderHero() {
   </section>`;
 }
 
+function renderHomePageLinks() {
+  const pages = [
+    ["about.html", "About AMRL", "Our vision, mission, institutional home and research journey.", "01"],
+    ["pi.html", "Principal Investigator", "Meet the laboratory's research leadership and academic profile.", "02"],
+    ["research.html", "Research Directions", "Explore materials research themes, methods and scientific questions.", "03"],
+    ["people.html", "Our People", "Current researchers, students and collaborators.", "04"],
+    ["alumni.html", "Alumni Network", "Reconnect with former members and browse approved alumni profiles.", "05"],
+    ["publications.html", "Publications", "Search selected papers by year, author, journal or DOI.", "06"],
+    ["computational-tools.html", "Computational Tools", "Explore the laboratory's scientific software and modelling workflows.", "07"],
+    ["news.html", "News & Events", "Research updates, conference activity and laboratory milestones.", "08"],
+    ["opportunities.html", "Opportunities", "Find student, research and collaboration opportunities.", "09"],
+    ["contact.html", "Contact AMRL", "Contact the laboratory for research and academic enquiries.", "10"]
+  ];
+  return `<section class="home-pages-section"><div class="container"><div class="section-head reveal"><span class="section-kicker">Explore AMRL</span><h2>Every research direction has its own space.</h2><p class="lead">Choose a section to open its dedicated page. Browse the laboratory without scrolling through one long page.</p></div><div class="page-card-grid">${pages.map(([href,title,description,n])=>`<a class="page-card glass-card reveal" href="${href}"><span class="card-index">AMRL / ${n}</span><h3>${title}</h3><p>${description}</p><span class="page-card-arrow">Open page ↗</span></a>`).join("")}</div><div class="home-admin-link"><span>Laboratory administration</span><a href="pi-dashboard.html">PI Dashboard ↗</a></div></div></section>`;
+}
+
+function renderHome() {
+  return renderHero() + renderHomePageLinks();
+}
+
 function renderAbout() {
   return `
   <section class="section-alt" id="about">
@@ -148,6 +176,7 @@ function renderPI() {
           <ul class="clean-list">${pi.awards.map(item => `<li>${esc(item)}</li>`).join("")}</ul>
           <div class="pi-metrics">${esc(pi.metrics)}<br>${esc(pi.supervision)}</div>
           ${profileLinks(pi.links)}
+          <div class="pi-dashboard-cta"><a class="btn btn-secondary btn-small" href="pi-dashboard.html">PI Dashboard · restricted ↗</a></div>
         </div>
       </article>
     </div>
@@ -224,9 +253,11 @@ function renderAlumni() {
   const profiles = SITE.alumni.profiles || [];
   const years = [...new Set(profiles.map(person => String(person.graduationYear || "")).filter(Boolean))].sort((a, b) => b.localeCompare(a));
   return `
-  <section class="section-alt" id="alumni">
+  <section class="section-alt page-section" id="alumni">
     <div class="container">
-      <div class="section-head reveal"><span class="section-kicker">Beyond graduation</span><h2>AMRL Alumni Network.</h2><p class="alumni-intro">${esc(SITE.alumni.intro)}</p></div>
+      <div class="page-topline"><a href="index.html">← Home</a><span>Community / Alumni</span></div>
+      <div class="section-head reveal"><span class="section-kicker">Beyond graduation</span><h1>AMRL Alumni Network.</h1><p class="alumni-intro">${esc(SITE.alumni.intro)}</p></div>
+      <div class="alumni-action-row"><div><strong>Former AMRL member?</strong><p>Submit your professional details for review. Only profiles approved by the laboratory and explicitly consented for publication are shown here.</p></div><a class="btn" href="alumni-submit.html">Submit / Update Your Profile ↗</a></div>
       <div class="directory-tools">
         <label class="sr-only" for="alumniSearch">Search alumni</label>
         <input class="control-input" id="alumniSearch" type="search" placeholder="Search by name, research, role or organisation…">
@@ -235,33 +266,43 @@ function renderAlumni() {
         <span class="directory-count" id="alumniCount">${profiles.length} profile${profiles.length === 1 ? "" : "s"}</span>
       </div>
       <div class="alumni-grid" id="alumniGrid">
-        ${profiles.length ? profiles.map(alumniCard).join("") : `<div class="empty-state"><strong>The public alumni directory is being prepared.</strong>Verified profiles will appear here after alumni consent and laboratory review.</div>`}
+        ${profiles.length ? profiles.map(alumniCard).join("") : `<div class="empty-state"><strong>The public alumni directory is being prepared.</strong>Approved profiles will appear here after verification and publication consent.</div>`}
       </div>
-      <div class="alumni-banner reveal">
-        <div><h3>Once AMRL, always part of the network.</h3><p>Reconnect with the laboratory, mentor current students or share your professional journey.</p></div>
-        <a class="btn" href="#alumni-contribute">Join the alumni network ↗</a>
-      </div>
-      <div class="alumni-form-wrap reveal" id="alumni-contribute">
-        <h3>Submit an alumni profile</h3>
-        <p>Share your details for consideration in the public directory. Submissions are reviewed by the laboratory and are not published automatically.</p>
-        <form class="form-grid" id="alumniForm" name="alumni-profile" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-          <input type="hidden" name="form-name" value="alumni-profile">
-          <p hidden><label>Leave this empty <input name="bot-field"></label></p>
-          <div class="form-field"><label for="alumniName">Full name *</label><input id="alumniName" name="name" autocomplete="name" required></div>
-          <div class="form-field"><label for="alumniEmail">Email address *</label><input id="alumniEmail" name="email" type="email" autocomplete="email" required></div>
-          <div class="form-field"><label for="alumniDegree">Degree / programme</label><input id="alumniDegree" name="degree" placeholder="e.g. MS in Physics"></div>
-          <div class="form-field"><label for="alumniYearInput">Graduation year</label><input id="alumniYearInput" name="graduationYear" inputmode="numeric" placeholder="e.g. 2024" pattern="[0-9]{4}"></div>
-          <div class="form-field"><label for="alumniRole">Current role</label><input id="alumniRole" name="currentRole" placeholder="e.g. PhD researcher"></div>
-          <div class="form-field"><label for="alumniOrganisation">Organisation / university</label><input id="alumniOrganisation" name="organisation"></div>
-          <div class="form-field full"><label for="alumniResearch">Research interests / thesis topic</label><textarea id="alumniResearch" name="research"></textarea></div>
-          <div class="form-field full"><label for="alumniProfile">LinkedIn or professional profile URL</label><input id="alumniProfile" name="profileUrl" type="url" placeholder="https://…"></div>
-          <label class="consent-row form-field full"><input type="checkbox" name="consent" value="I consent to being contacted about this submission" required><span>I confirm that these details are mine and consent to AMRL contacting me about this submission. Public display requires separate confirmation.</span></label>
-          <div class="form-field full"><button class="btn" type="submit">Submit for review ↗</button><p class="form-status" role="status" aria-live="polite"></p><p class="privacy-note">Your submission is sent to the website administrator for review. It will not appear publicly until approved and added to the alumni data in content.js.</p></div>
-        </form>
-      </div>
+      <div class="dashboard-shortcut"><div><span class="section-kicker">For laboratory administration</span><h3>Review alumni submissions</h3><p>Only the authorised PI account can access the private review dashboard.</p></div><a class="btn btn-secondary" href="pi-dashboard.html">PI Dashboard ↗</a></div>
       <p class="section-footnote">${esc(SITE.alumni.contactNote)}</p>
     </div>
   </section>`;
+}
+
+
+function renderAlumniSubmit() {
+  return `
+  <section class="section-alt page-section"><div class="container">
+    <div class="page-topline"><a href="alumni.html">← Back to Alumni Network</a><span>Community / Profile submission</span></div>
+    <div class="section-head reveal"><span class="section-kicker">Reconnect with AMRL</span><h1>Alumni profile submission.</h1><p class="lead">Share your academic and professional journey. Your submission will remain private until reviewed by the authorised laboratory administrator.</p></div>
+    <div class="alumni-form-wrap standalone-form-wrap"><div class="form-intro"><span class="section-kicker">AMRL Alumni Directory</span><h2>Tell us where your journey has taken you.</h2><p>Complete the details below. Fields marked with * are required. You can choose separately whether you consent to publication in the public alumni directory.</p></div>
+    ${supabaseConfigured() ? "" : `<div class="dashboard-state setup-warning"><h2>Submission system setup required</h2><p>The secure database is not connected yet. The form will become active after the PI configures Supabase. Until then, contact <a href="mailto:${esc(SITE.contact.email)}">${esc(SITE.contact.email)}</a>.</p></div>`}
+    <form class="form-grid" id="alumniForm" name="alumni-profile" method="POST">
+      <div class="form-field"><label for="alumniName">Full name *</label><input id="alumniName" name="name" autocomplete="name" maxlength="120" required></div>
+      <div class="form-field"><label for="alumniEmail">Email address *</label><input id="alumniEmail" name="email" type="email" autocomplete="email" maxlength="254" required></div>
+      <div class="form-field"><label for="alumniDegree">Degree / programme</label><input id="alumniDegree" name="degree" placeholder="e.g. MS in Physics" maxlength="120"></div>
+      <div class="form-field"><label for="alumniYearInput">Graduation year</label><input id="alumniYearInput" name="graduation_year" inputmode="numeric" placeholder="e.g. 2024" pattern="[0-9]{4}" maxlength="4"></div>
+      <div class="form-field"><label for="alumniRole">Current role</label><input id="alumniRole" name="current_role" placeholder="e.g. PhD researcher" maxlength="160"></div>
+      <div class="form-field"><label for="alumniOrganisation">Organisation / university</label><input id="alumniOrganisation" name="organisation" maxlength="180"></div>
+      <div class="form-field"><label for="alumniLocation">Location</label><input id="alumniLocation" name="location" placeholder="City, Country" maxlength="120"></div>
+      <div class="form-field"><label for="alumniProfile">Professional profile URL</label><input id="alumniProfile" name="profile_url" type="url" placeholder="https://…" maxlength="500"></div>
+      <div class="form-field"><label for="alumniLinkedin">LinkedIn URL</label><input id="alumniLinkedin" name="linkedin" type="url" placeholder="https://www.linkedin.com/in/…" maxlength="500"></div>
+      <div class="form-field"><label for="alumniPhoto">Profile photo URL (optional)</label><input id="alumniPhoto" name="photo_url" type="url" placeholder="https://…" maxlength="500"></div>
+      <div class="form-field full"><label for="alumniResearch">Research interests / thesis topic</label><textarea id="alumniResearch" name="research" rows="4" maxlength="2000"></textarea></div>
+      <label class="consent-row form-field full"><input type="checkbox" name="consent_contact" value="true" required><span>I confirm that these details are mine and consent to AMRL contacting me about this submission. *</span></label>
+      <label class="consent-row form-field full"><input type="checkbox" name="consent_public" value="true"><span>I separately consent to the information in this form (excluding my email address) being displayed in the public AMRL Alumni Directory if approved. This is optional.</span></label>
+      <div class="form-field full"><button class="btn" type="submit" ${supabaseConfigured() ? "" : "disabled"}>Submit profile for PI review ↗</button><p class="form-status" role="status" aria-live="polite"></p><p class="privacy-note">Your details are submitted for review, not published automatically. Email addresses remain private and will not appear in the public directory.</p></div>
+    </form></div>
+  </div></section>`;
+}
+
+function renderPIDashboard() {
+  return `<section class="section-alt page-section"><div class="container"><div class="page-topline"><a href="index.html">← Home</a><span>Restricted area / Administration</span></div><div class="section-head"><span class="section-kicker">Restricted administration</span><h1>Principal Investigator Dashboard.</h1><p class="lead">Review alumni submissions, update profile information and publish only profiles with explicit publication consent.</p></div><div id="piDashboardRoot"><div class="dashboard-state"><h2>Checking secure dashboard configuration…</h2><p>This page uses Supabase authentication and database Row Level Security. It is not protected by a front-end-only password.</p></div></div></div></section>`;
 }
 
 function citationText(item) {
@@ -303,29 +344,40 @@ function renderPublications() {
 }
 
 function renderFacilities() {
+  const categories = [...new Set(SITE.software.map(tool => tool.category || "Other tools"))];
   return `
-  <section class="section-alt" id="facilities">
+  <section class="section-alt page-section" id="facilities">
     <div class="container">
-      <div class="section-head reveal"><span class="section-kicker">Research infrastructure</span><h2>Computational research facilities.</h2><p class="lead">Scientific software and computational methods supporting reproducible first-principles research and materials discovery.</p></div>
+      <div class="page-topline"><a href="index.html">← Home</a><span>Research infrastructure / Computational Tools</span></div>
+      <div class="section-head reveal"><span class="section-kicker">Research infrastructure</span><h1>Computational Tools & Research Facilities.</h1><p class="lead">Explore the scientific software used across our computational materials workflows. Each tool has its own purpose, typical AMRL use cases and representative outputs.</p></div>
       <div class="facility-hero">
-        <div class="facility-feature"><span class="section-kicker">AMRL · COMPUTATIONAL MATERIALS SCIENCE</span><h3>From atomic-scale simulation to advanced materials design.</h3><p>Our research combines density functional theory, molecular dynamics, lattice dynamics and device-level modelling to investigate structural, electronic, optical, magnetic, mechanical and energy-related properties.</p></div>
+        <div class="facility-feature"><span class="section-kicker">AMRL · COMPUTATIONAL MATERIALS SCIENCE</span><h2>From atomistic calculations to material properties.</h2><p>Our computational research combines first-principles electronic-structure methods, molecular dynamics, lattice dynamics, transport analysis and device-level simulation. Tool selection depends on the material, physical question and required accuracy.</p></div>
         <div class="facility-metrics">
-          <div class="facility-metric"><strong>${String(SITE.software.length).padStart(2, "0")}</strong><span>Scientific software tools</span></div>
-          <div class="facility-metric"><strong>DFT</strong><span>First-principles calculations</span></div>
-          <div class="facility-metric"><strong>AIMD</strong><span>Finite-temperature modelling</span></div>
-          <div class="facility-metric"><strong>Multi-scale</strong><span>Computational approaches</span></div>
+          <div class="facility-metric"><strong>${String(SITE.software.length).padStart(2, "0")}</strong><span>Scientific software tools listed</span></div>
+          <div class="facility-metric"><strong>DFT</strong><span>Electronic-structure calculations</span></div>
+          <div class="facility-metric"><strong>AIMD / MD</strong><span>Finite-temperature atomistic modelling</span></div>
+          <div class="facility-metric"><strong>Phonons</strong><span>Lattice dynamics and stability</span></div>
         </div>
       </div>
-      <h3 class="subheading">Computational capabilities</h3>
+      <h2 class="subheading">Computational capabilities</h2>
       <div class="capability-cloud">${SITE.facilities.map(item => `<span>${esc(item)}</span>`).join("")}</div>
-      <h3 class="subheading">Scientific software and simulation tools</h3>
-      <div class="software-grid">
-        ${SITE.software.map(item => `<article class="software-card reveal"><span class="software-icon">${esc(item.abbr)}</span><div><h4>${esc(item.name)}</h4><p>${esc(item.description)}</p></div></article>`).join("")}
+      <div class="tools-heading-row"><div><span class="section-kicker">Interactive software directory</span><h2 class="subheading">Scientific software explorer</h2></div><span class="directory-count">${SITE.software.length} tools · filter by workflow</span></div>
+      <div class="directory-tools tools-controls">
+        <label class="sr-only" for="toolSearch">Search computational tools</label><input class="control-input" id="toolSearch" type="search" placeholder="Search software or capability…">
+        <label class="sr-only" for="toolCategory">Filter tool category</label><select class="control-select" id="toolCategory"><option value="">All workflows</option>${categories.map(category => `<option value="${esc(category)}">${esc(category)}</option>`).join("")}</select>
+        <span class="directory-count" id="toolCount">${SITE.software.length} tools</span>
       </div>
-      <div class="facility-note"><strong>Research approach:</strong> DFT, AIMD, phonon calculations, molecular dynamics and device simulations are integrated where appropriate to explore materials for hydrogen storage, thermoelectric conversion, photovoltaics and other sustainable technologies.</div>
+      <div class="software-grid tool-grid" id="softwareGrid">
+        ${SITE.software.map((item,index) => `<article class="software-card tool-card reveal" data-category="${esc(item.category || "Other tools")}" data-search="${esc([item.name,item.abbr,item.category,item.description,item.outputs,...(item.useCases||[])].join(" ").toLowerCase())}">
+          <span class="software-icon">${esc(item.abbr)}</span><div class="tool-card-main"><span class="tool-category">${esc(item.category || "Research software")}</span><h3>${esc(item.name)}</h3><p>${esc(item.description)}</p>
+          <details class="tool-details"><summary>Explore capabilities and workflow</summary><div class="tool-detail-body"><strong>Typical research use</strong><ul>${(item.useCases||[]).map(use=>`<li>${esc(use)}</li>`).join("")}</ul><strong>Representative outputs</strong><p>${esc(item.outputs || "Depends on the calculation workflow and input data.")}</p>${item.website ? externalLink("Official website / documentation",item.website,"text-link") : ""}</div></details></div>
+        </article>`).join("")}
+      </div>
+      <div class="facility-note"><strong>Scientific note:</strong> Software names indicate tools represented in the laboratory's research workflows; availability, licensing and execution capacity depend on the specific installation and project. Animated website graphics are illustrative and are not simulation results.</div>
     </div>
   </section>`;
 }
+
 
 function renderNews() {
   return `
@@ -378,29 +430,38 @@ function renderContact() {
 }
 
 function renderSite() {
-  $("#siteContent").innerHTML = [
-    renderHero(), renderAbout(), renderPI(), renderResearch(), renderPeople(),
-    renderAlumni(), renderPublications(), renderFacilities(), renderNews(),
-    renderOpportunities(), renderContact()
-  ].join("");
+  const page = document.body.dataset.page || "home";
+  const renderers = {
+    home: renderHome, about: renderAbout, pi: renderPI, research: renderResearch,
+    people: renderPeople, alumni: renderAlumni, "alumni-submit": renderAlumniSubmit,
+    publications: renderPublications, "computational-tools": renderFacilities,
+    news: renderNews, opportunities: renderOpportunities, contact: renderContact,
+    "pi-dashboard": renderPIDashboard
+  };
+  const renderer = renderers[page] || renderHome;
+  $("#siteContent").innerHTML = renderer();
+  if (page === "alumni") loadPublicAlumni();
+  if (page === "pi-dashboard") setupPIDashboard();
 }
 
-/* Search index uses only the content that is currently published on the page. */
+
 function searchIndex() {
-  const sections = [
-    ["home", "Home", SITE.hero.description], ["about", "About", SITE.about.intro],
-    ["pi", "Principal Investigator", `${SITE.pi.name} ${SITE.pi.biography}`],
-    ["research", "Research", SITE.research.map(item => `${item.title} ${item.description} ${(item.tags || []).join(" ")}`).join(" ")],
-    ["people", "People", SITE.people.map(item => `${item.name} ${item.role} ${item.research}`).join(" ")],
-    ["alumni", "Alumni", SITE.alumni.profiles.map(item => `${item.name} ${item.currentRole} ${item.organisation} ${item.research}`).join(" ")],
-    ["publications", "Publications", SITE.publications.map(item => `${item.title} ${item.authors} ${item.journal} ${item.year} ${item.doi}`).join(" ")],
-    ["facilities", "Facilities", `${SITE.facilities.join(" ")} ${SITE.software.map(item => `${item.name} ${item.description}`).join(" ")}`],
-    ["news", "News", SITE.news.map(item => `${item.title} ${item.details} ${item.date}`).join(" ")],
-    ["opportunities", "Opportunities", SITE.opportunities.map(item => `${item.title} ${item.description}`).join(" ")],
-    ["contact", "Contact", SITE.contact.address]
+  const pages = [
+    ["index.html", "Home", SITE.hero.description],
+    ["about.html", "About", SITE.about.intro],
+    ["pi.html", "Principal Investigator", `${SITE.pi.name} ${SITE.pi.biography}`],
+    ["research.html", "Research", SITE.research.map(item => `${item.title} ${item.description} ${(item.tags || []).join(" ")}`).join(" ")],
+    ["people.html", "People", SITE.people.map(item => `${item.name} ${item.role} ${item.research}`).join(" ")],
+    ["alumni.html", "Alumni", SITE.alumni.profiles.map(item => `${item.name} ${item.currentRole} ${item.organisation} ${item.research}`).join(" ")],
+    ["publications.html", "Publications", SITE.publications.map(item => `${item.title} ${item.authors} ${item.journal} ${item.year} ${item.doi}`).join(" ")],
+    ["computational-tools.html", "Computational Tools", `${SITE.facilities.join(" ")} ${SITE.software.map(item => `${item.name} ${item.category} ${item.description} ${(item.useCases||[]).join(" ")}`).join(" ")}`],
+    ["news.html", "News", SITE.news.map(item => `${item.title} ${item.details} ${item.date}`).join(" ")],
+    ["opportunities.html", "Opportunities", SITE.opportunities.map(item => `${item.title} ${item.description}`).join(" ")],
+    ["contact.html", "Contact", SITE.contact.address]
   ];
-  return sections.map(([target, type, text]) => ({ target, type, text: `${type} ${text}`.toLowerCase(), title: type }));
+  return pages.map(([href, title, text]) => ({ href, title, text: `${title} ${text}`.toLowerCase() }));
 }
+
 
 function setupSearch() {
   const dialog = $("#searchDialog");
@@ -409,43 +470,22 @@ function setupSearch() {
   const index = searchIndex();
   let selected = 0;
   let matches = [];
-
   function draw() {
     const query = input.value.trim().toLowerCase();
     matches = query ? index.filter(item => item.text.includes(query)).slice(0, 12) : index.slice(0, 8);
     selected = 0;
-    results.innerHTML = matches.length ? matches.map((item, i) => `
-      <button class="search-result${i === 0 ? " selected" : ""}" type="button" role="option" aria-selected="${i === 0}" data-search-target="${esc(item.target)}">
-        <span>${esc(item.title)}</span><small>${esc(item.type)}</small>
-      </button>`).join("") : `<div class="search-empty">No matching pages found. Try another keyword.</div>`;
+    results.innerHTML = matches.length ? matches.map((item, i) => `<button class="search-result${i === 0 ? " selected" : ""}" type="button" role="option" aria-selected="${i === 0}" data-search-href="${esc(item.href)}"><span>${esc(item.title)}</span><small>Open page ↗</small></button>`).join("") : `<div class="search-empty">No matching pages found. Try another keyword.</div>`;
   }
   function updateSelected() {
-    $$(".search-result", results).forEach((button, index) => {
-      button.classList.toggle("selected", index === selected);
-      button.setAttribute("aria-selected", String(index === selected));
-      if (index === selected) button.scrollIntoView({ block: "nearest" });
-    });
+    $$(".search-result", results).forEach((button, index) => { button.classList.toggle("selected", index === selected); button.setAttribute("aria-selected", String(index === selected)); if (index === selected) button.scrollIntoView({ block: "nearest" }); });
   }
-  function open() {
-    if (!dialog.open) dialog.showModal();
-    input.value = ""; draw(); input.focus();
-  }
+  function open() { if (!dialog.open) dialog.showModal(); input.value = ""; draw(); input.focus(); }
   function close() { if (dialog.open) dialog.close(); }
-  function navigate(index) {
-    const item = matches[index];
-    if (!item) return;
-    close(); document.getElementById(item.target)?.scrollIntoView({ behavior: "smooth" });
-  }
-
+  function navigate(index) { const item = matches[index]; if (item) { close(); window.location.href = item.href; } }
   $("#searchOpen").addEventListener("click", open);
   $("#searchClose").addEventListener("click", close);
   input.addEventListener("input", draw);
-  results.addEventListener("click", event => {
-    const button = event.target.closest("[data-search-target]");
-    if (!button) return;
-    const target = matches.find(item => item.target === button.dataset.searchTarget);
-    if (target) { close(); document.getElementById(target.target)?.scrollIntoView({ behavior: "smooth" }); }
-  });
+  results.addEventListener("click", event => { const button = event.target.closest("[data-search-href]"); if (!button) return; const target = matches.find(item => item.href === button.dataset.searchHref); if (target) { close(); window.location.href = target.href; } });
   dialog.addEventListener("click", event => { if (event.target === dialog) close(); });
   document.addEventListener("keydown", event => {
     const isTyping = /INPUT|TEXTAREA|SELECT/.test(document.activeElement?.tagName || "");
@@ -456,6 +496,7 @@ function setupSearch() {
     else if (dialog.open && event.key === "Enter") { event.preventDefault(); navigate(selected); }
   });
 }
+
 
 function setupTheme() {
   const root = document.documentElement;
@@ -509,11 +550,6 @@ function setupScrollEffects() {
     }), { threshold: 0.12 });
     $$(".reveal").forEach((element, index) => { element.style.transitionDelay = `${(index % 4) * 45}ms`; revealObserver.observe(element); });
 
-    const links = $$("#navLinks a");
-    const sectionObserver = new IntersectionObserver(entries => entries.forEach(entry => {
-      if (entry.isIntersecting) links.forEach(link => link.classList.toggle("active", link.getAttribute("href") === `#${entry.target.id}`));
-    }), { rootMargin: "-38% 0px -53% 0px" });
-    $$('main section[id]').forEach(section => sectionObserver.observe(section));
   } else {
     $$(".reveal").forEach(element => element.classList.add("is-visible"));
   }
@@ -667,19 +703,20 @@ function setupDirectoryFilters() {
   const grid = $("#alumniGrid");
   const count = $("#alumniCount");
   if (search && year && grid && count) {
-    const cards = $$(".alumni-card", grid);
-    const empty = $(".empty-state", grid);
+    const cards = () => $$(".alumni-card", grid);
     const filter = () => {
       const query = search.value.trim().toLowerCase();
       const selectedYear = year.value;
+      const currentCards = cards();
       let visible = 0;
-      cards.forEach(card => {
+      currentCards.forEach(card => {
         const matches = (!query || card.dataset.search.includes(query)) && (!selectedYear || card.dataset.year === selectedYear);
         card.hidden = !matches; if (matches) visible++;
       });
       count.textContent = `${visible} profile${visible === 1 ? "" : "s"}`;
-      if (empty && cards.length) empty.hidden = visible > 0;
-      if (!visible && cards.length) {
+      const empty = $(".empty-state", grid);
+      if (empty && currentCards.length) empty.hidden = visible > 0;
+      if (!visible && currentCards.length) {
         let noMatch = $(".no-alumni-match", grid);
         if (!noMatch) { noMatch = document.createElement("div"); noMatch.className = "empty-state no-alumni-match"; noMatch.innerHTML = "<strong>No matching alumni found.</strong>Try another name or graduation year."; grid.append(noMatch); }
         noMatch.hidden = false;
@@ -714,6 +751,32 @@ function setupDirectoryFilters() {
     publicationSearch.addEventListener("input", filter);
     publicationYear.addEventListener("change", filter);
   }
+
+  const toolSearch = $("#toolSearch");
+  const toolCategory = $("#toolCategory");
+  const toolGrid = $("#softwareGrid");
+  const toolCount = $("#toolCount");
+  if (toolSearch && toolCategory && toolGrid && toolCount) {
+    const tools = $$(".tool-card", toolGrid);
+    const filterTools = () => {
+      const query = toolSearch.value.trim().toLowerCase();
+      const category = toolCategory.value;
+      let visible = 0;
+      tools.forEach(card => {
+        const matches = (!query || card.dataset.search.includes(query)) && (!category || card.dataset.category === category);
+        card.hidden = !matches;
+        if (matches) visible++;
+      });
+      toolCount.textContent = `${visible} tool${visible === 1 ? "" : "s"}`;
+      let empty = $(".no-tool-match", toolGrid);
+      if (!visible) {
+        if (!empty) { empty = document.createElement("div"); empty.className = "empty-state no-tool-match"; empty.innerHTML = "<strong>No matching tools.</strong> Try a different keyword or workflow."; toolGrid.append(empty); }
+        empty.hidden = false;
+      } else if (empty) empty.hidden = true;
+    };
+    toolSearch.addEventListener("input", filterTools);
+    toolCategory.addEventListener("change", filterTools);
+  }
 }
 
 async function submitNetlifyForm(form) {
@@ -742,14 +805,224 @@ async function submitNetlifyForm(form) {
   }
 }
 
+function supabaseConfigured() {
+  const config = SITE.backend || {};
+  return /^https:\/\/[\w-]+\.supabase\.co$/i.test(config.supabaseUrl || "") &&
+    !!config.supabasePublishableKey && !String(config.supabasePublishableKey).includes("YOUR_");
+}
+
+let supabasePromise;
+async function getSupabaseClient() {
+  if (!supabaseConfigured()) return null;
+  if (!supabasePromise) {
+    supabasePromise = import("https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm").then(({ createClient }) =>
+      createClient(SITE.backend.supabaseUrl, SITE.backend.supabasePublishableKey, {
+        auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true }
+      })
+    );
+  }
+  return supabasePromise;
+}
+
+function getAlumniPayload(form) {
+  const data = new FormData(form);
+  const checked = name => data.get(name) === "true";
+  return {
+    name: String(data.get("name") || "").trim(),
+    email: String(data.get("email") || "").trim(),
+    degree: String(data.get("degree") || "").trim(),
+    graduation_year: String(data.get("graduation_year") || "").trim(),
+    current_role: String(data.get("current_role") || "").trim(),
+    organisation: String(data.get("organisation") || "").trim(),
+    location: String(data.get("location") || "").trim(),
+    research: String(data.get("research") || "").trim(),
+    profile_url: safeUrl(data.get("profile_url")),
+    linkedin: safeUrl(data.get("linkedin")),
+    photo_url: safeUrl(data.get("photo_url")),
+    consent_contact: checked("consent_contact"),
+    consent_public: checked("consent_public")
+  };
+}
+
+async function submitAlumniForm(form) {
+  const status = $(".form-status", form);
+  const button = $("button[type='submit']", form);
+  const originalText = button?.textContent || "Submit";
+  if (button) { button.disabled = true; button.textContent = "Submitting…"; }
+  if (status) status.textContent = "Sending your profile securely for review…";
+  try {
+    const client = await getSupabaseClient();
+    if (client) {
+      const payload = getAlumniPayload(form);
+      if (!payload.name || !payload.email || !payload.consent_contact) throw new Error("Please complete the required fields and consent.");
+      const { error } = await client.from("alumni_submissions").insert(payload);
+      if (error) throw error;
+      form.reset();
+      if (status) status.textContent = "Thank you. Your profile has been sent to the PI Dashboard for review. It will not be published automatically.";
+    } else {
+      throw new Error("The secure alumni database is not configured yet. Please contact the laboratory by email; the profile form will be enabled after the PI Dashboard connection is configured.");
+    }
+  } catch (error) {
+    console.error("Alumni submission:", error);
+    if (status) status.textContent = `Submission failed: ${error.message || "Please try again or email the laboratory."}`;
+  } finally {
+    if (button) { button.disabled = false; button.textContent = originalText; }
+  }
+}
+
 function setupForms() {
   document.addEventListener("submit", event => {
     const form = event.target.closest("#contactForm, #alumniForm");
     if (!form) return;
     event.preventDefault();
     if (!form.reportValidity()) return;
-    submitNetlifyForm(form);
+    if (form.id === "alumniForm") submitAlumniForm(form);
+    else submitNetlifyForm(form);
   });
+}
+
+
+async function loadPublicAlumni() {
+  const grid = $("#alumniGrid");
+  if (!grid) return;
+  try {
+    const client = await getSupabaseClient();
+    if (!client) return; // Static, manually curated profiles remain as a fallback.
+    const { data, error } = await client.from("alumni_submissions")
+      .select("id,name,degree,graduation_year,current_role,organisation,location,research,profile_url,linkedin,photo_url")
+      .eq("status", "approved").eq("consent_public", true).order("graduation_year", { ascending: false });
+    if (error) throw error;
+    const profiles = data || [];
+    grid.innerHTML = profiles.length ? profiles.map(row => alumniCard({
+      name: row.name, degree: row.degree, graduationYear: row.graduation_year,
+      currentRole: row.current_role, organisation: row.organisation, location: row.location,
+      research: row.research, profileUrl: row.profile_url, linkedin: row.linkedin, photo: row.photo_url
+    })).join("") : `<div class="empty-state"><strong>No alumni profiles have been published yet.</strong>Approved profiles with publication consent will appear here.</div>`;
+    const yearSelect = $("#alumniYear");
+    const years = [...new Set(profiles.map(row => String(row.graduation_year || "")).filter(Boolean))].sort((a,b)=>b.localeCompare(a));
+    if (yearSelect) yearSelect.innerHTML = `<option value="">All graduation years</option>${years.map(year => `<option value="${esc(year)}">${esc(year)}</option>`).join("")}`;
+    const count = $("#alumniCount");
+    if (count) count.textContent = `${profiles.length} profile${profiles.length === 1 ? "" : "s"}`;
+    $("#alumniSearch")?.dispatchEvent(new Event("input", { bubbles: true }));
+  } catch (error) {
+    console.error("Public alumni directory:", error);
+    const note = document.createElement("p");
+    note.className = "privacy-note";
+    note.textContent = "The live alumni directory could not be loaded. Please check the database connection.";
+    grid.before(note);
+  }
+}
+
+function dashboardNotice(message, type = "info") {
+  const root = $("#piDashboardRoot");
+  if (root) root.innerHTML = `<div class="dashboard-state ${type}"><h2>${type === "error" ? "Dashboard notice" : "Dashboard setup"}</h2><p>${esc(message)}</p></div>`;
+}
+
+async function setupPIDashboard() {
+  const root = $("#piDashboardRoot");
+  if (!root) return;
+  if (!supabaseConfigured()) {
+    dashboardNotice("Supabase is not configured yet. Add your Supabase project URL and publishable (anon) key in assets/js/content.js, run the SQL in supabase/alumni-schema.sql, then create the PI account in Supabase Authentication. Do not put a service-role key in website code.");
+    return;
+  }
+  let client;
+  try { client = await getSupabaseClient(); }
+  catch (error) { dashboardNotice(`Could not initialise the authentication service: ${error.message}`, "error"); return; }
+
+  const adminEmail = String(SITE.backend.piAdminEmail || "").trim().toLowerCase();
+  const showLogin = () => {
+    root.innerHTML = `<div class="dashboard-login"><div class="dashboard-login-copy"><span class="section-kicker">Restricted access</span><h2>PI sign in</h2><p>Use the authorised Principal Investigator account. Public alumni submissions remain private until reviewed.</p><p class="privacy-note">Access is enforced by Supabase authentication and database policies, not by hiding this page.</p></div><form id="piLoginForm" class="contact-form"><label>PI email<input name="email" type="email" autocomplete="username" required value="${esc(adminEmail)}"></label><label>Password<input name="password" type="password" autocomplete="current-password" required></label><button class="btn" type="submit">Sign in securely ↗</button><p class="form-status" role="status" aria-live="polite"></p></form></div>`;
+    $("#piLoginForm", root).addEventListener("submit", async event => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      const status = $(".form-status", form);
+      const button = $("button[type=submit]", form);
+      button.disabled = true; status.textContent = "Authenticating…";
+      try {
+        const formData = new FormData(form);
+        const email = String(formData.get("email") || "").trim().toLowerCase();
+        if (email !== adminEmail) throw new Error("This email is not authorised for the PI dashboard.");
+        const { data, error } = await client.auth.signInWithPassword({ email, password: String(formData.get("password") || "") });
+        if (error) throw error;
+        if ((data.user?.email || "").toLowerCase() !== adminEmail) { await client.auth.signOut(); throw new Error("The signed-in account is not the authorised PI account."); }
+        await showDashboard(data.user);
+      } catch (error) {
+        status.textContent = error.message || "Sign in failed. Check your credentials.";
+        button.disabled = false;
+      }
+    });
+  };
+
+  const showDashboard = async user => {
+    if ((user?.email || "").toLowerCase() !== adminEmail) { await client.auth.signOut(); showLogin(); return; }
+    root.innerHTML = `<div class="dashboard-toolbar"><div><span class="section-kicker">Authenticated as ${esc(user.email)}</span><h2>Alumni submissions</h2><p>Review, edit, approve or reject profiles. Only approved records with explicit publication consent are shown publicly.</p></div><div class="dashboard-toolbar-actions"><button class="btn btn-secondary btn-small" id="refreshAlumni">Refresh</button><button class="btn btn-secondary btn-small" id="piLogout">Sign out</button></div></div><div class="dashboard-stats" id="dashboardStats"></div><div class="directory-tools"><input class="control-input" id="adminAlumniSearch" type="search" placeholder="Search name, email, institution…"><select class="control-select" id="adminAlumniStatus"><option value="all">All submissions</option><option value="pending">Pending</option><option value="approved">Approved</option><option value="rejected">Rejected</option></select></div><p class="form-status" id="dashboardStatus" role="status" aria-live="polite"></p><div class="admin-submission-list" id="adminSubmissionList"><div class="dashboard-state"><p>Loading records…</p></div></div>`;
+    $("#piLogout",root).addEventListener("click", async()=>{await client.auth.signOut(); showLogin();});
+    $("#refreshAlumni",root).addEventListener("click", loadRows);
+    $("#adminAlumniSearch",root).addEventListener("input", applyFilters);
+    $("#adminAlumniStatus",root).addEventListener("change", applyFilters);
+
+    let records=[];
+    async function loadRows() {
+      const list = $("#adminSubmissionList",root);
+      list.innerHTML = `<div class="dashboard-state"><p>Refreshing submissions…</p></div>`;
+      const { data, error } = await client.from("alumni_submissions").select("*").order("created_at",{ascending:false});
+      if(error){ list.innerHTML = `<div class="dashboard-state error"><p>${esc(error.message)}</p></div>`; return; }
+      records = data || [];
+      const totals = {pending:0,approved:0,rejected:0}; records.forEach(record=>{totals[record.status]=(totals[record.status]||0)+1;});
+      $("#dashboardStats",root).innerHTML = `<div><strong>${records.length}</strong><span>Total</span></div><div><strong>${totals.pending||0}</strong><span>Pending</span></div><div><strong>${totals.approved||0}</strong><span>Approved</span></div><div><strong>${totals.rejected||0}</strong><span>Rejected</span></div>`;
+      applyFilters();
+    }
+    function applyFilters() {
+      const query = $("#adminAlumniSearch",root)?.value.trim().toLowerCase() || "";
+      const status = $("#adminAlumniStatus",root)?.value || "all";
+      const filtered = records.filter(row => (status === "all" || row.status === status) && (!query || [row.name,row.email,row.degree,row.graduation_year,row.current_role,row.organisation,row.location,row.research].join(" ").toLowerCase().includes(query)));
+      const list = $("#adminSubmissionList",root);
+      list.innerHTML = filtered.length ? filtered.map(row=>renderAdminRecord(row)).join("") : `<div class="empty-state"><strong>No matching submissions.</strong>Try another filter.</div>`;
+    }
+    function renderAdminRecord(row) {
+      const status = row.status || "pending";
+      return `<article class="admin-record" data-admin-id="${esc(row.id)}"><div class="admin-record-head"><div><span class="status-pill status-${esc(status)}">${esc(status)}</span><h3>${esc(row.name)}</h3><p>${esc(row.email)} · ${esc(row.degree || "Degree not supplied")} · ${esc(row.graduation_year || "Year not supplied")}</p></div><time>${row.created_at ? esc(new Date(row.created_at).toLocaleString()) : ""}</time></div><div class="admin-record-grid"><p><b>Current role</b>${esc(row.current_role || "—")}</p><p><b>Organisation</b>${esc(row.organisation || "—")}</p><p><b>Location</b>${esc(row.location || "—")}</p><p><b>Publication consent</b>${row.consent_public ? "Yes" : "No — keep private"}</p><p class="full"><b>Research / thesis</b>${esc(row.research || "—")}</p><p class="full"><b>Links</b>${row.profile_url ? externalLink("Professional profile",row.profile_url,"text-link") : "—"} ${row.linkedin ? externalLink("LinkedIn",row.linkedin,"text-link") : ""}</p></div><div class="admin-actions"><button class="btn btn-small" data-admin-action="approve" data-id="${esc(row.id)}">Approve</button><button class="btn btn-secondary btn-small" data-admin-action="reject" data-id="${esc(row.id)}">Reject</button><button class="btn btn-secondary btn-small" data-admin-action="edit" data-id="${esc(row.id)}">Edit</button><button class="btn btn-danger btn-small" data-admin-action="delete" data-id="${esc(row.id)}">Delete</button></div><div class="admin-edit-slot" id="edit-${esc(row.id)}" hidden></div></article>`;
+    }
+    $("#adminSubmissionList",root).addEventListener("click", async event=>{
+      const button=event.target.closest("[data-admin-action]"); if(!button)return;
+      const id=button.dataset.id; const row=records.find(item=>String(item.id)===String(id)); if(!row)return;
+      const action=button.dataset.adminAction; const statusNode=$("#dashboardStatus",root);
+      if(action==="edit"){
+        const slot=$("#edit-"+CSS.escape(id),root); slot.hidden=false;
+        slot.innerHTML=`<form class="admin-edit-form" data-edit-form="${esc(id)}"><label>Name<input name="name" value="${esc(row.name)}" required></label><label>Email<input name="email" type="email" value="${esc(row.email)}" required></label><label>Degree<input name="degree" value="${esc(row.degree||"")}"></label><label>Graduation year<input name="graduation_year" value="${esc(row.graduation_year||"")}"></label><label>Current role<input name="current_role" value="${esc(row.current_role||"")}"></label><label>Organisation<input name="organisation" value="${esc(row.organisation||"")}"></label><label>Location<input name="location" value="${esc(row.location||"")}"></label><label>Profile URL<input name="profile_url" value="${esc(row.profile_url||"")}"></label><label>LinkedIn<input name="linkedin" value="${esc(row.linkedin||"")}"></label><label>Photo URL<input name="photo_url" value="${esc(row.photo_url||"")}"></label><label class="full">Research<textarea name="research">${esc(row.research||"")}</textarea></label><label class="consent-row"><input type="checkbox" name="consent_public" ${row.consent_public?"checked":""} ${row.consent_public?"":"disabled"}> Public display consent recorded</label><div class="full"><button class="btn btn-small" type="submit">Save changes</button><button class="btn btn-secondary btn-small" type="button" data-cancel-edit>Cancel</button></div></form>`;
+        return;
+      }
+      if(action==="delete" && !confirm(`Permanently delete the submission from ${row.name}?`))return;
+      if(action==="approve" && !row.consent_public && !confirm("This person has not consented to public display. Approve for internal records only? Their profile will remain hidden from the public directory."))return;
+      button.disabled=true;
+      try{
+        if(action==="delete"){
+          const {error}=await client.from("alumni_submissions").delete().eq("id",id); if(error)throw error;
+        }else{
+          const {error}=await client.from("alumni_submissions").update({status:action==="approve"?"approved":"rejected",updated_at:new Date().toISOString()}).eq("id",id); if(error)throw error;
+        }
+        statusNode.textContent= action==="delete" ? "Submission deleted." : (action === "approve" ? "Submission approved." : "Submission rejected.");
+        await loadRows();
+      }catch(error){statusNode.textContent=`Action failed: ${error.message}`;button.disabled=false;}
+    });
+    $("#adminSubmissionList",root).addEventListener("click",event=>{
+      if(event.target.closest("[data-cancel-edit]")){const slot=event.target.closest(".admin-edit-slot");slot.hidden=true;slot.innerHTML="";}
+    });
+    $("#adminSubmissionList",root).addEventListener("submit",async event=>{
+      const form=event.target.closest("[data-edit-form]");if(!form)return;event.preventDefault();
+      const id=form.dataset.editForm;const data=new FormData(form);const text=k=>String(data.get(k)||"").trim();
+      const updates={name:text("name"),email:text("email"),degree:text("degree"),graduation_year:text("graduation_year"),current_role:text("current_role"),organisation:text("organisation"),location:text("location"),profile_url:safeUrl(text("profile_url"))||"",linkedin:safeUrl(text("linkedin"))||"",photo_url:safeUrl(text("photo_url"))||"",research:text("research"),consent_public:data.get("consent_public")==="on",updated_at:new Date().toISOString()};
+      const statusNode=$("#dashboardStatus",root);
+      try{const {error}=await client.from("alumni_submissions").update(updates).eq("id",id);if(error)throw error;statusNode.textContent="Profile updated.";await loadRows();}catch(error){statusNode.textContent=`Could not save changes: ${error.message}`;}
+    });
+    await loadRows();
+  };
+
+  try {
+    const { data: { session } } = await client.auth.getSession();
+    if (session?.user?.email?.toLowerCase() === adminEmail) await showDashboard(session.user);
+    else { if (session) await client.auth.signOut(); showLogin(); }
+  } catch (error) { dashboardNotice(`Could not load the PI session: ${error.message}`, "error"); }
 }
 
 function setupCopyCitation() {
@@ -797,4 +1070,3 @@ function initialise() {
   setupImageFallbacks();
 }
 
-initialise();

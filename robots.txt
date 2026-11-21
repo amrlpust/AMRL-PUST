@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /pi-dashboard.html
+Sitemap: https://amrllab.netlify.app/sitemap.xml
