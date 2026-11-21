@@ -1,0 +1,7 @@
+{
+  "name": "amrl-future-ready-website",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Modular static website for the Advanced Materials Research Laboratory, PUST"
+}
