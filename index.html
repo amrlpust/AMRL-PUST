@@ -334,6 +334,27 @@ body.light .pal-box{background:#fff;color:#101936}
   .edit-fields{grid-template-columns:1fr}.array-item{grid-template-columns:1fr}.editor-content{padding:15px}.editor-top{padding:14px}
 }
 @media(max-width:560px){#research .grid{grid-template-columns:1fr}}
+  /* PERSONAL WEBSITE BUTTON */
+.profile-links .personal-website {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 10px;
+  padding: 9px 16px;
+  border-radius: 8px;
+  background: #eaf2ff;
+  color: #1557a6;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid #c9dcff;
+  transition: 0.25s ease;
+}
+
+.profile-links .personal-website:hover {
+  background: #1557a6;
+  color: #fff;
+  transform: translateY(-2px);
+}
 </style>
 </head>
 
@@ -436,15 +457,19 @@ const link=(label,url)=>url
   ?`<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${label}</a>`
   :'';
 
+
 function profileLinks(x){
   return `<div class="profile-links">
-    ${link('Personal Website',x.website)}
+    ${x.website ? `<a class="personal-website" href="${x.website}" target="_blank" rel="noopener noreferrer">
+      <span>🌐 Personal Website ↗</span>
+    </a>` : ''}
     ${link('Google Scholar',x.scholar)}
     ${link('ORCID',x.orcid)}
     ${link('ResearchGate',x.researchgate)}
     ${link('LinkedIn',x.linkedin)}
   </div>`;
 }
+
 
 function imageOrInitials(src,name,cls){
   if(!src){
