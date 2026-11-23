@@ -8,7 +8,18 @@ const RM=matchMedia("(prefers-reduced-motion:reduce)").matches,CO=matchMedia("(p
 let mx=innerWidth/2,my=innerHeight/2,cx=mx,cy=my;
 const ph=s=>/\[/.test(s||"");                       /* "[Name]" jaygar placeholder site e dekhabe na */
 const ini=n=>{const w=String(n||"A").replace(/[\[\]]/g,"").split(/\s+/).filter(x=>x&&!/^(md\.?|dr\.?|mr\.?|mrs\.?|ms\.?|prof\.?)$/i.test(x));return((w[0]||"A")[0]+(w.length>1?w[w.length-1][0]:"")).toUpperCase()};
-const img=(src,n,c)=>src?`<img class="${c}" src="${esc(src)}" alt="${esc(n)}" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ini ${c}',textContent:'${esc(ini(n))}'}))">`:`<div class="ini ${c}">${esc(ini(n))}</div>`;
+const photoPath = src => {
+ const raw=String(src||"").trim().replace(/\\/g,"/");
+ if(!raw)return "";
+ if(/^https?:\/\//i.test(raw))return raw;
+ // All local portraits are served from the repository root's photos/ directory.
+ const clean=raw.replace(/^\.\//,"").replace(/^\/+/,"");
+ return clean.split("/").map(part=>encodeURIComponent(decodeURIComponent(part))).join("/");
+};
+const img=(src,n,c)=>{
+ const path=photoPath(src),fallback=`<div class="ini ${c}" role="img" aria-label="${esc(n)}">${esc(ini(n))}</div>`;
+ return path?`<img class="${c}" src="${esc(path)}" alt="${esc(n)}" loading="${c==="portrait"?"eager":"lazy"}" decoding="async" onerror="this.outerHTML='<div class=\"ini ${c}\" role=\"img\" aria-label=\"${esc(n)}\">${esc(ini(n))}</div>'">`:fallback;
+};
 const ul=a=>`<ul class="cl">${(a||[]).map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`;
 const links=x=>{const L=[["Personal website",x.website],["Google Scholar",x.scholar],["ORCID",x.orcid],["ResearchGate",x.researchgate],["LinkedIn",x.linkedin]].filter(l=>l[1]);return L.length?`<div class="chips">${L.map(l=>`<a href="${esc(l[1])}" target="_blank" rel="noopener noreferrer">${esc(l[0])}</a>`).join("")}</div>`:""};
 const head=(k,t)=>`<h2 class="sh" data-r><small>${esc(k)}</small><span class="sc">${esc(t)}</span></h2>`;
@@ -41,11 +52,8 @@ SEC.push(d=>`<section class="s" id="materials"><div class="wrap">${head("Materia
 /* 6 PEOPLE */
 const tagsOf=x=>String(x.interest||"").replace(/^\s*research interests?\s*:?\s*/i,"").split(/,\s*(?:and\s+)?/).map(t=>t.trim().replace(/\.$/,"")).filter(Boolean);
 const person=(x,i)=>{const t=tagsOf(x),L=links(x),tg=s=>`<span class="tag">${esc(s)}</span>`;
- const web=x.website?`<a class="personal-link" href="${esc(x.website)}" target="_blank" rel="noopener noreferrer">Personal website ↗</a>`:"";
- return`<article class="sp tilt person" data-r style="--d:${i%4}">${img(x.photo,x.name,"pph")}<div class="pbody"><h3>${esc(x.name)}</h3><p class="person-role">${esc(x.role)}</p><div class="tags">${t.map(tg).join("")}</div><div class="person-links">${web}${L}</div></div></article>`};
+ return`<article class="sp tilt person" data-r style="--d:${i%4}"><div class="person-visual">${img(x.photo,x.name,"pph")}<span class="person-orbit" aria-hidden="true"></span></div><div class="pbody"><div class="person-role">${esc(x.role||"AMRL member")}</div><h3>${esc(x.name)}</h3><div class="tags">${t.map(tg).join("")}</div>${L}</div></article>`};
 SEC.push(d=>{const pp=d.people.filter(x=>!ph(x.name));return`<section class="s" id="people"><div class="wrap">${head("People","Our team")}${[...new Set(pp.map(x=>x.role))].map(r=>{const l=pp.filter(x=>x.role===r);return`<h3 class="prole" data-r>${esc(r)} <span class="n">${String(l.length).padStart(2,"0")}</span></h3><div class="pgrid">${l.map(person).join("")}</div>`}).join("")}</div></section>`});
-/* 6B ALUMNI NETWORK */
-SEC.push(d=>{const aa=(d.alumni||[]).filter(x=>!ph(x.name));return`<section class="s alt" id="alumni"><div class="wrap">${head("Alumni network","Our alumni")}${aa.length?`<div class="pgrid">${aa.map((x,i)=>person({...x,role:x.role||"AMRL Alumni"},i)).join("")}</div>`:`<div class="alumni-empty sp" data-r><div class="alumni-mark">A</div><div><h3>Once AMRL, always connected.</h3><p>We are building a verified directory of former AMRL researchers and graduates. Alumni profiles will appear here as details are confirmed.</p><a class="personal-link" href="mailto:${esc(d.contact.email)}?subject=AMRL%20Alumni%20Profile">Share an alumni update ↗</a></div></div>`}</div></section>`});
 /* 7 PUBLICATIONS */
 SEC.push(d=>{const ys=[...new Set(d.publications.map(x=>x.year))].sort().reverse(),n=y=>d.publications.filter(x=>x.year===y).length,m=Math.max(...ys.map(n));
 return`<section class="s alt" id="publications"><div class="wrap">${head("Publications","Selected publications")}
@@ -100,18 +108,9 @@ function ld(){let e=$("ld");if(!e){e=document.createElement("script");e.id="ld";
  const sa=p=>[p.scholar,p.orcid,p.researchgate,p.linkedin,p.website].filter(Boolean);
  e.textContent=JSON.stringify({"@context":"https://schema.org","@graph":[{"@type":"ResearchOrganization","@id":D.site.url+"#org","name":D.site.title,"url":D.site.url,"email":D.contact.email,"member":D.people.filter(p=>!ph(p.name)).map(p=>({"@type":"Person","name":p.name,"jobTitle":p.role,"sameAs":sa(p)})),"employee":{"@type":"Person","name":D.pi.name,"jobTitle":"Principal Investigator","sameAs":sa(D.pi)}},
   ...D.publications.filter(p=>p.doi).map(p=>({"@type":"ScholarlyArticle","headline":p.title,"datePublished":p.year,"identifier":"https://doi.org/"+p.doi,"isPartOf":{"@type":"Periodical","name":p.journal},"author":p.authors.replace(/\*/g,"").split(/,\s*(?:and\s+)?/).filter(Boolean).map(n=>({"@type":"Person","name":n}))}))]})}
-function renderNotifications(){
- const panel=$("notifyPanel"),items=$("notifyItems"),btn=$("notifyBtn"),count=$("notifyCount");
- if(!panel||!items||!btn)return;
- const news=(D.news||[]).slice(0,5);count.textContent=String(news.length);count.hidden=!news.length;
- items.innerHTML=news.map((x,i)=>`<article class="notify-item"><span class="notify-index">${String(i+1).padStart(2,"0")}</span><div><small>${esc(x.date)}</small><h4>${esc(x.title)}</h4><p>${esc(x.details)}</p></div></article>`).join("")||'<p class="empty">No notifications yet.</p>';
- btn.onclick=()=>{panel.hidden=!panel.hidden;btn.setAttribute("aria-expanded",String(!panel.hidden))};
- $("notifyClose").onclick=()=>{panel.hidden=true;btn.setAttribute("aria-expanded","false")};
- panel.querySelector(".notify-all").onclick=()=>{panel.hidden=true;btn.setAttribute("aria-expanded","false")};
-}
 function render(){$("site").innerHTML=SEC.map(s=>s(D)).join("");$("yr").textContent=new Date().getFullYear();$("ml").href=D.site.portal;
- renderNotifications();
  startLatticeSim();startTicker();pubList();initMaterials();initSims();ld();reveal();Q("main section").forEach(s=>spy.observe(s))}
+document.addEventListener("click",e=>{const b=e.target.closest(".more-btn");if(!b)return;const o=b.closest(".person").classList.toggle("open");b.setAttribute("aria-expanded",o);b.textContent=o?"See less":"See more"});
 
 /* theme + scroll progress + self-drawing timelines */
 const root=document.documentElement;let sv=null;try{sv=localStorage.getItem("theme")}catch(e){}
@@ -130,7 +129,7 @@ document.addEventListener("pointerout",e=>{const t=e.target.closest?.(".tilt,.bt
 if(!CO&&!RM){const cu=$("cur");(function L(){cx+=(mx-cx)*.12;cy+=(my-cy)*.12;cu.style.transform=`translate(${cx}px,${cy}px)`;requestAnimationFrame(L)})()}
 
 /* command palette (Ctrl/Cmd+K or /) */
-const SECS=[["home","Home"],["about","About"],["pi","Principal Investigator"],["research","Research"],["materials","Materials"],["people","People"],["alumni","Alumni"],["publications","Publications"],["facilities","Facilities"],["news","News"],["opportunities","Opportunities"],["contact","Contact"]];
+const SECS=[["home","Home"],["about","About"],["pi","Principal Investigator"],["research","Research"],["materials","Materials"],["people","People"],["publications","Publications"],["facilities","Facilities"],["news","News"],["opportunities","Opportunities"],["contact","Contact"]];
 const go=id=>()=>{const e=$(id);e&&e.scrollIntoView()};
 const palData=()=>[...SECS.map(([id,t])=>({t,k:"Section",go:go(id)})),{t:"Toggle theme",k:"Action",go:()=>$("theme").click()},{t:"Member login",k:"Action",go:()=>open(D.site.portal,"_blank","noopener")},
  ...D.people.filter(x=>!ph(x.name)).map(x=>({t:x.name,k:"Person",go:go("people")})),...D.research.map(x=>({t:x.title,k:"Research",go:go("research")})),...D.software.map(x=>({t:x.name,k:"Software",go:go("facilities")})),
@@ -139,8 +138,7 @@ const pal=$("pal"),pin=$("pin");let pn=0,pv=[];
 function pr(){const q=pin.value.trim().toLowerCase();pv=palData().filter(c=>(c.t+" "+c.k).toLowerCase().includes(q)).slice(0,10);pn=Math.min(pn,Math.max(0,pv.length-1));
  $("pl").innerHTML=pv.map((c,i)=>`<li class="${i===pn?"on":""}" data-i="${i}">${esc(c.t.length>80?c.t.slice(0,80)+"…":c.t)}<small>${esc(c.k)}</small></li>`).join("")||'<li class="empty">No match</li>'}
 const op=o=>{pal.hidden=!o;if(o){pin.value="";pn=0;pr();pin.focus()}},run=i=>{const c=pv[i];if(c){op(false);c.go()}};
-addEventListener("keydown",e=>{if(e.key==="Escape"&&$("notifyPanel")&&!$("notifyPanel").hidden){$("notifyPanel").hidden=true;$("notifyBtn")?.setAttribute("aria-expanded","false")}
- const typing=/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
+addEventListener("keydown",e=>{const typing=/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
  if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==="k"){e.preventDefault();op(pal.hidden)}else if(e.key==="/"&&!typing&&pal.hidden){e.preventDefault();op(true)}
  else if(!pal.hidden){if(e.key==="Escape")op(false);else if(e.key==="ArrowDown"){e.preventDefault();pn=Math.min(pv.length-1,pn+1);pr()}else if(e.key==="ArrowUp"){e.preventDefault();pn=Math.max(0,pn-1);pr()}else if(e.key==="Enter")run(pn)}});
 pin.oninput=()=>{pn=0;pr()};$("pl").onclick=e=>{const l=e.target.closest("li[data-i]");if(l)run(+l.dataset.i)};pal.onclick=e=>{if(e.target===pal)op(false)};$("kb").onclick=()=>op(true);

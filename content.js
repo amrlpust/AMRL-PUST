@@ -209,7 +209,7 @@ const LAB = {
       "name": "Md. Emon Hassan",
       "role": "MS Students",
       "interest": "Research interests: Condensed Matter Physics, Computational Materials Science, DFT, Hydrogen Storage, Thermoelectric Materials",
-      "photo": "photos/Emon.png",
+      "photo": "photos/emon.jpg",
       "website": "https://emonhassan02.github.io/Profile/",
       "scholar": "https://scholar.google.com/citations?user=D8O3IMoAAAAJ",
       "orcid": "https://orcid.org/0009-0009-6252-3038",
@@ -467,9 +467,6 @@ const LAB = {
       "description": "Hands-on training in DFT, scientific computing and technical writing."
     }
   ],
-
-  /* ---- ALUMNI NETWORK: add verified former members here ---- */
-  "alumni": [],
 
   /* ---- SECTION 11 · CONTACT ---- */
   "contact": {

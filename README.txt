@@ -1,32 +1,59 @@
-AMRL ADVANCED WEBSITE PACKAGE
-==============================
+AMRL ADVANCED WEBSITE — INSTALLATION
+====================================
 
-Files:
-- index.html: page structure, SEO metadata, notification panel shell.
-- style.css: responsive visual system, portrait glow, notification panel and alumni styling.
-- content.js: editable laboratory content, people, alumni, publications, news.
-- script.js: rendering, search, publications, member profiles, live notifications.
-- lab.js: crystal lattice, periodic table and interactive simulations.
-- og-image.png: social sharing image.
-- robots.txt, sitemap.xml, Google verification file: retain for search indexing.
+WHAT IS INCLUDED
+----------------
+index.html       Main page and navigation
+style.css        Redesigned responsive visual system
+content.js       All AMRL text, people, photo paths, publications and news
+script.js        Website rendering, animations, search, materials table and editor
+lab.js           Interactive scientific visualisations
+photos/          Put all real member photographs in this folder
+og-image.png     Social sharing preview image
+robots.txt       Search engine crawling rules
+sitemap.xml      Sitemap
 
-UPDATES INCLUDED
-- Advanced visual treatment while preserving the existing AMRL identity and colour direction.
-- Full member research-interest tags and profile links are visible immediately; no "See more" control.
-- Individual member portraits have a soft animated glow.
-- Latest laboratory update card on the homepage.
-- Header notification bell opens a live latest-news panel.
-- Alumni section and editable alumni directory are included.
-- Alumni names have deliberately not been invented. Add verified former members to the "alumni" array in content.js.
-- Alumni can be added from the website editor at https://amrllab.netlify.app/#edit (after deployment).
+PHOTO CONNECTION — IMPORTANT
+-----------------------------
+The website is configured to load local portraits from the repository-root photos/
+folder. The content file already expects these exact filenames:
 
-DEPLOY
-1. Extract this ZIP.
-2. Upload/replace index.html, style.css, content.js, script.js, lab.js and supporting SEO files in the same GitHub repository root.
-3. Keep your existing photos/ folder and all original photo files; this upload does not include those photos.
-4. Commit/push. Netlify should deploy automatically.
-5. Test desktop and mobile navigation, notifications, member photos, and the #edit content editor.
+photos/560c403188c84f3ad7a5b90e44824c9b.jpg  Principal Investigator
+photos/riad.jpeg                              Md. Riad Khan
+photos/emon.jpg                               Md. Emon Hassan
+photos/hidoy13.jpeg                           Md. Redwan Alam Hridoy
 
-IMPORTANT
-- The existing photos/ paths in content.js are preserved. Keep the photos/ folder in your repository.
-- The current News entries and publication details were preserved as supplied; update dates/details in content.js when new verified information is available.
+The original photo files were not included in the uploaded source package available
+for this update. Therefore, copy/restore those actual image files into photos/ from
+your old local backup or an earlier GitHub commit. The website code and paths are
+ready; it cannot display a deleted photo file until that file is restored. If a photo
+is missing, the page safely displays the person's initials instead of a broken image.
+
+HOW TO PUBLISH ON GITHUB + NETLIFY
+----------------------------------
+1. Download and extract this ZIP.
+2. Open your GitHub repository.
+3. Upload/replace all files and folders from the extracted package at the repository
+   root. Do not upload the outer folder as an extra nested directory.
+4. Make sure the photos folder is also uploaded, containing the four image files
+   listed above (when you have restored them).
+5. Commit the changes. Netlify should deploy automatically if it is connected to this
+   repository.
+6. Open https://amrllab.netlify.app/ and hard-refresh with Ctrl+Shift+R.
+
+IMAGE PATH RULES
+----------------
+- Keep the folder name exactly: photos
+- Match filename spelling and capitalisation exactly.
+- For a new member, upload their image to photos/ and set their photo value in
+  content.js, for example: "photo": "photos/new-member.jpg"
+- Do not use a Windows local path such as C:\\Users\\... in content.js.
+
+EDITING CONTENT
+---------------
+Open the website URL with #edit at the end to open the in-page editor. Preview the
+changes, download content.js, then replace the repository's content.js and commit.
+
+The redesign keeps the existing AMRL content, scientific simulations, periodic table,
+publication search, theme switcher and editor. People cards now show all research tags
+and available profile links directly without a hidden “See more” step.
