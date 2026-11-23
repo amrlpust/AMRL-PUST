@@ -209,7 +209,7 @@ const LAB = {
       "name": "Md. Emon Hassan",
       "role": "MS Students",
       "interest": "Research interests: Condensed Matter Physics, Computational Materials Science, DFT, Hydrogen Storage, Thermoelectric Materials",
-      "photo": "photos/emon.jpg",
+      "photo": "photos/Emon.png",
       "website": "https://emonhassan02.github.io/Profile/",
       "scholar": "https://scholar.google.com/citations?user=D8O3IMoAAAAJ",
       "orcid": "https://orcid.org/0009-0009-6252-3038",
