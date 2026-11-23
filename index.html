@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AMRL — Advanced Materials Research Laboratory, PUST</title>
+<meta name="description" content="Advanced Materials Research Laboratory (AMRL), Department of Physics, Pabna University of Science and Technology: first-principles DFT, high-entropy alloys, lead-free perovskites and energy materials.">
+<link rel="canonical" href="https://amrllab.netlify.app/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%230e1b4d' stroke='%23c9a23f' stroke-width='3'/%3E%3Ctext x='32' y='42' font-size='28' font-family='serif' font-weight='700' text-anchor='middle' fill='%23e3c46d'%3EA%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AMRL Laboratory">
+<meta property="og:title" content="AMRL — Advanced Materials Research Laboratory, PUST">
+<meta property="og:description" content="Advanced Materials Research Laboratory (AMRL), Department of Physics, Pabna University of Science and Technology: first-principles DFT, high-entropy alloys, lead-free perovskites and energy materials.">
+<meta property="og:url" content="https://amrllab.netlify.app/">
+<meta property="og:image" content="https://amrllab.netlify.app/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#060a1c">
+<!-- Structured data for Google (the page also builds a fuller version from content.js) -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ResearchOrganization", "name": "Advanced Materials Research Laboratory (AMRL)", "alternateName": "AMRL", "url": "https://amrllab.netlify.app/", "parentOrganization": {"@type": "CollegeOrNewUniversity", "name": "Pabna University of Science and Technology", "url": "https://pust.ac.bd/"}, "address": {"@type": "PostalAddress", "addressLocality": "Pabna", "postalCode": "6600", "addressCountry": "BD"}, "email": "lokman.ali@pust.ac.bd", "knowsAbout": ["Density functional theory", "Computational materials science", "High-entropy alloys", "Lead-free halide perovskites", "Thermoelectric materials"]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#site">Skip to main content</a>
+<!-- Netlify reads this hidden copy at deploy time so the JS-built contact form can be submitted. -->
+<form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden><input name="name"><input name="email"><input name="topic"><textarea name="message"></textarea><input name="bot-field"></form>
+<div class="au"><i></i><i></i><i></i></div><div id="cur"></div><div id="bar"></div>
+<header class="top">
+  <a class="brand" href="#home">AMRL<small>PUST</small></a>
+  <nav id="menu" aria-label="Main navigation"><a href="#about">About</a><a href="#pi">Principal Investigator</a><a href="#research">Research</a><a href="#materials">Materials</a><a href="#people">People</a><a href="#alumni">Alumni</a><a href="#publications">Publications</a><a href="#facilities">Facilities</a><a href="#news">News</a><a href="#opportunities">Opportunities</a><a href="#contact">Contact</a></nav>
+  <a class="ml" id="ml" href="https://amrl-private-portal.vercel.app/" target="_blank" rel="noopener noreferrer">Member login ↗</a>
+  <button class="ib notify-trigger" id="notifyBtn" aria-label="Latest notifications" title="Latest notifications">♧<span class="notify-count" id="notifyCount">0</span></button><button class="ib" id="kb" aria-label="Search the site" title="Ctrl+K">⌘K</button><button class="ib" id="theme" aria-label="Switch colour theme">☀</button>
+</header>
+<aside class="notify-panel" id="notifyPanel" aria-label="Latest notifications" hidden>
+  <div class="notify-top"><div><small>AMRL BULLETIN</small><h3>Latest notifications</h3></div><button type="button" id="notifyClose" aria-label="Close notifications">×</button></div>
+  <div id="notifyItems" class="notify-items"></div>
+  <a href="#news" class="notify-all">View all laboratory news ↗</a>
+</aside>
+<main id="site"></main>
+<noscript><p style="padding:120px 24px;text-align:center">Advanced Materials Research Laboratory (AMRL), Department of Physics, Pabna University of Science and Technology. Please enable JavaScript to view the full site, or write to lokman.ali@pust.ac.bd.</p></noscript>
+<footer>© <span id="yr"></span> Advanced Materials Research Laboratory · Pabna University of Science and Technology</footer>
+
+<div id="pal" hidden><div class="pbox"><input id="pin" placeholder="Search sections, people, research, software, papers, elements…" aria-label="Search the site" autocomplete="off"><ul id="pl"></ul></div></div>
+
+<div id="editor" role="dialog" aria-modal="true" aria-label="Website editor"><div class="ed">
+  <div class="edtop"><h2>AMRL Website Editor</h2><button id="closeEditor" type="button" class="fb">Close ✕</button></div>
+  <p class="small"><b>How it works:</b> change the fields, click <b>Preview changes</b>, then <b>Download content.js</b> and replace the old content.js in your repository (commit it). The website cannot publish itself without a secure sign-in. Photos: upload the image to the <code>photos</code> folder and write <code>photos/name.jpg</code>.</p>
+  <div class="edact"><button id="previewBtn" type="button" class="btn">Preview changes</button><button id="downloadBtn" type="button" class="btn g">Download content.js</button><button id="jsonBtn" type="button" class="fb">Export JSON backup</button><label class="fb">Import JSON<input id="importJson" type="file" accept=".json,application/json" hidden></label><button id="resetBtn" type="button" class="fb">Reset</button></div>
+  <p class="small" id="editorStatus" aria-live="polite"></p>
+  <input class="edsearch" id="editorSearch" type="search" placeholder="Search fields, e.g. Emon, Scholar, DOI, email…">
+  <div id="editForms"></div>
+</div></div>
+
+<script src="content.js"></script>
+<script src="lab.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
