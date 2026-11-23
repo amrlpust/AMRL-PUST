@@ -1,59 +1,55 @@
-AMRL ADVANCED WEBSITE — INSTALLATION
+AMRL WEBSITE — FIXED ADVANCED VERSION
 ====================================
 
-WHAT IS INCLUDED
-----------------
-index.html       Main page and navigation
-style.css        Redesigned responsive visual system
-content.js       All AMRL text, people, photo paths, publications and news
-script.js        Website rendering, animations, search, materials table and editor
-lab.js           Interactive scientific visualisations
-photos/          Put all real member photographs in this folder
+This package keeps the original AMRL single-page website structure and its existing sections,
+periodic table, computational simulations, publication search, theme switcher and content editor.
+The People section and portrait loading have been corrected and visually upgraded.
+
+FILES (keep these in the repository root)
+------------------------------------------
+index.html       Main page
+style.css        Website design and responsive layouts
+content.js       Website text, member information, publications and photo paths
+script.js        Website renderer, interactions, search and editor
+lab.js           Periodic table and computational visualisations
 og-image.png     Social sharing preview image
-robots.txt       Search engine crawling rules
-sitemap.xml      Sitemap
+robots.txt       Search crawler instructions
+sitemap.xml      Search engine sitemap
+google548a082f07965eca.html  Google Search Console verification
+photos/          Member and PI portrait images (keep the original files here)
 
-PHOTO CONNECTION — IMPORTANT
------------------------------
-The website is configured to load local portraits from the repository-root photos/
-folder. The content file already expects these exact filenames:
-
-photos/560c403188c84f3ad7a5b90e44824c9b.jpg  Principal Investigator
-photos/riad.jpeg                              Md. Riad Khan
-photos/emon.jpg                               Md. Emon Hassan
+PHOTO FILES AND EXACT PATHS
+---------------------------
+photos/560c403188c84f3ad7a5b90e44824c9b.jpg   Principal Investigator
+photos/Emon.png                               Md. Emon Hassan
 photos/hidoy13.jpeg                           Md. Redwan Alam Hridoy
+photos/riad.jpeg                              Md. Riad Khan
 
-The original photo files were not included in the uploaded source package available
-for this update. Therefore, copy/restore those actual image files into photos/ from
-your old local backup or an earlier GitHub commit. The website code and paths are
-ready; it cannot display a deleted photo file until that file is restored. If a photo
-is missing, the page safely displays the person's initials instead of a broken image.
+IMPORTANT: File names are case-sensitive. Keep Emon.png exactly like this (capital E).
+The old content.js referred to photos/emon.jpg, which did not match the provided filename.
+That reference has now been corrected to photos/Emon.png.
 
-HOW TO PUBLISH ON GITHUB + NETLIFY
-----------------------------------
-1. Download and extract this ZIP.
-2. Open your GitHub repository.
-3. Upload/replace all files and folders from the extracted package at the repository
-   root. Do not upload the outer folder as an extra nested directory.
-4. Make sure the photos folder is also uploaded, containing the four image files
-   listed above (when you have restored them).
-5. Commit the changes. Netlify should deploy automatically if it is connected to this
-   repository.
-6. Open https://amrllab.netlify.app/ and hard-refresh with Ctrl+Shift+R.
+HOW TO UPDATE GITHUB / NETLIFY
+------------------------------
+1. Extract this ZIP.
+2. Upload/replace the root files in your GitHub repository using the exact names shown above.
+3. Do NOT delete or replace your existing photos folder. Keep the four original image files inside it.
+4. Confirm the photo paths and file names match the list above exactly.
+5. Commit the changes. Netlify should deploy the updated website automatically if the repository is connected.
+6. After deployment, hard-refresh the website (Ctrl + Shift + R).
 
-IMAGE PATH RULES
-----------------
-- Keep the folder name exactly: photos
-- Match filename spelling and capitalisation exactly.
-- For a new member, upload their image to photos/ and set their photo value in
-  content.js, for example: "photo": "photos/new-member.jpg"
-- Do not use a Windows local path such as C:\\Users\\... in content.js.
+The image files themselves were not included in this ZIP because the original photo binaries were
+not attached with the source-code files in this chat. The photos/ folder in this ZIP is only a folder
+placeholder. Keep your existing photos/README.txt and the four original image files in GitHub.
+The code now points to the exact filenames listed above and shows an initials fallback if an image
+is missing, instead of a broken-image icon.
 
-EDITING CONTENT
----------------
-Open the website URL with #edit at the end to open the in-page editor. Preview the
-changes, download content.js, then replace the repository's content.js and commit.
+CONTENT EDITOR
+--------------
+Open the website URL with #edit at the end to open the built-in content editor.
+Preview changes, download the updated content.js, then replace content.js in GitHub and commit.
 
-The redesign keeps the existing AMRL content, scientific simulations, periodic table,
-publication search, theme switcher and editor. People cards now show all research tags
-and available profile links directly without a hidden “See more” step.
+IMPORTANT
+---------
+Keep all root files together. Do not rename style.css, content.js, script.js or lab.js.
+index.html loads these exact filenames.

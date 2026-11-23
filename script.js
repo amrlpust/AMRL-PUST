@@ -8,17 +8,11 @@ const RM=matchMedia("(prefers-reduced-motion:reduce)").matches,CO=matchMedia("(p
 let mx=innerWidth/2,my=innerHeight/2,cx=mx,cy=my;
 const ph=s=>/\[/.test(s||"");                       /* "[Name]" jaygar placeholder site e dekhabe na */
 const ini=n=>{const w=String(n||"A").replace(/[\[\]]/g,"").split(/\s+/).filter(x=>x&&!/^(md\.?|dr\.?|mr\.?|mrs\.?|ms\.?|prof\.?)$/i.test(x));return((w[0]||"A")[0]+(w.length>1?w[w.length-1][0]:"")).toUpperCase()};
-const photoPath = src => {
- const raw=String(src||"").trim().replace(/\\/g,"/");
- if(!raw)return "";
- if(/^https?:\/\//i.test(raw))return raw;
- // All local portraits are served from the repository root's photos/ directory.
- const clean=raw.replace(/^\.\//,"").replace(/^\/+/,"");
- return clean.split("/").map(part=>encodeURIComponent(decodeURIComponent(part))).join("/");
-};
 const img=(src,n,c)=>{
- const path=photoPath(src),fallback=`<div class="ini ${c}" role="img" aria-label="${esc(n)}">${esc(ini(n))}</div>`;
- return path?`<img class="${c}" src="${esc(path)}" alt="${esc(n)}" loading="${c==="portrait"?"eager":"lazy"}" decoding="async" onerror="this.outerHTML='<div class=\"ini ${c}\" role=\"img\" aria-label=\"${esc(n)}\">${esc(ini(n))}</div>'">`:fallback;
+ const raw=String(src||"").trim(),safe=/^(?:photos\/[A-Za-z0-9._/-]+|https?:\/\/[^\s"'<>]+)$/i.test(raw);
+ const fallback=`<div class="ini ${c}" hidden>${esc(ini(n))}</div>`;
+ if(!safe)return `<div class="img-wrap ${c==="portrait"?"portrait-wrap":"people-photo-wrap"}"><div class="ini ${c}">${esc(ini(n))}</div></div>`;
+ return `<div class="img-wrap ${c==="portrait"?"portrait-wrap":"people-photo-wrap"}"><img class="${c}" src="${esc(raw)}" alt="${esc(n)}" loading="lazy" decoding="async" onerror="this.onerror=null;this.hidden=true;this.nextElementSibling.hidden=false">${fallback}</div>`;
 };
 const ul=a=>`<ul class="cl">${(a||[]).map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`;
 const links=x=>{const L=[["Personal website",x.website],["Google Scholar",x.scholar],["ORCID",x.orcid],["ResearchGate",x.researchgate],["LinkedIn",x.linkedin]].filter(l=>l[1]);return L.length?`<div class="chips">${L.map(l=>`<a href="${esc(l[1])}" target="_blank" rel="noopener noreferrer">${esc(l[0])}</a>`).join("")}</div>`:""};
@@ -52,8 +46,8 @@ SEC.push(d=>`<section class="s" id="materials"><div class="wrap">${head("Materia
 /* 6 PEOPLE */
 const tagsOf=x=>String(x.interest||"").replace(/^\s*research interests?\s*:?\s*/i,"").split(/,\s*(?:and\s+)?/).map(t=>t.trim().replace(/\.$/,"")).filter(Boolean);
 const person=(x,i)=>{const t=tagsOf(x),L=links(x),tg=s=>`<span class="tag">${esc(s)}</span>`;
- return`<article class="sp tilt person" data-r style="--d:${i%4}"><div class="person-visual">${img(x.photo,x.name,"pph")}<span class="person-orbit" aria-hidden="true"></span></div><div class="pbody"><div class="person-role">${esc(x.role||"AMRL member")}</div><h3>${esc(x.name)}</h3><div class="tags">${t.map(tg).join("")}</div>${L}</div></article>`};
-SEC.push(d=>{const pp=d.people.filter(x=>!ph(x.name));return`<section class="s" id="people"><div class="wrap">${head("People","Our team")}${[...new Set(pp.map(x=>x.role))].map(r=>{const l=pp.filter(x=>x.role===r);return`<h3 class="prole" data-r>${esc(r)} <span class="n">${String(l.length).padStart(2,"0")}</span></h3><div class="pgrid">${l.map(person).join("")}</div>`}).join("")}</div></section>`});
+ return`<article class="sp tilt person" data-r style="--d:${i%4}"><div class="person-media">${img(x.photo,x.name,"pph")}<span class="photo-glow" aria-hidden="true"></span></div><div class="pbody"><span class="person-role">${esc(x.role||"Research member")}</span><h3>${esc(x.name)}</h3><div class="interest-label">Research interests</div><div class="tags">${t.length?t.map(tg).join(""):`<span class="tag">Not specified</span>`}</div>${L?`<div class="person-links">${L}</div>`:""}</div></article>`};
+SEC.push(d=>{const pp=d.people.filter(x=>!ph(x.name));const roles=[...new Set(pp.map(x=>x.role||"Research Members"))];return`<section class="s" id="people"><div class="wrap">${head("People","Meet our research team")}<p class="lead people-lead" data-r>Researchers working across computational materials science, energy materials and device modelling.</p>${roles.map(r=>{const l=pp.filter(x=>(x.role||"Research Members")===r);return`<div class="people-group"><h3 class="prole" data-r>${esc(r)} <span class="n">${String(l.length).padStart(2,"0")}</span></h3><div class="pgrid">${l.map(person).join("")}</div></div>`}).join("")}</div></section>`});
 /* 7 PUBLICATIONS */
 SEC.push(d=>{const ys=[...new Set(d.publications.map(x=>x.year))].sort().reverse(),n=y=>d.publications.filter(x=>x.year===y).length,m=Math.max(...ys.map(n));
 return`<section class="s alt" id="publications"><div class="wrap">${head("Publications","Selected publications")}
@@ -110,7 +104,6 @@ function ld(){let e=$("ld");if(!e){e=document.createElement("script");e.id="ld";
   ...D.publications.filter(p=>p.doi).map(p=>({"@type":"ScholarlyArticle","headline":p.title,"datePublished":p.year,"identifier":"https://doi.org/"+p.doi,"isPartOf":{"@type":"Periodical","name":p.journal},"author":p.authors.replace(/\*/g,"").split(/,\s*(?:and\s+)?/).filter(Boolean).map(n=>({"@type":"Person","name":n}))}))]})}
 function render(){$("site").innerHTML=SEC.map(s=>s(D)).join("");$("yr").textContent=new Date().getFullYear();$("ml").href=D.site.portal;
  startLatticeSim();startTicker();pubList();initMaterials();initSims();ld();reveal();Q("main section").forEach(s=>spy.observe(s))}
-document.addEventListener("click",e=>{const b=e.target.closest(".more-btn");if(!b)return;const o=b.closest(".person").classList.toggle("open");b.setAttribute("aria-expanded",o);b.textContent=o?"See less":"See more"});
 
 /* theme + scroll progress + self-drawing timelines */
 const root=document.documentElement;let sv=null;try{sv=localStorage.getItem("theme")}catch(e){}

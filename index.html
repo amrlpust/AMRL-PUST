@@ -14,12 +14,10 @@
 <meta property="og:url" content="https://amrllab.netlify.app/">
 <meta property="og:image" content="https://amrllab.netlify.app/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#07101f">
-<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#060a1c">
 <!-- Structured data for Google (the page also builds a fuller version from content.js) -->
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ResearchOrganization", "name": "Advanced Materials Research Laboratory (AMRL)", "alternateName": "AMRL", "url": "https://amrllab.netlify.app/", "parentOrganization": {"@type": "CollegeOrNewUniversity", "name": "Pabna University of Science and Technology", "url": "https://pust.ac.bd/"}, "address": {"@type": "PostalAddress", "addressLocality": "Pabna", "postalCode": "6600", "addressCountry": "BD"}, "email": "lokman.ali@pust.ac.bd", "knowsAbout": ["Density functional theory", "Computational materials science", "High-entropy alloys", "Lead-free halide perovskites", "Thermoelectric materials"]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
@@ -43,7 +41,7 @@
 
 <div id="editor" role="dialog" aria-modal="true" aria-label="Website editor"><div class="ed">
   <div class="edtop"><h2>AMRL Website Editor</h2><button id="closeEditor" type="button" class="fb">Close ✕</button></div>
-  <p class="small"><b>How it works:</b> change the fields, click <b>Preview changes</b>, then <b>Download content.js</b> and replace the old content.js in your repository (commit it). The website cannot publish itself without a secure sign-in. Photos: upload each image to the repository-root <code>photos/</code> folder. The path must match the filename and capitalisation exactly, for example <code>photos/emon.jpg</code>.</p>
+  <p class="small"><b>How it works:</b> change the fields, click <b>Preview changes</b>, then <b>Download content.js</b> and replace the old content.js in your repository (commit it). The website cannot publish itself without a secure sign-in. Photos: upload the image to the <code>photos</code> folder and write <code>photos/name.jpg</code>.</p>
   <div class="edact"><button id="previewBtn" type="button" class="btn">Preview changes</button><button id="downloadBtn" type="button" class="btn g">Download content.js</button><button id="jsonBtn" type="button" class="fb">Export JSON backup</button><label class="fb">Import JSON<input id="importJson" type="file" accept=".json,application/json" hidden></label><button id="resetBtn" type="button" class="fb">Reset</button></div>
   <p class="small" id="editorStatus" aria-live="polite"></p>
   <input class="edsearch" id="editorSearch" type="search" placeholder="Search fields, e.g. Emon, Scholar, DOI, email…">
